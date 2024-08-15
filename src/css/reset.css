@@ -1,0 +1,230 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100vw!important;
+}
+html {
+    overflow: hidden;
+}
+body{
+    overflow-y: scroll;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+button,
+input {
+    border: none;
+    outline: none;
+}
+
+.mySwiper {
+    width: 100%!important;
+    overflow: hidden!important;
+}
+.group-btn {
+    display: flex;
+    align-items: center;
+    float: left;
+}
+.img-logo>img{
+    width: unset;
+    height: 100%;
+    aspect-ratio: 1281 / 716;
+}
+
+.feature-box {
+    overflow: hidden;
+    margin: 30px 0 0 0;
+}
+
+.feature-box i {
+    float: left;
+    font-size: 40px;
+    line-height: 50px;
+    width: 55px;
+    height: 55px;
+    text-align: center;
+}
+.feature-box.light-green i {
+    color: #a9d129;
+}
+
+.feature-box.light-red i {
+    color: #fc6a3f;
+}
+
+.feature-box.orange i {
+    color: #fe9c24;
+}
+
+.feature-box.dark-blue i {
+    color: #3473b8;
+}
+
+.feature-box.light-blue i {
+    color: #50a0d2;
+}
+
+.feature-box.dark-green i {
+    color: #87ac34;
+}
+/*#8bc4d7*/
+
+.swiper-button-next, .swiper-button-prev {
+    color: #fff;
+    border: 1px solid #8bc4d7!important;
+}

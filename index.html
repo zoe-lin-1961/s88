@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA88 HỢP TÁC ĐẠI LÝ</title>
+    <link rel="stylesheet" href="src/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="src/css/bootstrap.min.css">
+    <link rel="stylesheet" href="src/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="src/css/reset.css">
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="icon" href="src/images/ve2prod.ico" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/less@4" ></script>
+    <link rel="stylesheet/less" type="text/css" href="styles.less" />
+    <script src="src/js/crypto.js"></script>
+    <script src="src/js/mobile-detect.min.js"></script>
+    <script type="text/javascript" src="src/jsonData/home.json"></script>
+    <script src="src/js/pc_m.js"></script>
+</head>
+
+<body>
+<div class="icon-tele" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="CHAT VỚI CHUYÊN VIÊN ĐẠI LÝ SA88" data-bs-placement="left" data-bs-original-title="" title="">
+    <a href="https://t.me/SA88COM" target="_blank">
+        <img src="src/images/icon-tele.png" alt="Đại lý SA88" class="">
+    </a>
+</div>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">
+    <img src="src/images/icon-arrow-white.png" alt="">
+</button>
+
+<div class="section-header">
+    <div class="container">
+        <div class="box-header">
+            <div class="img-logo">
+                <img src="src/images/logo.png" alt="">
+            </div>
+            <div class="manu-space"></div>
+                <ul class="menu"></ul>
+                <div class="group-btn">
+                    <a href="http://www.sa88a.com/" class="btn-singin">Đăng nhập</a>
+                    <a href="http://www.sa88a.com/" class="btn-singup">Đăng ký</a>
+                </div>
+        </div>
+    </div>
+</div>
+<div class="section-header-layer2">
+    <div class="container">
+        <div class="box-header" style="justify-content: center">
+            <ul class="menu"></ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="section-banner">
+    <div class="mySwiper">
+        <div class="swiper-wrapper"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
+
+<div class="section-notification">
+    <i class="bi bi-volume-up-fill"></i>
+    <marquee id="section-sa88"></marquee>
+</div>
+<div class="section-real">
+    <div class="container">
+        <div class="box">
+            <a href="http://www.sa88a.com/" target="_blank">
+                <h1 class="title-real nhapnhay">TRANG CHÍNH THỨC CỦA SA88</h1>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="section-video">
+    <div class="container">
+        <div class="sa88-video-box">
+            <video tabindex="-1" controlslist="nodownload" controls allowfullscreen class="sa88Video" src="src/video/DailySA88.mp4"></video>
+        </div>
+    </div>
+</div>
+<div class="section-contact" id="contact">
+    <div class="container">
+        <div class="box-content">
+            <h3 class="title-contact">LIÊN HỆ CHÚNG TÔI</h3>
+            <div class="box-link-contact">
+                <ul>
+                </ul>
+            </div>
+
+        </div>
+        <div class="sa88-footer"><img id="sa88-footer-img" ></div>
+    </div>
+</div>
+
+<p id="output-box">
+</p>
+<p></p>
+
+<div class="shadow-box hide-shadow-box pc-modal">
+    <div class="modal hide-modal pc-modal">
+        <div class="modal-title pc-modal"><div class="close-model"></div></div>
+        <div class="modal-body pc-modal">
+            <div class="main-container pc-modal">
+                <div id="main-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body></html>
+
+<script>
+    const md = new MobileDetect(window.navigator.userAgent);
+    const isNotPC =md.tablet()||md.phone()||md.mobile()
+    if(!!isNotPC){console.warn("已进入移动端");window.location = 'src/mobile'}else {console.warn("已进入PC端")}
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        window.location.hash=""
+    }
+    document.body.addEventListener("scroll", (event) => {
+        if(document.body.scrollTop>window.screen.availHeight) {
+            $("#myBtn").css("display", "block")
+        }else{
+            $("#myBtn").css("display","none")
+        }
+    });
+</script>
+<style lang="less">
+
+    /*弹窗*/
+    .shadow-box {
+        width: 100vw;height: 100%;
+        position: fixed;top:0;z-index:999;
+        background-color: rgba(0,0,0,.7);
+    /*background-color: rgba(22, 22, 225, .7);*/
+    .modal{
+        border-radius: 10px;box-shadow: 0 2px 10px rgba(0,0,0,.8);
+        height: 80vh;max-width: 1440px;position: relative;
+        width: 70vw;margin: auto;margin-top: 10vh;
+        display: block;overflow: hidden;unicode-bidi:isolate;
+    .modal-title{
+        display: flex;background-color: #154283;height: 50px;
+        padding: 0 20px;box-sizing: border-box;justify-content: flex-end;
+        align-items: center;border-top-right-radius: 10px;
+        border-top-left-radius: 10px;width: 100%;
+    .close-model {width: 25px;height: 25px;cursor: pointer;}
+    .close-model:before {content: '';display: block;width: 25px;height: 25px;background-image: url(src/images/close-model.svg);background-size:100%;}
+    }
+    .modal-body {
+        width: 100%;display: flex;height: calc(100% - 50px);border-bottom-right-radius: 10px;background-color:#fff;
+        border-bottom-left-radius: 10px;box-sizing: border-box;overflow-y: scroll;color: #333333;
+    }
+    .left-window {
+        width: 350px;height: calc(80vh - 50px);background-color: rgba(204,204,204,.1);box-shadow: 1px 0 0 0 rgba(204,204,204,.3);
+        box-sizing: border-box;max-width: 350px;padding: 15px;position: fixed;top: calc(10vh + 50px);transition: width 0.3s, padding 0.3s;
+    .left-btn {
+        align-items: center;display: flex;height: 80px;justify-content: center;
+        position: absolute;right: -40px;top: 50%;transform: translateY(-50%);width: 80px;z-index: 10;}
+    .left-btn::after {
+        speak: none;align-items: center;border-radius: 50%;box-shadow: 0 1px 5px rgba(0,0,0,.5);
+        content: ' ';background-color: rgba(239,239,239,.9);background-image:url(img/left-model.svg);background-size: 20px 30px;
+        background-repeat: no-repeat;background-position:center ;cursor: pointer;display: flex;height: 30px;justify-content: center;width: 30px;transition: transform 0.3s;
+    }
+    }
+    .left-window>div:not(.left-btn) {
+        width: 320px;height: auto;margin: auto
+
+    }
+    .left-window>div:not(.left-btn) h1 {font-size: 21px!important;line-height: 1.4;margin: 15px 0;font-weight: 400}
+    .left-window>div:not(.left-btn) img,h1{width: 100%;transition: width 0.3s, overflow 0.3s;}
+    .close-left-btn::after {transform: rotate(180deg);}
+    .close-left-window {width: 0;padding:10px}
+    .close-left-window div:not(.left-btn) {width: 0;}
+    .close-left-window div:not(.left-btn)  img,h1{width: 0;overflow: hidden}
+    h1 {width: 100%}
+    .main-container{
+        float: left;height: auto;transition: width 0.3s, margin-left 0.3s;
+    }
+    #main-container {
+        font-weight: bold;
+        font-family: PingFang;
+
+    }
+    #main-container p:first-child strong,p:first-child+h5>span:first-child,h5:first-child strong{
+        font-weight: 700!important;font-size: 17px!important}
+    #main-containerReload>p:first-child {
+        margin-bottom: 0.2rem;
+    }
+    #main-containerReload>p:first-child+h5 {
+        margin-top: 0;
+    }
+    #main-containerReload>p:first-child+h5>span {
+        font-size: 0.6em !important;
+    }
+    .main-container>div {padding-bottom: 80px;}
+
+    img {max-width: 100%;}
+    h6 {margin-top: 9.6px;margin-bottom: 9.6px;}
+    .full-main-container { width: 100%;margin-left: 50px;}
+    }
+    }
+
+    .hide-shadow-box {
+        width: 0;
+        height: 0;
+    }
+    .hide-modal {
+        display: none!important;
+    }
+
+</style>

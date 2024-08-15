@@ -1,0 +1,257 @@
+<html class="ui-mobile"><head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=10, user-scalable=yes">
+    <link rel="icon" href="img/ve2prod.ico" />
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/mobile-detect.min.js"></script>
+    <script type="text/javascript" src="sa88.json"></script>
+    <script type="text/javascript" src="data.json"></script>
+    <script type="text/javascript" src="data_ud_0802.json"></script>
+    <script src="js/dataLoad.js"></script>
+    <script src="js/createdRedStyle.js"></script>
+    <title>SA88</title>
+    <style>
+        .ui-dialog.dialog-actionsheet .ui-dialog-contain {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body class="ui-mobile-viewport ui-overlay-a" style="" id="ui-page-top">
+    <div class="ui-loader ui-corner-all ui-body-a ui-loader-default">
+        <div data-role="page" data-dialog="true" data-url="/1.4.5/pages-dialog/dialog.html" data-external-page="true" tabindex="0" class="ui-page ui-page-theme-a ui-dialog ui-page-active" style="min-height: 667px;">
+            <div role="dialog" class="ui-dialog-contain ui-overlay-shadow ui-corner-all">
+                <div class="modal " data-role="header" data-theme="b" role="banner">
+                    <div class="modal-title "><a href="index.html"><div class="close-model" data-rel="back" ></div></a></div>
+                    <div class="modal-body ">
+                       <div class="left-window "><div id="left-window"></div><div class="left-btn"></div></div>
+                        <div class="main-container ">
+                                <div id="main-container" class="hide-main-container"></div>
+                                <div id="main-containerReloadCreated" class="hide-main-container"></div>
+                                <div id="main-containerReload"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var createJSON=[]
+    function updateJSON(returnJSON){
+        var hasdata = createJSON.filter((c)=>c.id==returnJSON.id).length
+        if(!hasdata) {
+            createJSON.push(returnJSON)
+        }
+    }
+    let dataPromo =[];
+    async function loadGetAjexJsonData(urls){
+        let getJsonDATA= [],i =0
+        while(i<urls.length){ var url = urls[i];getJsonDATA.push(await getAjexJsonData("get",url));i++ }
+        dataPromo = getJsonDATA[1][2]
+        let all = dataPromo[0]
+        let id = getQueryVariable("id")
+        let Grids=all.filter((a)=>a.promoid === id)[0]
+        getDomPromoItemDetail(Grids,getJsonDATA[0][3])
+    }
+
+    loadGetAjexJsonData(["./sa88.json","https://api.hi678a.com/ve2prod-ecp/api/v1/promosforplayertoapply?currency=VND2&limit=100&locale=vi-VN&offset=0&platform=2"])
+
+    function getDomPromoItemDetail(_data,contectSet) {
+        let leftDom = document.getElementById('left-window'),mainDom =document.getElementById('main-container');
+        let title = _data["promotitle"]["vi-VN"];
+        let GRID_item = _data['promobanner'].some(item => item.type == 'GRID')? _data['promobanner'].filter((item)=>item.type == 'GRID')[0]:undefined;
+
+        //左边伸缩窗
+        let GRID_url = GRID_item ? GRID_item['imageurl']:'';
+        let preSrc = 'https://img.alltocon.com'
+        let leftImgSrc = preSrc+GRID_url;
+        //需要判断图是否拿的到
+        let LeftImg = mkDOM("img",[{"src":leftImgSrc},{"style":"width:390px;aspect-ratio: 390 / 208;"}])
+        LeftImg.onerror = function (err){
+            var UsePreLoadPromo =getCOOKIE("UsePreLoadPromo")
+            if(UsePreLoadPromo){
+                let pageLocation = window.location.href+GRID_url
+                leftImgSrc = pageLocation.replace("jpg","webp")
+                _img.setAttribute('src',leftImgSrc)
+            }
+        }
+        let _img = document.createElement('img');
+        _img.setAttribute('src',leftImgSrc);
+        let _h1 = document.createElement('h1');
+        _h1.innerText=title;
+        leftDom.append(_img,_h1);
+        //右边的显示
+        if(GRID_item['description']) {
+            mainDom.innerHTML = GRID_item['description'];
+            let itemId = _data.promoid
+            reWriteDataFromWeb(mainDom,contectSet,itemId,_data)
+            $("#main-containerReload")[0].innerHTML= createJSON.filter((item)=>item.id === itemId)[0].innerHTML
+            resetTableColor($("#main-containerReload")[0])
+        }
+    }
+    function reWriteDataFromWeb (father,contectSet,id,_data){
+        let reWrite = reWriteDataSet(father,contectSet)
+        let returnJSON = loadreWriteDataFromWeb(reWrite.JsData,reWrite.ColorText,id)
+        updateJSON(returnJSON)
+    }
+
+    const resetBodyHeight = ()=>{
+        let winH = window.innerHeight
+        $(".modal-body").height(winH - 50)
+    }
+    //pc-modal
+    resetBodyHeight()
+
+
+</script>
+<style>
+    @font-face {
+        font-family: PingFangSC;
+        src: url(font/PingFang-SC-Bold.ttf);
+    }
+    @font-face {
+        font-family: Helvetica;
+        src: url(font/Helvetica.ttf);
+    }
+    * {
+        box-sizing: border-box;
+        /*font-family: Helvetica;*/
+    }
+    html,body{overflow-x: hidden;position: fixed;top:0}
+    body{margin:0;width: 100vw;font-family: Arial, sans-serif, PingFangSC Helvetica;}
+    .modal-body {overflow-y: scroll}
+    table {background-color:red!important; border-collapse: collapse!important;border:1px solid #fff;margin:1em 0}
+    table  tr>td {background-color:red!important;color:#fff;text-align: center;padding-top: 19.2px;padding-bottom: 19.2px;border:1px solid #fff;font-size: 0.83em;}
+    .text-red { color:#ff0000 !important }
+    .text-light-blue { color:#00ccff !important }
+    .text-center {text-align: center}
+    .block-title {margin-bottom: 3px;margin-top: 1.67em;display: inline-block}
+    .block-area-start {margin-top: 0.67em}
+    .block-area { width:100%;position:relative;padding:2px 0;line-height:1.2;font-size: 1em; font-weight: bold;}
+    .inline-full {width:100%;display:inline-block}
+    .blue-td {background-color: blue!important;}
+    .link-span {margin: 0 5px}
+    .detail-text {font-weight: normal!important;font-size: 0.93rem;margin-bottom: 0.4rem}
+    .hana-style {margin-top: 0.5rem!important;font-weight: 500!important; }
+    .hana-style:last-child {margin-bottom: 0.5rem!important}
+    .number-bolck-style {
+        margin-bottom: 1.2rem!important;
+    }
+    .hide-main-container {position: absolute;width: 1px;height: 1px!important;margin: -1px;border: 0;padding: 0;clip: rect(0 0 0 0);overflow: hidden;z-index: -1}
+    .loader {height: 20px;background:linear-gradient(90deg,#0001 33%,#0005 50%,#0001 66%) #f2f2f2;background-size:300% 100%;animation: l1 1s infinite linear;}
+
+    .modal-title {
+        display: flex;
+        background-color: #d01c2d;
+        height: 50px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+    }
+    .close-model {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        color:#fff;
+    }
+    .close-model:before {
+        content: '';
+        display: block;
+        width: 25px;
+        height: 25px;
+        background-image: url(img/close-model.svg);
+        background-size: 100%;
+    }
+    .left-window, .main-container, #main-containerReload {
+        width: 100% !important;
+        position: relative !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    #left-window {
+        width: 90vw;
+        padding-top: 5vw;
+        padding-bottom: 5vw;
+    }
+    .left-window {
+        width: 350px;
+        background-color: rgba(204, 204, 204, .1);
+        box-shadow: 1px 0 0 0 rgba(204, 204, 204, .3);
+        box-sizing: border-box;
+        max-width: 350px;
+        padding: 15px;
+        padding-bottom: 5px;
+        position: fixed;
+        top: 0;
+        transition: width 0.3s, padding 0.3s;
+    }
+    .left-window>div:not(.left-btn) {
+        width: 320px;
+        height: auto;
+        margin: auto;
+    }
+    .left-window>div:not(.left-btn) img, h1 {
+        width: 100% !important;
+        max-width: 100%;
+    }
+   .left-window > div:not(.left-btn) h1 {
+       line-height: 1.4;
+       font-size: 18px !important;
+       margin-top: 15px;
+       margin-bottom:0;
+       text-align: center;
+       font-weight: 500!important;
+    }
+    .hide-main-container {
+        position: absolute;
+        height: 0 !important;
+        width: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+        z-index: -1;
+    }
+    #main-containerReload {
+        width: 90vw !important;
+        max-width: 90vw !important;
+        margin: auto !important;
+        padding-bottom: 5vw !important;
+    }
+    #main-containerReload>p:first-child {
+        margin-bottom: 0.4em;
+    }
+    #main-containerReload>p:first-child+h5 {
+        margin-top: 0 !important;
+    }
+    #main-containerReload>p:first-child+h5>span {
+        margin-top: 0;
+        font-size: 0.6em !important;
+    }
+    .text-center {
+        text-align: center;
+    }
+    .text-red {
+        color: #ff0000 !important;
+    }
+    .inline-full {
+        width: 100%;
+        display: inline-block;
+    }
+    .inline-full>img{
+        width: 100%;;height: auto;
+    }
+    .block-area {
+        width: 100%;
+        position: relative;
+        padding: 2px 0;
+        line-height: 1.2;
+        font-size: 1em;
+        font-weight: bold;
+    }
+</style>
