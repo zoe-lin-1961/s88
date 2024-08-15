@@ -4,7 +4,7 @@
     {"title":"LỢI ÍCH","href":"#menu-benefit","icon": "src/images/icon-sp-white.png"},
     {"title": "CÂU HỎI THƯỜNG GẶP","href":"#menu-ask","icon": "src/images/icon-ask-white.png"},
     {"title": "PHẦN THƯỞNG","href":"#menu-rewards","icon": "src/images/icon-pt-white.png"},
-    {"title": "ưu đãi","href":"../yuhui/index.html","icon": "src/images/discount-white.png" }
+    {"title": "ưu đãi","href":"[main]/yuhui/index.html","icon": "src/images/discount-white.png" }
   ]},"layer2": [
     {"title":"GIỚI THIỆU","href":"#menu-intro"},
     {"title": "Sự kiện nóng nhất","href":"#menu-news"},
@@ -134,7 +134,7 @@
       {"href": "#menu-benefit","icon": "icon-sp.png","title": "LỢI ÍCH"},
       {"href": "#menu-ask","icon": "icon-ask.png","title": "CÂU HỎI THƯỜNG GẶP"},
       {"href": "#menu-rewards","icon": "icon-pt.png","title": "PHẦN THƯỞNG"},
-      {"href": "../yuhui/index.html","icon": "discount.png","title": "ưu đãi"}
+      {"href": "[main]/yuhui/index.html","icon": "discount.png","title": "ưu đãi"}
     ]
   },
   {

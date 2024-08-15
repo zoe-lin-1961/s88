@@ -123,8 +123,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }
     }
     const makeItemInfoNotId = (_obj) => {
+        let yuhuiURL = _obj.href.split("[main]")[1];
+        let theURL = window.location.href.replace("/src/mobile",yuhuiURL)
         let _divItemInfo = document.createElement("div"),_div=document.createElement("div"),_a=document.createElement("a"),_img=document.createElement("img"),_p=document.createElement("p")
-        _divItemInfo.setAttribute("class","item-info");_a.setAttribute("href",_obj.href);_div.setAttribute("class","img-icon");
+        _divItemInfo.setAttribute("class","item-info");_a.setAttribute("href",theURL);_div.setAttribute("class","img-icon");
         _img.setAttribute("src","../src/images/"+_obj.icon);_p.innerHTML=_obj.title;
         _div.append(_img);_divItemInfo.append(_div,_p);_a.append(_divItemInfo);
         return _a;
