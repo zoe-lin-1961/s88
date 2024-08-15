@@ -17,7 +17,7 @@
     "url": "https://github.com/zoe-lin-1961/s88/issues"
   },
   "license": "ISC",
-  "homepage": "https://github.com/zoe-lin-1961/s88/index.html",
+  "homepage": "https://github.com/zoe-lin-1961/s88#readme",
   "dependencies": {
     "gh-pages": "^6.1.1"
   }
