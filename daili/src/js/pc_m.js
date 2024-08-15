@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
             if(item.href.includes("[main]")){
                 let yuhuiURL = item.href.split("[main]")[1];
-                let theURL = window.location.href+yuhuiURL;
+                let theURL = window.location.href+"yuhui/index.html";
                 if(!!window.location.href.includes("/index")){
                     theURL = window.location.href.replace("/index",yuhuiURL)
                 }
