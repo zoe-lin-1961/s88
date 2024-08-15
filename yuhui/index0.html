@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SA88</title>
+    <link rel="icon" href="img/logo.png" />
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="data.json"></script>
+    <script type="text/javascript" src="data_ud_0726.json"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div>
+        <img src="img/logo.png" alt="SA88 Logo" class="logo" />
+        <div class="title">
+          <img src="img/l-ch-thi-u-v-ng-ch.png" />
+        </div>
+      </div>
+    </header>
+    <div class="main-content">
+      <div>
+        <div class="category">
+        </div>
+        <div class="promo-grid" id="promo"></div>
+      </div>
+    </div>
+    <div class="step-info">
+      <div class="step-info-contain">
+      <div class="step-block">
+        <div>
+          <img src="img/feature-1.png" alt="" />
+        </div>
+        <div>
+          <p class="text-white">QUẢN LÝ TÀI CHÍNH</p>
+          <p class="text-yellow">NẠP TIỀN</p>
+          <img class="arrow" src="img/arrow.png" />
+        </div>
+      </div>
+      <div class="step-block">
+        <div>
+          <img src="img/feature-2.png" alt="" />
+        </div>
+        <div>
+          <p class="text-white">QUẢN LÝ TÀI CHÍNH</p>
+          <p class="text-yellow">RÚT TIỀN</p>
+          <img class="arrow" src="img/arrow.png" />
+        </div>
+      </div>
+      <div class="step-block">
+        <div>
+          <img src="img/feature-3.png" alt="" />
+        </div>
+        <div>
+          <p class="text-white">BẠN CÓ MUỐN ĐĂNG KÝ KHUYẾN MÃI NÀY?</p>
+          <p class="text-yellow">KHUYẾN MÃI</p>
+          <img class="arrow" src="img/arrow.png" />
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="footer-second">
+      <div>
+        <div>
+          <div>
+            <p>Về Chúng Tôi SA88.Com</p>
+            <p>
+              Đến với SA88.com là bạn đang đến với thế giới của sự chuyên nghiệp,
+              đẳng cấp mà một nhà cái hàng đầu Hoa Kỳ mang lại. Tận hưởng thế giới
+              cá cược online chất lượng, uy tín mà ít thị trường nào cung cấp được.
+              SA88.com được cấp phép bởi Cơ quan uy tín hàng đầu khu vực châu Mỹ.
+              Trang web cá cược SA88.com tự hào là 1 trong số ít nhà cái được cấp
+              phép bởi Bộ Nội vụ và Liên bang tại Schleswig-Holstein.
+            </p>
+          </div>
+        </div>
+        <div>
+          <div>
+            <p>Miễn Trách Nhiệm</p>
+            <p>
+              Về SA88 Điều Khoản Và Điều Kiện Chơi có trách nhiệm Miễn trách nhiệm
+              Quyền riêng tư
+            </p>
+          </div>
+        </div>
+        <div>
+          <div>
+            <p>Giúp Đỡ Và Hỗ Trợ</p>
+            <p>Hướng dẫn nạp tiền Hướng dẫn rút tiền Câu hỏi thường gặp Liên hệ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <img src="img/footer-info.png" />
+    </footer>
+    <div class="copy-right"><div>Copyright © SA88 Reserved</div></div>
+
+    <div class="shadow-box hide-shadow-box">
+      <div class="modal hide-modal">
+        <div class="modal-title"><div class="close-model"></div></div>
+        <div class="modal-body">
+          <div class="left-window">
+            <div id="left-window">
+            </div>
+            <div class="left-btn"></div>
+          </div>
+          <div class="main-container">
+            <div id="main-container">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  (function() {
+    const lan ='vi-VN';
+    var leftbtn = document.getElementsByClassName('left-btn')[0];
+    var leftWindow =document.getElementsByClassName('left-window')[0];
+    var mainContainer = document.getElementsByClassName('main-container')[0];
+
+    leftbtn.addEventListener('click',function (){
+      const isCloseLeft = leftWindow.classList.value.includes('close-left-window');
+      if(isCloseLeft){
+        leftbtn.classList.remove('close-left-btn');
+        leftWindow.classList.remove('close-left-window');
+        mainContainer.classList.remove('full-main-container');
+      }else{
+        leftbtn.classList.add('close-left-btn');
+        leftWindow.classList.add('close-left-window');
+        mainContainer.classList.add('full-main-container');
+      }
+    });
+    let promo = document.getElementById('promo');
+    let dataPromo =[];
+    $.ajax({
+      type:"get", //使用get方式
+      url: "./data.json", //json文件相对于这个HTML的路径
+      dataType:"json",
+      success:function(data) {
+        console.log('data',data);
+        // getCategory(data[1]);
+        // dataPromo = data[2]
+        // getDomPromoItem(dataPromo[0]);
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown) {
+        // console.log('XMLHttpRequest, textStatus, errorThrown',XMLHttpRequest, textStatus, errorThrown);
+        // console.log(err,'err');
+      }
+    });
+    $.ajax({
+      type:"get", //使用get方式
+      url: "./data_ud_0726.json", //json文件相对于这个HTML的路径
+      dataType:"json",
+      success:function(data) {
+        console.log('data0726',data);
+        getCategory(data[1]);
+        dataPromo = data[2]
+        getDomPromoItem(dataPromo[0]);
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown) {
+        // console.log('XMLHttpRequest, textStatus, errorThrown',XMLHttpRequest, textStatus, errorThrown);
+        // console.log(err,'err');
+      }
+    });
+    function getCategory(_data){
+      var category = document.getElementsByClassName('category')[0];
+      _data.forEach((cate,idx)=>{
+        var _cate = document.createElement('div');
+        _cate.setAttribute('id',cate['pageid']);
+        _cate.setAttribute('class','category-item');
+        _cate.innerHTML = cate['pagename'][lan];
+        _cate.onclick = function (e){
+          const categoryItems = document.getElementsByClassName('category-item');
+          Object.values(categoryItems).forEach((items)=>{
+              items.classList.remove('active');
+              $('#promo').empty();
+              getDomPromoItem(dataPromo[idx]);
+          });
+          e.target.classList.add('active');
+        };
+        category.append(_cate);
+      })
+      document.getElementsByClassName('category-item')[0].classList.add('active');
+    }
+
+
+    function getDomPromoItem(_data){
+      for(let i=0; i<_data.length ;i++) {
+        let title =_data[i]['promotitle'][lan];
+        let promoItem = document.createElement('div');
+        promoItem.classList.add('promo-item');
+        promoItem.onclick=function (){
+          promoItemDetail(_data[i]);
+        }
+        let _img = document.createElement('img');
+        let GRID_item = _data[i]['promobanner'].some(item => item.type == 'GRID')? _data[i]['promobanner'].filter((item)=>item.type == 'GRID')[0]:undefined;
+        let GRID_url = GRID_item ? GRID_item['imageurl']:'';
+        let preSrc = 'https://img.alltocon.com/'
+        if(GRID_url) {
+          _img.setAttribute('src',preSrc+GRID_url);
+        }
+        _img.alt=title;
+        promoItem.append(_img);
+        promo.append(promoItem);
+      }
+    }
+  })();
+</script>
+<script>
+  var mask = document.getElementsByClassName('shadow-box')[0];
+  var modal = document.getElementsByClassName('modal')[0];
+  mask.addEventListener('click',function(e){
+    if(e.target.className=='shadow-box' || e.target.className=='close-model') {
+      mask.classList.add('hide-shadow-box');
+      modal.classList.add('hide-modal');
+    }
+  })
+  function promoItemDetail(_card) {
+    setClassName(_card.promoid);
+    if (_card) {
+      mask.classList.remove('hide-shadow-box');
+      modal.classList.remove('hide-modal');
+      $('#left-window').empty();
+      $('#mainDom').empty();
+     getDomPromoItemDetail(_card);
+      console.log("doc",document.getElementsByTagName("span"), "\uD83D\uDC49","innerHTML")
+    }
+  }
+  function setClassName(cardId) {
+    var mainContainer = document.getElementById('main-container');
+    // console.log(cardId,'cardId');
+    mainContainer.classList = "";
+    if(cardId == '50cc37b5-33f8-4cde-a383-ed4cad716e91'){
+        mainContainer.classList.add('promotion031323'); //03-13-23活动促销表格有两种颜色
+    }
+    if(cardId == '6b4653b5-4956-4d61-bd18-1be1f5da34f4'){
+        mainContainer.classList.add('firstDomH5');
+    }
+  }
+  function getDomPromoItemDetail(_data) {
+    let leftDom = document.getElementById('left-window'),mainDom =document.getElementById('main-container');
+    let title = _data["promotitle"]["vi-VN"];
+    let GRID_item = _data['promobanner'].some(item => item.type == 'GRID')? _data['promobanner'].filter((item)=>item.type == 'GRID')[0]:undefined;
+
+    //左边伸缩窗
+    let GRID_url = GRID_item ? GRID_item['imageurl']:'';
+    let preSrc = 'https://img.alltocon.com/'
+    let leftImgSrc = preSrc+GRID_url;
+    let _img = document.createElement('img');
+    _img.setAttribute('src',leftImgSrc);
+    let _h1 = document.createElement('h1');
+    _h1.innerText=title;
+    leftDom.append(_img,_h1);
+    //右边的显示
+    if(GRID_item['description']) {
+     mainDom.innerHTML = GRID_item['description'];
+    }
+  }
+</script>
+
+<style>
+  @font-face {
+    font-family: PingFangSC;
+    src: url(font/PingFang-SC-Bold.ttf);
+  }
+  @font-face {
+    font-family: Helvetica;
+    src: url(font/Helvetica.ttf);
+  }
+  * {
+    box-sizing: border-box;
+    /*font-family: Helvetica;*/
+  }
+  body {
+    font-family: Arial, sans-serif, PingFangSC Helvetica;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background-color: #000;
+    width: 100%;
+  }
+
+  .header {
+    text-align: center;
+    padding-top: 56px;
+    padding-bottom: 48px;
+    /*background-color: #000;*/
+  }
+
+  .logo {
+    width: 300px;
+  }
+
+  .title {
+    width: 1215px;
+    margin: auto;
+  }
+  .title img,
+  .logo img,
+  .home-bg img,
+  .footer img {
+    width: 70%;
+    margin:auto;
+  }
+  table {
+    background-color:red!important;
+    border-collapse: collapse!important;
+    tr>td {
+      background-color:red!important;
+    }
+  }
+  .promotion031323 {
+      table>tbody>tr:nth-child(2),table>tbody>tr:nth-child(3),table>tbody>tr:nth-child(4),table>tbody>tr:nth-child(5), table>tbody>tr:nth-child(6){
+        td{
+          background-color:blue!important;
+        }
+      }
+  }
+
+  .main-content {
+    min-height: calc(100vh - 573px);
+    background-image: url(img/home-bg.png) ;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    .category {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+    }
+    .category-item {
+      background-color: #000;
+      color: #fff;
+      font-size: 16px;
+      height: 54px;
+      line-height: 54px;
+      margin-right: 5px;
+      margin-top: 15px;
+      min-width: 135px;
+      opacity: .6;
+      padding: 0 15px;
+      text-align: center;
+    }
+    .category-item.active, .category-item:hover {
+      background-color: #d01c2d;
+      cursor: pointer;
+      opacity: 1;
+    }
+  }
+  .main-content>div>div {
+    margin: 20px 0;
+  }
+  .main-content>div>div:last-child {
+    margin-bottom: 60px;
+  }
+  .home-bg {
+    width: 100%;
+    position: absolute;
+    background-image: url(img/home-bg.png);
+    background-size: 100%;
+    z-index: 20;
+    /*z-index: -1;*/
+  }
+
+  .promo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .promo-item {
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .promo-item img {
+    max-width: 100%;
+    height: auto;
+  }
+  .text-white {
+    color: #fff;
+  }
+  .text-yellow {
+    color: #ffd555;
+
+
+  }
+  .promo-title {
+    margin: 10px 0 0;
+    font-size: 16px;
+    color: #ff9900;
+  }
+  .step-info {
+    background: url(img/feature-bg.png) repeat;
+    height: 275px;
+    padding-top: 75px;
+    .step-info-contain {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .step-block {
+    display: flex;
+    width: 33%;
+    min-width: 29%;
+    text-transform: uppercase;
+    position: relative;
+    font-family: PinFang-SC;
+
+    p{
+      margin: 0;
+      font-size: 16px;
+    }
+  }
+  .step-block>div {margin-right: 24px}
+  .step-block p:nth-child(1) {
+    font-size: 16px;
+  }
+  .step-block p:nth-child(2) {
+    font-size: 29px;
+  }
+  .step-block img {
+    width: 150px;
+  }
+  .step-block .arrow {
+    width: 38px;
+    height: 38px;
+    margin-top: 11px;
+    cursor: pointer;
+  }
+  .footer-second {
+    background: #f6f6f6;
+    display: flex;
+    color: #000;
+    padding: 17px 0;
+    /*line-height: 25px;*/
+  }
+  .footer-second>div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 17px;
+    /*font-weight: normal;*/
+    line-height: 1.2;
+    font-family: Helvetica!important;
+    font-weight: bold;
+  }
+  .footer-second>div>div {
+    width: 246px;
+    display: flex;
+    align-items: center;
+  }
+  .footer-second>div>div:first-child {
+    width: 507px;
+  }
+  .footer {
+    padding: 20px 0 20px 0;
+    text-align: center;
+  }
+  .copy-right {
+    color: #7b7b7b;
+    font-size: 12px;
+    padding: 20px 0;
+    text-align: center;
+  }
+  .footer,.copy-right {
+    background-color: #fff;
+  }
+  .promo-grid,.step-info-contain, .header>div, .footer-second>div,.footer>img, .copy-right>div, .main-content>div {
+    width: 1210px;
+    margin: auto;
+  }
+  .step-info, .footer-second, .footer {
+    width: 100%;
+  }
+  /*弹窗*/
+  .shadow-box {
+    width: 100vw;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0,0,0,.7);
+    top:0;
+    z-index: 999;
+    .modal{
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.8);
+      height: 80vh;
+      max-width: 1440px;
+      position: relative;
+      width: 70vw;
+      margin: auto;
+      margin-top: 10vh;
+      background-color:#fff;
+      display: block;
+      overflow: hidden;
+      unicode-bidi: isolate;
+      .modal-title{
+        display: flex;
+        background-color: #d01c2d;
+        height: 50px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        justify-content: flex-end;
+        align-items: center;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        width: 100%;
+        .close-model {
+          width: 25px;
+          height: 25px;
+          cursor: pointer;
+        }
+        .close-model:before {
+          content: '';
+          display: block;
+          width: 25px;
+          height: 25px;
+          background-image: url(img/close-model.svg);
+          background-size:100%;
+        }
+      }
+      .modal-body {
+        width: 100%;
+        display: flex;
+        height: calc(100% - 50px);
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        box-sizing: border-box;
+        overflow-y: scroll;
+        color: #333333;
+      }
+      .left-window {
+        width: 350px;
+        height: calc(80vh - 50px);
+        background-color: rgba(204,204,204,.1);
+        box-shadow: 1px 0 0 0 rgba(204,204,204,.3);
+        box-sizing: border-box;
+        max-width: 350px;
+        padding: 15px;
+        position: fixed;
+        top: calc(10vh + 50px);
+        transition: width 0.3s, padding 0.3s;
+        .left-btn {
+          align-items: center;
+          display: flex;
+          height: 80px;
+          justify-content: center;
+          position: absolute;
+          right: -40px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 80px;
+          z-index: 10;
+        }
+        .left-btn::after {
+          speak: none;
+          align-items: center;
+          border-radius: 50%;
+          box-shadow: 0 1px 5px rgba(0,0,0,.5);
+          content: ' ';
+          background-color: rgba(239,239,239,.9);
+          background-image:url(img/left-model.svg);
+          background-size: 20px 30px;
+          background-repeat: no-repeat;
+          background-position:center ;
+          cursor: pointer;
+          display: flex;
+          height: 30px;
+          justify-content: center;
+          width: 30px;
+          transition: transform 0.3s;
+        }
+      }
+      .left-window>div:not(.left-btn) {
+        width: 320px;
+        height: auto;
+        margin: auto;
+        h1 {
+          font-size: 21px!important;
+          line-height: 1.4;
+          margin: 15px 0;
+          font-weight: 400;
+        }
+        img,h1{width: 100%;transition: width 0.3s, overflow 0.3s;}
+      }
+      .close-left-btn::after {
+        transform: rotate(180deg);
+      }
+      .close-left-window {
+        width: 0;
+        padding:10px;
+        div:not(.left-btn) {
+          width: 0;
+          img,h1{width: 0;overflow: hidden}
+        }
+      }
+      .main-container{
+        float: left;
+        width: calc(100% - 370px);
+        margin-left: 370px;
+        padding: 15px;
+        height: auto;
+        transition: width 0.3s, margin-left 0.3s;
+      }
+      #main-container {
+       font-weight: bold;
+       font-family: PingFang;
+        p:first-child,p:first-child+h5>span:first-child {
+          color:#ff0000!important;
+          span {
+            color:#ff0000!important;
+          }
+        }
+        p:first-child,p:first-child+h5>span:first-child,h5:first-child {
+          strong {
+            font-weight: 700!important;
+            font-size: 17px!important;
+          }
+        }
+        p:first-child+h5,p:first-child+h5+p,p:nth-child(2),h5:first-child+h5{
+          a{color:#ff0000!important;}
+        }
+      }
+      #main-container>p:last-child>span:last-child>span>a {
+            color: #00ccff!important;
+      }
+
+      #main-container>span:nth-child(2),#main-container>span:nth-child(4),#main-container>span:nth-child(6) {
+        a {color:#ff0000!important;}
+      }
+      #main-container>span:nth-child(9)>span{
+          strong{
+            color:#ff0000!important;
+          }
+      }
+      #main-container>p>span:first-child, #main-container>span>strong>span>strong, #main-container>p>span>strong {
+        color:#ff0000!important;
+      }
+      .firstDomH5>h5:first-child{
+        span {
+          color:#ff0000!important;
+        }
+      }
+      .main-container>div {
+        padding-bottom: 80px;
+        img {
+          max-width: 100%;
+        }
+        h6 {
+          margin-top: 9.6px;
+          margin-bottom: 9.6px;
+        }
+      }
+      .full-main-container {
+        width: 100%;
+        margin-left: 50px;
+      }
+    }
+  }
+  .hide-shadow-box {
+    width: 0;
+    height: 0;
+  }
+  .hide-modal {
+    display: none!important;
+  }
+</style>
+
