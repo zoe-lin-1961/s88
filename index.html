@@ -120,7 +120,7 @@
 <script>
     const md = new MobileDetect(window.navigator.userAgent);
     const isNotPC =md.tablet()||md.phone()||md.mobile()
-    if(!!isNotPC){console.warn("已进入移动端");window.location = './mobile'}else {console.warn("已进入PC端")}
+    if(!!isNotPC){console.warn("已进入移动端");window.location = 'src/mobile'}else {console.warn("已进入PC端")}
     function topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;

@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     var swiper;
     // 左侧抽屉菜单，画面中间的跳转
     function getHome(){
-        $.ajax({type:"get",url: "src/jsonData/home.json",dataType:"json",
+        $.ajax({type:"get",url: "../src/jsonData/home.json",dataType:"json",
             success:function(data) {handalLoadDataOnPage(data)}, error:function(XMLHttpRequest, textStatus, errorThrown) { console.log('XMLHttpRequest, textStatus, errorThrown',XMLHttpRequest, textStatus, errorThrown)}
         });
     }
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const withHashUrl = {"menu-cshh":true,"menu-benefit":true,"menu-ask":true,"menu-rewards":true}
     function loadSwiperImgs(bannerImgs){
        for(let i=0;i<bannerImgs.length;i++){
-          var swiperSlide = mkDOM("div",[{class:"swiper-slide"}]),imgNo=i+1,swiperImg =mkDOM("img",[{class:"img-banner"},{src:'src/images/'+bannerImgs[i]},{alt:'Banner '+imgNo}]);
+          var swiperSlide = mkDOM("div",[{class:"swiper-slide"}]),imgNo=i+1,swiperImg =mkDOM("img",[{class:"img-banner"},{src:'../src/images/'+bannerImgs[i]},{alt:'Banner '+imgNo}]);
            swiperSlide.append(swiperImg);
            $(".swiper-wrapper")[0].append(swiperSlide)
        }
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
     const makeBoxMenuItems = (_obj)=>{
         let _li=mkDOM("li",[{id:_obj.href},{class:"box-item-info"}]),_div=mkDOM("div",[{class:"img-icon"}])
-            ,_img=mkDOM("img",[{src:"src/images/"+_obj.icon}]),_p=mkDOM("p",[{innerHTML:_obj.title}])
+            ,_img=mkDOM("img",[{src:"../src/images/"+_obj.icon}]),_p=mkDOM("p",[{innerHTML:_obj.title}])
         _p.innerHTML=_obj.title;
         _div.append(_img);_li.append(_div,_p);
        return _li
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const makeItemInfo = (_obj) =>{
         let _divItemInfo = document.createElement("div"),_div=document.createElement("div"),_img=document.createElement("img"),_p=document.createElement("p")
         _divItemInfo.setAttribute("class","item-info");_divItemInfo.setAttribute("id",_obj.href.split("#")[1]);_div.setAttribute("class","img-icon");
-        _img.setAttribute("src","src/images/"+_obj.icon);_p.innerHTML=_obj.title;
+        _img.setAttribute("src","../src/images/"+_obj.icon);_p.innerHTML=_obj.title;
         _div.append(_img);_divItemInfo.append(_div,_p);
         let menuNameMenu = _obj.href.split("#")[1]
         if(menuNameMenu && !!withHashUrl[menuNameMenu]) {
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const makeItemInfoNotId = (_obj) => {
         let _divItemInfo = document.createElement("div"),_div=document.createElement("div"),_a=document.createElement("a"),_img=document.createElement("img"),_p=document.createElement("p")
         _divItemInfo.setAttribute("class","item-info");_a.setAttribute("href",_obj.href);_div.setAttribute("class","img-icon");
-        _img.setAttribute("src","src/images/"+_obj.icon);_p.innerHTML=_obj.title;
+        _img.setAttribute("src","../src/images/"+_obj.icon);_p.innerHTML=_obj.title;
         _div.append(_img);_divItemInfo.append(_div,_p);_a.append(_divItemInfo);
         return _a;
     }
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     }
     function loadContact(contacts) {
-        let kindsIcons ={"e-mail":"src/images/icon-mail.png","telegram":"src/images/icon-tele.png","youtube":"src/images/icon-yt.png","fb":"src/images/icon-fb.png","tiktok":"src/images/icon-tiktok.png"}
+        let kindsIcons ={"e-mail":"../src/images/icon-mail.png","telegram":"../src/images/icon-tele.png","youtube":"../src/images/icon-yt.png","fb":"../src/images/icon-fb.png","tiktok":"../src/images/icon-tiktok.png"}
         contacts.forEach((_items)=> {
             let _li = mkDOM("li"),_a,_title,_divTitle,_divA,_linksArr=[],_liLinks,_div = mkDOM("div", [{class:"img-icon-contact"}]), _img = mkDOM("img",[{src:kindsIcons[_items.kinds]}])
             if(!_items.links){
@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
     loadFotterPic ()
     function loadFotterPic () {
-        let picUrl = "src/images/sa88fotter.webp"
+        let picUrl = "../src/images/sa88fotter.webp"
         $("#sa88-footer-img")[0].setAttribute("src",picUrl)
     }
     let winH = window.innerHeight
