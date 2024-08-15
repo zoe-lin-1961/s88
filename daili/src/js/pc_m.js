@@ -50,6 +50,12 @@ document.addEventListener("DOMContentLoaded", ()=>{
             if(item.href.includes(".com")){
                 _a = mkDOM("a",[{"href":item.href},{"class":"menu-link"},{"target":"_blank"}])
             }
+
+            if(item.href.includes("[main]")){
+                let yuhuiURL = item.href.split("[main]")[1];
+                let theURL = window.location.href.replace("/index",yuhuiURL)
+                _a = mkDOM("a",[{"href":theURL},{"class":"menu-link"}])
+            }
             var _span =mkDOM ("span",[{"innerHTML":item.title}])
             var _img =mkDOM ("img",[{"src":item.icon}])
             var hoverImg = item.icon.replace("-white","-hover")
