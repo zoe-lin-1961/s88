@@ -23,7 +23,7 @@ $(document).ready(function () {
 document.addEventListener("DOMContentLoaded", ()=>{
     // 左侧抽屉菜单，画面中间的跳转
     function getHome(){
-        $.ajax({type:"get",url: "./jsonData/home.json",dataType:"json",
+        $.ajax({type:"get",url: "src/jsonData/home.json",dataType:"json",
             success:function(data) {handalLoadDataOnPage(data)}, error:function(XMLHttpRequest, textStatus, errorThrown) { console.log('XMLHttpRequest, textStatus, errorThrown',XMLHttpRequest, textStatus, errorThrown)}
         });
     }
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
     function loadSwiper (bannerItems) {
         bannerItems.forEach((item)=>{
-            let _img = mkDOM("img",[{"src":"./images/"+item}])
+            let _img = mkDOM("img",[{"src":"src/images/"+item}])
             let _div = mkDOM("div",[{"class":"swiper-slide"}])
             _div.append(_img)
             $(".swiper-wrapper")[0].append(_div)
@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         itemArray.forEach((item)=>{
             let accoding = mkDOM("button",[{"class":"accordion"}])
             let accodingTitle = mkDOM("p",[{"class":"title"},{"innerHTML":item.title}])
-            let arrow = mkDOM("div",[{"class":"img-icon icon-arrow"}]),arrow_img = mkDOM("img",[{"src":"./images/icon-arrow.png"}])
+            let arrow = mkDOM("div",[{"class":"img-icon icon-arrow"}]),arrow_img = mkDOM("img",[{"src":"src/images/icon-arrow.png"}])
             arrow.append(arrow_img);accoding.append(accodingTitle,arrow)
             let panel = mkDOM("div",[{"class":"panel"}])
             item.arr.forEach((thep)=>{var p = mkDOM("p",[{"innerHTML":thep}]);panel.append(p)})
@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         return mkDOM("p",[{class:"title-head"},{innerHTML:_title}])
     }
     function loadContact (contacts){
-        let kindsIcons ={"e-mail":"./images/icon-mail.png","telegram":"./images/icon-tele.png","youtube":"./images/icon-yt.png","fb":"./images/icon-fb.png","tiktok":"./images/icon-tiktok.png"}
+        let kindsIcons ={"e-mail":"src/images/icon-mail.png","telegram":"src/images/icon-tele.png","youtube":"src/images/icon-yt.png","fb":"src/images/icon-fb.png","tiktok":"src/images/icon-tiktok.png"}
         contacts.forEach((_items)=> {
             let _li = mkDOM("li"),_a,_title,_divTitle,_divA,_linksArr=[],_liLinks,_div = mkDOM("div", [{class:"img-icon-contact"}]), _img = mkDOM("img",[{src:kindsIcons[_items.kinds]}])
             if(!_items.links){
@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         })
     }
     function loadFotterPic () {
-        let picUrl = "./images/sa88fotter.webp"
+        let picUrl = "src/images/sa88fotter.webp"
         $("#sa88-footer-img")[0].setAttribute("src",picUrl)
     }
     const mkDOM = (__DOM,__ATTRIBUTE)=>{
