@@ -53,7 +53,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
             if(item.href.includes("[main]")){
                 let yuhuiURL = item.href.split("[main]")[1];
-                let theURL = window.location.href.replace("/index",yuhuiURL)
+                let theURL = window.location.href+yuhuiURL;
+                if(!!window.location.href.includes("/index")){
+                    theURL = window.location.href.replace("/index",yuhuiURL)
+                }
                 _a = mkDOM("a",[{"href":theURL},{"class":"menu-link"}])
             }
             var _span =mkDOM ("span",[{"innerHTML":item.title}])
