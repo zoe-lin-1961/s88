@@ -641,11 +641,27 @@ ul.pricing-list {
 }
 
 .price-title {
-    width: 60%;
-    margin: 0 auto;
+    height: 6rem; margin: 0 auto;display: inline-block;
 }
 .price-title img {
-    height: 21px;
+    display: inline-block;
+    height: 5.5rem!important;
+    margin: 0.3rem!important;
+    width: 5.8rem!important;
+    float: left;
+}
+.percent-number {
+    height: 6rem;
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 6rem !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    background: url(../../images/text-BG.png);
+    background-size: cover;
+    background-position-x: 20px;
+    display: inline-block;
+    float: left;
 }
 
 .index-price-box .price-title img {
