@@ -678,10 +678,12 @@ ul.pricing-list {
 .price-text {
     font-size: 1.4rem;
     color: #154282;
+    text-align: left;
 }
 
 .price-text li {
     margin-left: 1rem;
+
 }
 
 .price-tag-line {
@@ -710,6 +712,7 @@ ul.pricing-list li.price-tag-line a {
     border-radius: 12px;
     margin-top: 1rem;
     padding: 2rem;
+    text-align: center;
 }
 
 .blue {
