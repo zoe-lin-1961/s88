@@ -157,7 +157,6 @@
         pageLocationPic = pageLocation + GRID_url
         pageLocationPic = pageLocationPic.replace("//img","/img")
         pageLocationPic = pageLocationPic.replace(".jpg",".webp")
-        console.log(pageLocation,"pageLocation!!!",pageLocationPic)
         let backImg = mkDOM("img",[{"src":pageLocationPic},{"style":"width:390px;aspect-ratio: 390 / 208;"}])
         var hasBgImg = true
         backImg.onerror = function (err){

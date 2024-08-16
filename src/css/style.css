@@ -1188,7 +1188,7 @@ input[type=submit] {
 }
 .box-world-cup .title-letter {
     text-align: center;
-    line-height: 3.5rem;
+    line-height: 1.3;
     background: linear-gradient(180deg, #0f305b 0%, #154283 54%, #0f305a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1197,6 +1197,7 @@ input[type=submit] {
     font-size: 4.5rem;
     font-weight: bold;
     padding-bottom: 15px;
+    padding-top: 15px;
 }
 
 .box-world-cup .title-head {
