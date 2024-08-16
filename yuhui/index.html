@@ -81,8 +81,7 @@
     // 预加载图，当官网图被禁止就用预加载的图了，默认使用官方图，不做过期时间了，直接刷新
 
     let dataPromo =[];
-    let connect=[]
-
+    let connect=[];
     async function loadGetAjexJsonData(urls){
       let getJsonDATA= [],i =0
       while(i<urls.length){ var url = urls[i];getJsonDATA.push(await getAjexJsonData("get",url));i++ }
@@ -147,7 +146,7 @@
         let promoItem = document.createElement('div');
         promoItem.classList.add('promo-item');
         promoItem.onclick=function (){
-          promoItemDetail(_data[i],contectSet);
+          promoItemDetail(_data[i],contectSet,_data.length);
         }
         let _img = document.createElement('img');
         let GRID_item = _data[i]['promobanner'].some(item => item.type == 'GRID')? _data[i]['promobanner'].filter((item)=>item.type == 'GRID')[0]:undefined;
@@ -155,6 +154,7 @@
         let preSrc = 'https://img.alltocon.com'//线上图的域名
         let pageLocation = window.location.href
         let pageLocationPic
+        console.log(pageLocation,"pageLocation!!!")
         pageLocationPic = pageLocation + GRID_url
         pageLocationPic = pageLocationPic.replace("//img","/img")
         pageLocationPic = pageLocationPic.replace(".jpg",".webp")
@@ -261,16 +261,16 @@
       modal.classList.add('hide-modal');
     }
   })
-  function promoItemDetail(_card,contectSet) {
+  function promoItemDetail(_card,contectSet,dataCount) {
     if (_card) {
       mask.classList.remove('hide-shadow-box');
       modal.classList.remove('hide-modal');
       $('#left-window').empty();
       $('#mainDom').empty();
-     getDomPromoItemDetail(_card,contectSet);
+     getDomPromoItemDetail(_card,contectSet,dataCount);
     }
   }
-  function getDomPromoItemDetail(_data,contectSet) {
+  function getDomPromoItemDetail(_data,contectSet,dataCount) {
     let leftDom = document.getElementById('left-window'),mainDom =document.getElementById('main-container');
     let title = _data["promotitle"]["vi-VN"];
     let GRID_item = _data['promobanner'].some(item => item.type == 'GRID')? _data['promobanner'].filter((item)=>item.type == 'GRID')[0]:undefined;
@@ -299,9 +299,13 @@
       // 这里重写
      mainDom.innerHTML = GRID_item['description'];
      let itemId = _data.promoid
-     reWriteDataFromWeb(mainDom,contectSet,itemId,_data)
-      $("#main-containerReload")[0].innerHTML= createJSON.filter((item)=>item.id === itemId)[0].innerHTML
-      resetTableColor($("#main-containerReload")[0])
+
+      if(dataCount && dataCount==createJSON.length){
+        $("#main-containerReload")[0].innerHTML= createJSON.filter((item)=>item.id === itemId)[0].innerHTML
+        resetTableColor($("#main-containerReload")[0])
+      }else{
+        reWriteDataFromWeb(mainDom,contectSet,itemId,_data)
+      }
     }
   }
   function reWriteDataFromWeb (father,contectSet,id,_data){

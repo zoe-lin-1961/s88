@@ -119,19 +119,20 @@ function mkJsData(_array,textColorsSet){
     }
     mainTitle = [removeTag(textArr[0],"text"),removeTag(textArr[1],"text")]
     var ln = 0;
-    while(ln<3){
-        let tIdx = linkArr[ln].idx,_obj={}
-        let mtitle=removeTag(_array[tIdx - 2],"text")
-        if(!mtitle.includes("👉")){
-            mtitle=removeTag(_array[tIdx - 3],"text")
+    if(linkArr.length > 0){
+        while(ln<3){
+            let tIdx = linkArr[ln].idx,_obj={}
+            let mtitle=removeTag(_array[tIdx - 2],"text")
+            if(!mtitle.includes("👉")){
+                mtitle=removeTag(_array[tIdx - 3],"text")
+            }
+            const mlink =linkArr[ln].a.replace(/style=\"color: #00ccff;\"/,"class='text-red'")
+            const mtext =_array[tIdx+1]
+            _obj.title = mtitle,_obj.link = mlink,_obj.text=removeTag(mtext,"text")||removeTag(mtext,"span")
+            Sa88LInks.push(_obj)
+            ln++
         }
-        const mlink =linkArr[ln].a.replace(/style=\"color: #00ccff;\"/,"class='text-red'")
-        const mtext =_array[tIdx+1]
-        _obj.title = mtitle,_obj.link = mlink,_obj.text=removeTag(mtext,"text")||removeTag(mtext,"span")
-        Sa88LInks.push(_obj)
-        ln++
     }
-
     if(subTitle===Sa88LInks[0].title) {subTitle = ""}
     blocks.forEach((el,ixs)=>{ if(el.includes(Sa88LInks[Sa88LInks.length-1]["text"])){ blockStartIndex=ixs }})
     if(blocks[blockStartIndex+1]!=="[BR]"){blocks.splice(blockStartIndex+1,0,"[BR]")}
