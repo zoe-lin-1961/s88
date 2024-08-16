@@ -152,12 +152,12 @@
         let GRID_item = _data[i]['promobanner'].some(item => item.type == 'GRID')? _data[i]['promobanner'].filter((item)=>item.type == 'GRID')[0]:undefined;
         let GRID_url = GRID_item ? GRID_item['imageurl']:'';
         let preSrc = 'https://img.alltocon.com'//线上图的域名
-        let pageLocation = window.location.href
+        let pageLocation = window.location.href.replace("/index.html","")
         let pageLocationPic
-        console.log(pageLocation,"pageLocation!!!")
         pageLocationPic = pageLocation + GRID_url
         pageLocationPic = pageLocationPic.replace("//img","/img")
         pageLocationPic = pageLocationPic.replace(".jpg",".webp")
+        console.log(pageLocation,"pageLocation!!!",pageLocationPic)
         let backImg = mkDOM("img",[{"src":pageLocationPic},{"style":"width:390px;aspect-ratio: 390 / 208;"}])
         var hasBgImg = true
         backImg.onerror = function (err){
