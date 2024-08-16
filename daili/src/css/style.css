@@ -1385,10 +1385,11 @@ input[type=submit] {
 }
 @media screen and (max-width: 991.98px) {
     .manu-space{
-        width: 0;
+        width: 65px;
     }
     .section-header .menu{
-        width:calc(100% - 320px);
+        /*width:calc(100% - 320px);*/
+        width:calc(100% - 385px);
     }
 }
 @media screen and (max-width: 784.98px) {
@@ -1451,7 +1452,27 @@ input[type=submit] {
     .img-logo {
         height: 40px;
     }
+    .group-btn {
+        width: 200px !important;
+    }
     .section-header .menu {
-        width:calc(100% - 280px)
+        width: calc(100% - 320px);
+        padding-left: 0;
+    }
+    .manu-space{
+        width: 40px;
+    }
+}
+
+@media screen and (max-width: 559.98px) {
+    .section-header .menu {
+        width: calc(100% - 40px);
+        padding-left: 0;
+    }
+    .manu-space{
+        width: 100px;
+    }
+    .section-header .menu-item {
+        margin-right: 0;
     }
 }
