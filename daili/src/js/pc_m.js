@@ -199,7 +199,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
             let arrow = mkDOM("div",[{"class":"img-icon icon-arrow"}]),arrow_img = mkDOM("img",[{"src":"src/images/icon-arrow.png"}])
             arrow.append(arrow_img);accoding.append(accodingTitle,arrow)
             let panel = mkDOM("div",[{"class":"panel"}])
-            item.arr.forEach((thep)=>{var p = mkDOM("p",[{"innerHTML":thep}]);panel.append(p)})
+            var pannelInnerHTML =''
+            item.arr.forEach((thep)=> {
+                pannelInnerHTML += thep
+            })
+            panel.innerHTML = pannelInnerHTML
             accodingBox.append(accoding,panel)
         })
         contenier.append(title1,accodingBox)
