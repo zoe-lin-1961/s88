@@ -1309,8 +1309,8 @@ strong {
     margin-top: 30px;
 }
 #benefit>.title-letter,#cshh>.title-letter,#ask>.title-letter,#rewards>.title-letter {
-    font-size: 4.5rem;
-    line-height: 6rem;
+    font-size: 2rem;
+    line-height: 2.6rem;
     font-weight: bold;
     text-align: center;
     background: linear-gradient(180deg, #0f305b 0%, #154283 54%, #0f305a 100%);
