@@ -502,7 +502,7 @@ a {
     background: #ffffff;
     cursor: pointer;
     padding: 18px;
-    width: 100%;
+    width: 90%;
     border: none;
     text-align: left;
     outline: none;
@@ -512,6 +512,7 @@ a {
     align-items: center;
     justify-content: flex-start;
     gap: 1rem;
+    margin: auto;
     margin-top: 2rem;
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -1485,7 +1486,7 @@ input[type=submit] {
 @media screen and (max-width: 599.98px) {
     .item-benefit {
         margin-top: 3rem;
-        width: 80%;
+        width: 90%;
         margin-right: 0;
     }
     .box-benefit {
@@ -1520,5 +1521,9 @@ input[type=submit] {
     }
     .section-header .menu-item {
         margin-right: 0;
+    }
+    .section-contact>.container .box-content {
+        width: 90%!important;
+        margin: auto!important;
     }
 }
