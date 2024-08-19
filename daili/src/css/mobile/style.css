@@ -512,7 +512,8 @@ ion-icon {
 
 .section-intro {
     display: block;
-    padding: 10px;
+    width: 90%;
+    margin: auto;
     padding-bottom: 50px;
 }
 
@@ -523,7 +524,7 @@ ion-icon {
     color: #154282;
     font-weight: 600;
 }
-.section-intro-popup,.section-ask,.section-sp,.section-rewards { width: 90% ;margin: auto;margin-top: 2rem}
+.section-intro-popup,.section-ask,.section-sp,.section-rewards { width: 90% ;margin: auto}
 .section-intro-popup p {
     font-size: 14px;
     line-height: 20px;
@@ -589,13 +590,13 @@ ion-icon {
     display: none;
     z-index: 9999;
     position: fixed;
-    bottom: 120px;
-    right: 20px;
+    bottom: 92px;
+    right: 26px;
     width: 50px;
     height: 50px;
     border-radius: 100px;
     background-color: #154283;
-
+    opacity: 0.7;
 }
 #myBtnMobile:hover {
     background-color: #8bc4d7;
@@ -633,7 +634,7 @@ ul.pricing-list {
 }
 
 .pricing-list li {
-    margin-top: 1.5rem;
+    margin-top: 0.6rem;
 }
 
 .pricing-list li i {
@@ -672,7 +673,7 @@ ul.pricing-list {
     font-weight: bold;
     color: #154282;
     text-align: center;
-    margin: 2rem 0;
+    margin: 1.1rem 0;
 }
 
 .price-text {
@@ -969,6 +970,7 @@ input.contact-input {
     text-align: justify;
     color: #000;
     font-weight: 500;
+    margin-bottom: 0.8rem;
 }
 
 .table-bordered {
@@ -1092,6 +1094,7 @@ strong {
 .section-ask p {
     font-size: 1.4rem;
     line-height: 2rem;
+    margin-bottom: 1.2rem;
 }
 
 .section-news .title-news {
@@ -1112,7 +1115,7 @@ strong {
     /*margin-top: 2rem;*/
     /*line-height: 1.5;*/
     font-family: Roboto !important;
-    font-size: 3rem !important;
+    font-size: 2.3rem !important;
     line-height: 1.2 !important;
     font-weight: 700 !important;
 }
@@ -1120,7 +1123,7 @@ strong {
     margin-top: 1rem;
 }
 .news {
-   width: 80vw;margin: auto!important;
+   width: 88vw;margin: auto!important;
 }
 .title-news-decript {
     color: #154282;
@@ -1134,14 +1137,14 @@ strong {
 .section-news p {
     font-family: Roboto Condensed !important;
     font-size: 1.7rem;
-    line-height: 1.5;
+    line-height: 1.24;
     margin-bottom: 2.6rem;
 }
 .italic {
     font-style: italic;
 }
 .news-pic-box {
-    width: 80%;margin:auto;aspect-ratio: 2048/1365;float: none;
+    width: 100%;margin:auto;aspect-ratio: 2048/1365;float: none;
     margin-top: 2.6rem;margin-bottom: 2.6rem;
 }
 
@@ -1262,6 +1265,7 @@ strong {
 .box-world-cup p {
     line-height: 2rem;
     text-align: justify;
+    margin-bottom: 0.8rem;
 }
 
 .box-world-cup p strong {
@@ -1274,7 +1278,7 @@ strong {
 }
 #benefit,#cshh,#ask,#rewards {
     margin: 1rem auto;
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 1rem 1rem;
 }
 .section-world-cup>#benefit .feature-box {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -1305,7 +1309,7 @@ strong {
 .section-world-cup>#benefit .feature-box-text {margin: 1rem auto;width: 100%;}
 .section-world-cup>#benefit .feature-box-text p {text-align: left;}
 #cshh>div,#ask>div,#rewards>div{
-    margin-top: 30px;
+    margin-top: 1.5rem;
 }
 #benefit>.title-letter,#cshh>.title-letter,#ask>.title-letter,#rewards>.title-letter {
     font-size: 2rem;
@@ -1355,7 +1359,7 @@ strong {
         flex-direction: column-reverse;
     }
     .ctact,.qr-code,.sa88-footer {
-        width: 100%;
+        width: 95%;
     }
     #sa88-footer-img {
         height: 350px;
