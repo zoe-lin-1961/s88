@@ -35,8 +35,8 @@ a {
 #myBtn {
     display: none;
     position: fixed;
-    bottom: 200px;
-    right: 46px;
+    bottom: 139px;
+    right: 44px;
     z-index: 99;
     border: none;
     outline: none;
@@ -48,6 +48,7 @@ a {
     width: 70px;
     height: 70px;
     text-align: center;
+    opacity: 0.3;
 }
 
 #myBtn img {
@@ -57,7 +58,8 @@ a {
 }
 
 #myBtn:hover {
-    background-color: #8bc4d7;
+    background-color: #154283;
+    opacity: 0.7;
 }
 
 
@@ -431,12 +433,11 @@ a {
     color: #ffffff;
     font-weight: bold;
     font-size: 2rem;
-    line-height: 2.5rem;
+    padding: 0.5rem 0;
     background: linear-gradient(180deg, #0f305b 0%, #154283 54%, #0f305a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-fill-color: transparent;
-    margin-top: 1rem;
 }
 
 .img-icon {
@@ -447,12 +448,12 @@ a {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 2rem;
     border-radius: 12px;
-    min-height: 250px;
+    /*min-height: 250px;*/
     height: inherit;
 }
 
 .item-benefit .content {
-    margin: 1rem;
+    margin-top: 1rem;
     font-size: 1.8rem;
     line-height: 2.5rem;
 }
@@ -464,6 +465,7 @@ a {
     -webkit-text-fill-color: transparent;
     text-fill-color: transparent;
     font-weight: 600;
+    margin-top: 1rem;
 }
 
 .section-earn-bilions {
@@ -516,13 +518,14 @@ a {
 }
 
 .accordion .title {
+    font-size: 2rem;
     width: 100%;
     background: linear-gradient(180deg, #0f305b 0%, #154283 54%, #0f305a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-fill-color: transparent;
     font-weight: 600;
-    line-height: 3.5rem;
+    line-height: 2.3rem;
 }
 
 .section-rewards .accordion .title {
@@ -571,6 +574,14 @@ a {
     width: auto;
     height: 1.2rem;
     margin-right: 0.5rem;
+}
+
+.panel p {
+    padding-bottom: 1rem;
+    line-height: 2.5rem;
+}
+.panel p:last-child {
+    padding-bottom: 0;
 }
 
 .section-hh {
@@ -691,7 +702,7 @@ a {
 
 .section-rewards {
     background-color: #f7f7f7;
-    padding: 2rem 0 4rem;
+    /*padding: 2rem 0 4rem;*/
 }
 
 .subtitle {
@@ -895,8 +906,8 @@ label {
 }
 
 .img-icon-contact {
-    height: 3rem;
-    width: 3rem;
+    height: 28px!important;
+    width: 28px!important;
 }
 
 input[type=submit] {
@@ -969,10 +980,12 @@ input[type=submit] {
 }
 .img-icon-contact {
     margin-left: -35px;
-}
-.img-icon-contact img {
     width: 28px!important;
     height: 28px!important;
+}
+.img-icon-contact img {
+    width: content-box;
+    height: content-box;
 }
 
 .box-link-contact ul li a:first-child,.img-icon-contact+a,.box-link-contact ul li a:last-child,.img-icon-contact {
@@ -1121,12 +1134,11 @@ input[type=submit] {
     color: #0d6efd;
 }
 .price-title {
-    width: 60%;
     margin: 0 auto;
 }
 
 .pricing-list li {
-    margin-top: 1.5rem;
+    margin-top: 0.8rem;
 }
 .pricing-list {
     width: 100%;
@@ -1145,7 +1157,7 @@ input[type=submit] {
     margin-bottom: 2rem;
 }
 .price-title img {
-    width: 65px;
+    width: fit-content;
     height: 60px;
     display: inline-block;
 }
@@ -1184,12 +1196,14 @@ input[type=submit] {
 .box-world-cup .title-letter {
     text-align: center;
     line-height: 1.3;
+    width: 80%;
+    margin: auto;
     background: linear-gradient(180deg, #0f305b 0%, #154283 54%, #0f305a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     /*background-clip: text;*/
     text-fill-color: transparent;
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     font-weight: bold;
     padding-bottom: 15px;
     padding-top: 15px;
@@ -1204,7 +1218,7 @@ input[type=submit] {
     text-fill-color: transparent;
     font-size: 2.2rem;
     font-weight: bold;
-    margin-top: 1rem
+    margin-top: 2rem
 }
 
 .box-world-cup .sub-title-head {
@@ -1212,7 +1226,8 @@ input[type=submit] {
 }
 
 .box-world-cup p {
-    line-height: 4rem;
+    line-height: 3rem;
+    margin-bottom: 1rem;
 }
 
 .box-world-cup p strong {
@@ -1307,6 +1322,16 @@ input[type=submit] {
         /*width:calc(100% - 320px);*/
         /*width: 423px*/
     }
+    .price-title img {
+        width: fit-content;
+        height: 50px;
+    }
+    .percent-number {
+        height: 60px;
+        font-size: 60px;
+        font-weight: 700;
+        line-height: 60px !important;
+    }
 }
 
 @media screen and (max-width: 1023.98px) {
@@ -1346,8 +1371,8 @@ input[type=submit] {
     }
 
     .item-benefit .head-title span {
-        font-size: 1.8rem;
-        margin-left: 1rem;
+        font-size: 2rem;
+        padding: 1rem 0;
     }
 
     .box-benefit {
@@ -1355,10 +1380,10 @@ input[type=submit] {
         align-items: flex-start;
     }
 
-    .item-benefit .content {
-        margin: 1rem 0;
-        padding: 1rem;
-    }
+    /*.item-benefit .content {*/
+    /*    margin: 1rem 0;*/
+    /*    padding: 1rem;*/
+    /*}*/
 
 
     .title-benefit,
@@ -1453,12 +1478,12 @@ input[type=submit] {
     .section-header .menu{
         width:calc(100% - 290px);
     }
+
 }
 
 @media screen and (max-width: 599.98px) {
     .item-benefit {
-        /*width: calc((100% - 5rem) / 1);*/
-        margin-top: 5rem;
+        margin-top: 3rem;
         width: 80%;
         margin-right: 0;
     }
