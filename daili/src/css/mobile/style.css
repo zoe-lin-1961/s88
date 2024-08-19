@@ -353,7 +353,77 @@ ion-icon {
 .section-game-menu ul {
     overflow-x: scroll;
 }
+.box-earn-bilions {
+    width: 100%;
+    margin: 0 auto;
+}
+.accordion {
+    background: #ffffff;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 2.5rem;
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin: auto;
+    margin-top: 2rem;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.accordion.active {
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 0;
+}
+.accordion.active .icon-arrow {
+    transform: rotate(180deg);
+}
+.accordion {
+    width: 100%;
+}
+.accordion .title {
+    width: 100%;
+    background: linear-gradient(180deg, #0f305b 0%, #154283 54%, #0f305a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    font-weight: 600;
+    line-height: 2.3rem;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #154282;
+    font-weight: 600;
+}
 
+.icon-arrow {
+    width: 2.8rem;
+}
+.panel {
+    padding: 2rem;
+    display: none;
+    overflow: hidden;
+    background: #ffffff;
+    color: #000000;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    transition: all 1s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 0 0 12px 12px;
+    transition: all 0.5s ease-in-out;
+}
+.panel p:last-child {
+    padding-bottom: 0;
+}
+
+.panel p {
+    padding-bottom: 1rem;
+    line-height: 2.5rem;
+}
 
 
 @keyframes menu-open {
@@ -823,7 +893,8 @@ ul.pricing-list li.price-tag-line a {
 
 .accordion {
     position: relative;
-    margin: 20px 0;
+    /*margin: 20px 0;*/
+    margin-top: 20px;
 }
 
 .accordion-item {
@@ -1091,9 +1162,12 @@ strong {
 }
 
 .section-ask p {
-    font-size: 1.4rem;
-    line-height: 2rem;
-    margin-bottom: 1.2rem;
+    /*font-size: 1.4rem;*/
+    /*line-height: 2rem;*/
+    /*margin-bottom: 1.2rem;*/
+    font-size: 16px;
+    line-height: 1.2;
+    margin-bottom: 5px;
 }
 
 .section-news .title-news {
@@ -1171,7 +1245,8 @@ strong {
 }
 
 .img-icon {
-    width: 30px;
+    /*width: 30px;*/
+    width: 15px;
 }
 
 

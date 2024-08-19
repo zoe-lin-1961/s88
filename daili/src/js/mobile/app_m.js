@@ -7,6 +7,7 @@ $(document).ready(function () {
     })
     $(".btn-close").click(()=>{$("#myBtnMobile").css("display","none");window.location.hash=""})
   $(".icon-back").click(function (){ $(".section-menu").css("display", "none")});
+
   //===========================
   $(document).ready(function ($) {
     var redirect_url = window.location.hash;
@@ -19,6 +20,20 @@ $(document).ready(function () {
       $("#modalLogin").modal("show");
       $("#modalLoginModalLabel").html("THÔNG TIN ĐĂNG NHẬP");
     }
+
+    // let
+    //   for (const accordionKey in $(".accordion")) {
+    //       if(!!Number(accordionKey)){
+    //           console.log($(".accordion")[accordionKey],"accordion@@@")
+    //
+    //       }
+    //   }
+      $(".accordion").click((e)=>{
+          e.currentTarget.classList.toggle("active");
+          var panel = e.currentTarget.nextElementSibling;
+          if (panel.style.display === "block") {panel.style.display = "none"; } else {panel.style.display = "block";}
+      })
+
   });
 
   const fptPromise = import("https://openfpcdn.io/fingerprintjs/v3").then(
