@@ -502,7 +502,7 @@ a {
     background: #ffffff;
     cursor: pointer;
     padding: 18px;
-    width: 90%;
+    width: 100%;
     border: none;
     text-align: left;
     outline: none;
@@ -1334,6 +1334,9 @@ input[type=submit] {
         font-weight: 700;
         line-height: 60px !important;
     }
+    .accordion {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 1023.98px) {
@@ -1509,6 +1512,7 @@ input[type=submit] {
     .manu-space{
         width: 40px;
     }
+
 }
 
 @media screen and (max-width: 559.98px) {
@@ -1522,8 +1526,16 @@ input[type=submit] {
     .section-header .menu-item {
         margin-right: 0;
     }
-    .section-contact>.container .box-content {
+    .section-contact>.container .box-content, .box-earn-bilions {
         width: 90%!important;
+        margin: auto!important;
+    }
+    .box-world-cup {
+        width: 93%;
+        margin: 2rem auto;
+    }
+    .sa88-video-box,.section-real>.container  {
+        width: 93%!important;
         margin: auto!important;
     }
 }
