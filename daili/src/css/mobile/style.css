@@ -8,8 +8,8 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-size: 62.5%;
-
     overflow: hidden;
+    min-width: 550px;
 }
 
 body {
