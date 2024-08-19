@@ -10,6 +10,7 @@ body {
     font-size: 62.5%;
 }
 
+
 a {
     cursor: pointer;
 }
@@ -485,12 +486,12 @@ a {
 }
 
 .box-earn-bilions {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
 }
 
 .icon-arrow {
-    width: 35px;
+    width: 2.8rem;
 }
 
 .accordion.active .icon-arrow {
