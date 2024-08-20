@@ -64,9 +64,11 @@ a {
 }
 
 
+
 .section-real {
     padding: 4rem 0 0;
-    background-color: #f7f7f7;
+    /*background-color: #f7f7f7;*/
+    background-color: transparent;
 }
 
 .section-real a {
@@ -385,14 +387,17 @@ a {
 }
 
 .section-video {
-    background-color: #f7f7f7;
+    /*background-color: #f7f7f7;*/
+    background-color: transparent;
     padding: 6rem 0;
 }
 
 .section-video iframe {
     border-radius: 12px;
 }
-
+.title-real {
+    background-color: transparent;
+}
 .section-benefit {
     background-color: #f7f7f7;
     padding: 4rem 0 3rem 0;
@@ -812,7 +817,18 @@ table {
     min-height: 494px;
     z-index: 20;
 }
-.section-contact::before {
+.page-ahead {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 494px;
+    z-index: 20;
+}
+#menu-cshh {
+    background-color: #fff!important;
+    padding-top: 2rem;
+}
+.section-contact::before,.page-ahead::before {
     content: "";
     position: absolute;
     background-image: url(../images/logo.png),linear-gradient(90deg, #8bc4d7 0%, #fafbfd 100%);
@@ -1177,7 +1193,10 @@ input[type=submit] {
 }
 
 .section-world-cup .section-benefit,.section-world-cup .section-rewards {
-    background-color: transparent;
+    background-color: #fff!important;
+}
+.section-benefit,.section-earn-bilions {
+    background-color: #fff;
 }
 .title-rewards,.price-subtitle {
     font-size: 2.2rem;
@@ -1482,6 +1501,9 @@ input[type=submit] {
     }
     .section-header .menu{
         width:calc(100% - 290px);
+    }
+    .section-real img {
+        width: 160px!important;
     }
 
 }
