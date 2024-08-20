@@ -1,5 +1,8 @@
 $(document).ready(function () {
-    $(".btn-menu").click(()=>{$(".section-menu").css("display", "block");$("#myBtnMobile").css("display","none")})
+    $(".btn-menu").click(()=>{
+        $(".section-menu").css("display", "block");
+        $("#myBtnMobile").css("display","none");
+    })
     $(".blur").click(function (){
         if($(this)[0].id !== "box-menu" && $(this).parents("#box-menu").length=== 0 ) {
            $(".section-menu").css("display", "none");
@@ -142,6 +145,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
             $("#exampleModalLabel").html(title);
             $("#exampleModal .modal-body").html("");
             $("#exampleModal .modal-body").html(modalInnerHtml);
+            $(".accordion").click(function(e){
+                e.currentTarget.classList.toggle("active");
+                var panel = e.currentTarget.nextElementSibling;
+                if (panel.style.display === "block") {panel.style.display = "none"; } else {panel.style.display = "block";}
+            })
         }
     }
     function loadMainPageArticle(articles) {
@@ -302,38 +310,3 @@ document.addEventListener("DOMContentLoaded", ()=>{
     $("#sa88-box").height(winH + 55)
     $(".sa88-box-pad").height(winH - 55)
 });
-
-//
-// $(document).ready(function($){
-//     // for (const accordionKey in $(".accordion")) {
-//     //     if(!!Number(accordionKey)){
-//     //         console.log($(".accordion")[accordionKey],"accordion@@@")
-//     //         $(".accordion")[accordionKey].click((e)=>{
-//     //             console.log(e,"eeee")
-//     //             e.currentTarget.classList.toggle("active");
-//     //             var panel = e.currentTarget.nextElementSibling;
-//     //             if (panel.style.display === "block") {panel.style.display = "none"; } else {panel.style.display = "block";}
-//     //         })
-//     //     }
-//     // }
-//     console.log($,"天天在作妖")
-//     console.log(document.getElementsByClassName("accordion"),"$(\".accordion\")")
-//     let list = document.getElementsByClassName("accordion")
-//     for (const accordionKey in list) {
-//         if(!!Number(accordionKey)){
-//             console.log(list[accordionKey],"accordion@@@")
-//             // $list[accordionKey].click((e)=>{
-//             //     console.log(e,"eeee")
-//             //     e.currentTarget.classList.toggle("active");
-//             //     var panel = e.currentTarget.nextElementSibling;
-//             //     if (panel.style.display === "block") {panel.style.display = "none"; } else {panel.style.display = "block";}
-//             // })
-//         }
-//     }
-//     $(".accordion").click(function(e){
-//         console.log(e,"eeee")
-//         e.currentTarget.classList.toggle("active");
-//         var panel = e.currentTarget.nextElementSibling;
-//         if (panel.style.display === "block") {panel.style.display = "none"; } else {panel.style.display = "block";}
-//     })
-// })
