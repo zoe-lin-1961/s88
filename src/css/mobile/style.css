@@ -583,7 +583,7 @@ ion-icon {
     display: block;
     width: 90%;
     margin: auto;
-    padding-bottom: 50px;
+    padding-bottom: 150px;
 }
 
 .section-intro p {
@@ -659,13 +659,13 @@ ion-icon {
     display: none;
     z-index: 9999;
     position: fixed;
-    bottom: 92px;
-    right: 26px;
-    width: 50px;
-    height: 50px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
     border-radius: 100px;
     background-color: #154283;
     opacity: 0.7;
+    bottom: calc(50vh);
 }
 #myBtnMobile:hover {
     background-color: #8bc4d7;
@@ -1114,10 +1114,10 @@ strong {
     position: relative;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    /* height: 100%; */
     border-radius: 3px;
     background: #fff;
+    width: 97%;
+    margin: auto;
 }
 
 .gradient-border:after {
@@ -1148,7 +1148,9 @@ strong {
         background-position: 100% 50%;
     }
 }
-
+.section-ask {
+    width: 95%;
+}
 .section-ask .title-ask {
     font-size: 1.6rem;
     line-height: 2rem;
@@ -1305,7 +1307,6 @@ strong {
     font-weight: 500;
     color: #000;
     border: 2px solid #154283;
-    margin-bottom: 2rem;
 }
 
 .box-world-cup .title-letter {
@@ -1353,6 +1354,13 @@ strong {
 #benefit,#cshh,#ask,#rewards {
     margin: 1rem auto;
     padding: 2rem 1rem 1rem 1rem;
+    /*background-color: #fff;*/
+}
+.section-world-cup {
+    background-color: #fff;
+}
+.container-original {
+    padding-bottom: 1rem;
 }
 .section-world-cup>#benefit .feature-box {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
