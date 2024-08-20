@@ -827,6 +827,7 @@ table {
 #menu-cshh {
     background-color: #fff!important;
     padding-top: 2rem;
+    padding-bottom: 20px;
 }
 .section-contact::before,.page-ahead::before {
     content: "";
