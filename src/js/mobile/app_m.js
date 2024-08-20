@@ -2,13 +2,14 @@ $(document).ready(function () {
     $(".btn-menu").click(()=>{
         $(".section-menu").css("display", "block");
         $("#myBtnMobile").css("display","none");
+        $(".icon-tele").css("display","none");
     })
     $(".blur").click(function (){
         if($(this)[0].id !== "box-menu" && $(this).parents("#box-menu").length=== 0 ) {
            $(".section-menu").css("display", "none");
         }
     })
-    $(".btn-close").click(()=>{$("#myBtnMobile").css("display","none");window.location.hash=""})
+    $(".btn-close").click(()=>{$(".icon-tele").css("display","block");$("#myBtnMobile").css("display","none");window.location.hash=""})
   $(".icon-back").click(function (){ $(".section-menu").css("display", "none")});
 
   //===========================
