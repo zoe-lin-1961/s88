@@ -29,6 +29,7 @@ $(document).ready(function () {
     //       }
     //   }
       $(".accordion").click((e)=>{
+          console.log(e,"eeee")
           e.currentTarget.classList.toggle("active");
           var panel = e.currentTarget.nextElementSibling;
           if (panel.style.display === "block") {panel.style.display = "none"; } else {panel.style.display = "block";}
