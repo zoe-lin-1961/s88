@@ -36,18 +36,18 @@ a {
 #myBtn {
     display: none;
     position: fixed;
-    bottom: 139px;
-    right: 44px;
+    bottom: 50vh;
+    right: 25px;
     z-index: 99;
     border: none;
     outline: none;
-    color: #ffffff!important;
+    color: #ffffff !important;
     cursor: pointer;
     padding: 1rem;
     border-radius: 50%;
     background-color: #154283;
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     text-align: center;
     opacity: 0.3;
 }
