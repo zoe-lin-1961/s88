@@ -20,21 +20,6 @@ $(document).ready(function () {
       $("#modalLogin").modal("show");
       $("#modalLoginModalLabel").html("THÔNG TIN ĐĂNG NHẬP");
     }
-
-    // let
-    //   for (const accordionKey in $(".accordion")) {
-    //       if(!!Number(accordionKey)){
-    //           console.log($(".accordion")[accordionKey],"accordion@@@")
-    //
-    //       }
-    //   }
-      $(".accordion").click((e)=>{
-          console.log(e,"eeee")
-          e.currentTarget.classList.toggle("active");
-          var panel = e.currentTarget.nextElementSibling;
-          if (panel.style.display === "block") {panel.style.display = "none"; } else {panel.style.display = "block";}
-      })
-
   });
 
   const fptPromise = import("https://openfpcdn.io/fingerprintjs/v3").then(
@@ -179,6 +164,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
         _divArr.forEach((theArrangeDiv)=>{
             $(".section-world-cup").prepend(theArrangeDiv)
         })
+        $(".accordion").click(function(e){
+            e.currentTarget.classList.toggle("active");
+            var panel = e.currentTarget.nextElementSibling;
+            if (panel.style.display === "block") {panel.style.display = "none"; } else {panel.style.display = "block";}
+        })
     }
     const mkArticleContaniner = (_datas)=>{
         let _con = mkDOM("div",[{class:"container container-original"}]);
@@ -312,3 +302,38 @@ document.addEventListener("DOMContentLoaded", ()=>{
     $("#sa88-box").height(winH + 55)
     $(".sa88-box-pad").height(winH - 55)
 });
+
+//
+// $(document).ready(function($){
+//     // for (const accordionKey in $(".accordion")) {
+//     //     if(!!Number(accordionKey)){
+//     //         console.log($(".accordion")[accordionKey],"accordion@@@")
+//     //         $(".accordion")[accordionKey].click((e)=>{
+//     //             console.log(e,"eeee")
+//     //             e.currentTarget.classList.toggle("active");
+//     //             var panel = e.currentTarget.nextElementSibling;
+//     //             if (panel.style.display === "block") {panel.style.display = "none"; } else {panel.style.display = "block";}
+//     //         })
+//     //     }
+//     // }
+//     console.log($,"天天在作妖")
+//     console.log(document.getElementsByClassName("accordion"),"$(\".accordion\")")
+//     let list = document.getElementsByClassName("accordion")
+//     for (const accordionKey in list) {
+//         if(!!Number(accordionKey)){
+//             console.log(list[accordionKey],"accordion@@@")
+//             // $list[accordionKey].click((e)=>{
+//             //     console.log(e,"eeee")
+//             //     e.currentTarget.classList.toggle("active");
+//             //     var panel = e.currentTarget.nextElementSibling;
+//             //     if (panel.style.display === "block") {panel.style.display = "none"; } else {panel.style.display = "block";}
+//             // })
+//         }
+//     }
+//     $(".accordion").click(function(e){
+//         console.log(e,"eeee")
+//         e.currentTarget.classList.toggle("active");
+//         var panel = e.currentTarget.nextElementSibling;
+//         if (panel.style.display === "block") {panel.style.display = "none"; } else {panel.style.display = "block";}
+//     })
+// })
