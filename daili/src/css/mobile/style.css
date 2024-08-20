@@ -504,7 +504,7 @@ ion-icon {
     font-size: 1.2rem;
     color: #154283;
     font-weight: bold;
-    margin-top: .5rem;
+    /*margin-top: .5rem;*/
     margin-left: 1rem;
     text-transform: uppercase;
 }
