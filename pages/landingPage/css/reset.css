@@ -17,8 +17,8 @@ input[type="submit"], input[type="reset"], input[type="button"], button{-webkit-
 em,i{font-style:normal;}
 .clearfix:after,.clearfix:before{content:"";display:table}
 .clearfix:after{clear:both;overflow:hidden}
-.full-stylish-button {
-    display: inline-block;
-    border:1px solid red!important;
-    height: auto!important;
-}
+
+
+
+
+
