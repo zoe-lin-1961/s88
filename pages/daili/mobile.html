@@ -33,16 +33,16 @@
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
 
-    <link rel="icon" href="images/ve2prod.ico" />
+    <link rel="icon" href="src/images/ve2prod.ico" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/mobile/reset.css" />
-    <link rel="stylesheet" href="css/mobile/icon.css" />
-    <link rel="stylesheet" href="css/mobile/style.css" />
+    <link rel="stylesheet" href="src/css/mobile/reset.css" />
+    <link rel="stylesheet" href="src/css/mobile/icon.css" />
+    <link rel="stylesheet" href="src/css/mobile/style.css" />
     <!-- Jquery -->
-    <script src="js/mobile-detect.min.js"></script>
-    <script src="js/mobile/jquery.min.js"></script>
-    <script type="text/javascript" src="jsonData/home.json"></script>
+    <script src="src/js/mobile-detect.min.js"></script>
+    <script src="src/js/mobile/jquery.min.js"></script>
+    <script type="text/javascript" src="src/jsonData/home.json"></script>
     <style>
       .swiper-container {width: 100%}
       .section-banner {position: relative}
@@ -65,7 +65,7 @@
       <ul>
         <li class="menu-back">
           <div class="menu-logo">
-            <img src="images/logo.png" alt="" />
+            <img src="src/images/logo.png" alt="" />
           </div>
           <div class="icon-back">
             <ion-icon
@@ -93,11 +93,11 @@
          ></ion-icon>
        </div>
        <div class="logo">
-         <img src="images/logo.png" alt="" />
+         <img src="src/images/logo.png" alt="" />
        </div>
        <div class="btn-lang">
          <a href="http://www.sa88a.com/" target="_blank">
-           <img src="images/icon-cskh.png" alt="" />
+           <img src="src/images/icon-cskh.png" alt="" />
          </a>
        </div>
      </div>
@@ -147,8 +147,8 @@
         <div class="section-video">
           <div class="container">
                 <div class="main-page-video">
-                  <video poster="./video/DailySA88.jpg" tabindex="-1" controlslist="nodownload" controls allowfullscreen >
-                    <source src="./video/DailySA88.mp4" type="video/mp4">
+                  <video poster="src/video/DailySA88.jpg" tabindex="-1" controlslist="nodownload" controls allowfullscreen >
+                    <source src="src/video/DailySA88.mp4" type="video/mp4">
                   </video>
                 </div>
             </div>
@@ -170,12 +170,12 @@
     </div>
  </div>
   <button onclick="topFunctionMobile()" id="myBtnMobile" title="Go to top">
-    <img src="images/icon-arrow-white.png" alt="">
+    <img src="src/images/icon-arrow-white.png" alt="">
   </button>
     <div class="icon-tele">
       <a href="https://t.me/SA88COM">
         <img
-          src="images/icon-tele.png"
+          src="src/images/icon-tele.png"
           alt="Đại lý SA88"
           class="cskh120"
         />
@@ -239,14 +239,14 @@
       referrerpolicy="no-referrer"
     ></script>
     <!-- ================================================ -->
-    <script src="js/mobile/crypto.js"></script>
-    <script src="js/mobile/app_m.js"></script>
+    <script src="src/js/mobile/crypto.js"></script>
+    <script src="src/js/mobile/app_m.js"></script>
   </body>
 </html>
 <script>
   const md = new MobileDetect(window.navigator.userAgent);
   const isNotPC =md.tablet()||md.phone()||md.mobile()
-  if(!!isNotPC){  console.warn("已进入移动端")}else {console.warn("已进入PC端");window.location = '../index'}
+  if(!!isNotPC){  console.warn("已进入移动端")}else {console.warn("已进入PC端");window.location = 'index.html'}
   document.getElementsByClassName("sa88-box-pad")[0].addEventListener("scroll", (event) => {
     let scollTop = document.getElementsByClassName("sa88-box-pad")[0].scrollTop,domHeight = document.getElementsByClassName("sa88-box-pad")[0].clientHeight
     if(scollTop>domHeight) {
