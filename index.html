@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width ,initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no">
+    <title>SA88</title>
+    <link rel="stylesheet icon" href="landingPage/images/ve2prod.ico" type="image/x-icon">
+    <link rel="stylesheet" href="landingPage/css/reset.css">
+    <link rel="stylesheet" href="landingPage/css/style.css">
+    <script type="text/javascript" src="landingPage/js/flexible.js"></script>
+    <script type="text/javascript" src="landingPage/js/inobounce.js"></script>
+    <script type="text/javascript" src="landingPage/js/noZoom.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+<div id="main">
+    <div class="content">
+        <div class="tip">
+            <a href="daili"><div class="uu"><span>前往代理页面</span></div></a>
+        </div>
+
+<!--        <div class="downbtn" id="download" onclick="downApp()">-->
+<!--            -->
+<!--        </div>-->
+        <div class="bd">
+            <ul class="speedlist">
+                <li>
+                    <span class="ms" id="sudu1">线路1</span>
+                    <span class="url">333333.com</span>
+                    <span class="time">12ms</span>
+                    <a class="btn-open">点击进入</a>
+                </li>
+                <li>
+                    <span class="ms" id="sudu1">线路2</span>
+                    <span class="url">222222.com</span>
+                    <span class="time">12ms</span>
+                    <a class="btn-open">点击进入</a>
+                </li>
+                <li>
+                    <span class="ms" id="sudu1">线路3</span>
+                    <span class="url">1111111.com</span>
+                    <span class="time">12ms</span>
+                    <a class="btn-open">点击进入</a>
+                </li>
+            </ul>
+        </div>
+        <div class="hot">
+
+        </div>
+        <div class="often">
+
+        </div>
+    </div>
+</div>
+<footer class="footer-box">
+    <a>
+<!--        <img  alt="" id="download" onclick="downApp()">-->
+    </a>
+</footer>
+<script>
+    function speed(element) {
+        setTimeout(function () {
+            var tim = 1;
+            for (var i of document.querySelectorAll(element)) {
+                i.innerText = 3 + tim + Math.ceil(Math.random() * 2) + 'ms'
+                tim += 2
+            }
+        }, 500)
+
+    }
+    speed('.time');
+</script>
+</body>
+</html>
