@@ -1124,7 +1124,7 @@ strong {
     justify-content: center;
     align-items: center;
     border-radius: 3px;
-    /*background: #fff;*/
+    background: #fff;
     width: 97%;
     margin: auto;
 }

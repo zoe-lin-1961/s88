@@ -1,0 +1,206 @@
+body{ background:#fff;font-family:Arial,Helvetica,sans-serif;}
+#main {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; 
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.kf{
+  width:1.77rem;
+  height: 1.63rem;
+  background: url('../images/kf.png');
+  background-size: 100% 100%;
+  position: fixed;
+  top:0.4rem;
+  right:0.4rem;
+  z-index: 10000;
+  transition: all .3s ease;
+}
+ .kf a{
+  display: block;
+  width:1.77rem;
+  height: 1.63rem;
+}
+.content {
+  width: 100vw;
+  min-height: 100vh;
+  background: url(../images/box.png) no-repeat;
+  background-size: 100%;
+}
+.content .banner{
+  width:100%;
+  height: 9.97rem;
+  background: url('../images/bg.png');
+  background-size:100% 100% ;
+  position: relative;
+}
+.content .tip{
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  padding-top: 0.5rem;
+  /*height: 2.08rem;*/
+}
+.tip img{
+  height: 100%;
+  width: auto;
+}
+.content .downbtn{
+  width: 5.36rem;
+  height: 1.43rem;
+  margin: 0.1rem auto;
+} 
+.content .downbtn img{
+  width: 5.36rem;
+  height: 1.43rem;
+  vertical-align: middle;
+}
+.content .bd{
+  padding-left:0;
+  padding-right:0;
+  padding-top:.4rem;
+  padding-bottom:.2rem;
+  text-align: center;
+  position: relative;
+  z-index: 20;
+}
+.content .bd ul{
+  width:8.81rem;
+  margin:0 auto;
+}
+.content .bd li{
+  width: 8.61rem;
+  height: 0.73rem;
+  background: url(../images/xl.png);
+  background-size: 100%  100% ;
+  margin-bottom:.3rem;
+  display: flex;
+}
+.content .bd .ms{
+  font-size: 0.52rem;
+  font-family: FZLTTHK;
+  font-weight: normal;
+  display: inline-block;
+  text-align:center;
+  margin-left: 0.36rem;
+}
+.content .bd .url{
+  width: 3.35rem;
+  height: 0.63rem;
+  line-height: 0.63rem;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.53rem;
+  color: #fff;
+  display: inline-block;
+  margin: 0.06rem 0.05rem  0.06rem 0.23rem;
+}
+.content .bd .time{
+  font-size: 0.31rem;
+  line-height: 0.75rem;
+  width: 0.9rem;
+  color: #740201;
+}
+.content .bd .btn-open{
+  display: inline-block;
+  padding-left: 0.2rem;
+  width: 1.78rem;
+  font-size: 0.42rem;
+  height: 0.73rem;
+  line-height: 0.73rem;
+  font-family: FZLTTHK;
+  text-decoration : none ;
+  color: #fff;
+  
+}
+.content .bd .btn-open a{
+   display: block;
+}
+.content .hot {
+   width: 100%;
+   height:  5.81rem;
+}
+.content .hot img{
+  width: 100%;
+  height:  5.81rem;
+  vertical-align: middle;
+}
+.content .often{
+  width: 100%;
+  height:  4.67rem;
+}
+.content .often  img{
+  width: 100%;
+  height:  4.67rem;
+ vertical-align: middle;
+}
+.content .footer {
+  height: 1rem;
+  margin-top:0.56rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content .footer img {
+  width:5.4rem;
+  height: 0.3rem;
+}
+.footer-box {
+  width: 100%;
+  height: 2.04rem;
+  /* background:rgba(238,232,222,0.85); */
+  position: absolute;
+  top:100%;
+  bottom: unset;
+  transform: translateY(-100%);
+  z-index: 1000;
+}
+.footer-box img{
+  width: 100%;
+  height: 2.04rem;
+}
+
+
+.uu {
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3d1317;
+  color:#fff;
+}
+.uu span {
+  padding: calc(10px + 0.05rem) calc(25px + 0.05rem) ;
+  font-size: 0.6rem;
+}
+
+.uu::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 0.1rem);
+  height: calc(100% - 0.1rem);
+  border: 0.05rem solid;
+  border-image-slice: 1;
+  z-index: 1;
+  animation: uuTranse 3s infinite;
+}
+
+@keyframes uuTranse {
+  0% {
+    border-image-source: linear-gradient(60deg, hsl(224, 85%, 66%), hsl(269, 85%, 66%),hsl(314, 85%, 66%),hsl(359, 85%, 66%),hsl(44, 85%, 66%),hsl(89, 85%, 66%),hsl(134, 85%, 66%),hsl(179, 85%, 66%));
+  }
+
+  50%  {
+    border-image-source: linear-gradient(300deg, hsl(224, 85%, 66%), hsl(269, 85%, 66%),hsl(314, 85%, 66%),hsl(359, 85%, 66%),hsl(44, 85%, 66%),hsl(89, 85%, 66%),hsl(134, 85%, 66%),hsl(179, 85%, 66%));
+  }
+  100%  {
+    border-image-source: linear-gradient(60deg, hsl(224, 85%, 66%), hsl(269, 85%, 66%),hsl(314, 85%, 66%),hsl(359, 85%, 66%),hsl(44, 85%, 66%),hsl(89, 85%, 66%),hsl(134, 85%, 66%),hsl(179, 85%, 66%));
+  }
+}
+

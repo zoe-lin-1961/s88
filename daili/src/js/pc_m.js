@@ -53,10 +53,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
             if(item.href.includes("[main]")){
                 let yuhuiURL = item.href.split("[main]")[1];
-                let theURL = window.location.href+"yuhui/index.html";
-                if(!!window.location.href.includes("/index")){
-                    theURL = window.location.href.replace("/index",yuhuiURL)
-                }
+                console.log(window.location.href,"window.location.href")
+                let theURL = window.location.href.replace("/daili/","/yuhui/")
                 _a = mkDOM("a",[{"href":theURL},{"class":"menu-link"}])
             }
             var _span =mkDOM ("span",[{"innerHTML":item.title}])
