@@ -20,8 +20,8 @@
     <div class="content">
         <div class="fish-big-img">
             <ul>
-                <li><img src="../pages/landingPage/images/banner1.png" style="width:100%"></li>
-                <li><img src="../pages/landingPage/images/banner2.png" style="width:100%"></li>
+<!--                <li><img src="../pages/landingPage/images/banner1.png" style="width:100%"></li>-->
+<!--                <li><img src="../pages/landingPage/images/banner2.png" style="width:100%"></li>-->
             </ul>
         </div>
         <div class="video" style="position:relative;float: left;width:100vw;height: auto;margin: 0.3rem 0 0.5rem 0">
@@ -70,38 +70,67 @@
     </a>
 </footer>
 <script>
-    function speed(element) {
-        setTimeout(function () {
-            var tim = 1;
-            for (var i of document.querySelectorAll(element)) {
-                i.innerText = 3 + tim + Math.ceil(Math.random() * 2) + 'ms'
-                tim += 2
-            }
-        }, 500)
-
+    // function speed(element) {
+    //     setTimeout(function () {
+    //         var tim = 1;
+    //         for (var i of document.querySelectorAll(element)) {
+    //             i.innerText = 3 + tim + Math.ceil(Math.random() * 2) + 'ms'
+    //             tim += 2
+    //         }
+    //     }, 500)
+    //
+    // }
+    // speed('.time');
+    const mkDOM = (__DOM,__ATTRIBUTE)=>{
+        let theDOM = document.createElement(__DOM);
+        if(__ATTRIBUTE && !!__ATTRIBUTE) {
+            __ATTRIBUTE.forEach((att)=>{
+                if(Object.keys(att)[0]=='innerHtml' || Object.keys(att)[0]=='innerHTML') {
+                    theDOM.innerHTML = Object.values(att)
+                }else{
+                    theDOM.setAttribute(Object.keys(att)[0],Object.values(att))
+                }
+            })
+        }
+        return theDOM;
     }
-    speed('.time');
     document.addEventListener("DOMContentLoaded", () => {
-
+        let bannerPic =["/landingPage/images/banner1.png","/landingPage/images/banner2.png"]
         let bigImgBox = document.getElementsByClassName("fish-big-img")[0]
-        let imgCount = bigImgBox.children[0].children.length
+        //let imgCount = bigImgBox.children[0].children.length
+        bannerPic.forEach((imgURL)=>{
+            let url = window.location.href+imgURL;
+            let _li = mkDOM("li")
+
+            let _img = mkDOM("img",[{"src":url},{"style":"width:100%"}])
+
+            _img.onerror = function (err){
+                console.log(err,"_img失效了",window.location.href)
+            }
+            _li.append(_img)
+            bigImgBox.children[0].append(_li)
+        })
+        let imgCount =bannerPic.length
         let ulW = imgCount * window.document.body.clientWidth
         bigImgBox.children[0].style = "width:"+ulW+"px;display: block;float: left;position: absolute"
-        let li = bigImgBox.children[0].children
+        if(bigImgBox.children[0].children.length>0){
+            let li = bigImgBox.children[0].children
 
-        for (const liKey in li) {
-            if(typeof (li[liKey]) === "object"){
-                li[liKey].style="float: left;width:100vw;height:calc((420 / 750) * 100vw)"
+            for (const liKey in li) {
+                if(typeof (li[liKey]) === "object"){
+                    li[liKey].style="float: left;width:100vw;height:calc((420 / 750) * 100vw)"
+                }
             }
+            let ul = bigImgBox.children[0]
+            var lunboIndex = 0
+            setInterval(function(){
+                lunboIndex ++
+                if(lunboIndex === imgCount){lunboIndex=0}
+                let left = -1 * lunboIndex * window.document.body.clientWidth
+                ul.style="margin-left:"+left+"px"
+            },2000)
         }
-        let ul = bigImgBox.children[0]
-        var lunboIndex = 0
-        setInterval(function(){
-            lunboIndex ++
-            if(lunboIndex === imgCount){lunboIndex=0}
-            let left = -1 * lunboIndex * window.document.body.clientWidth
-            ul.style="margin-left:"+left+"px"
-        },2000)
+
     })
 
 </script>
