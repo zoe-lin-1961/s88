@@ -1,6 +1,6 @@
 html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-size: 62.5%}
 *{ margin:0; padding:0}
-a{outline:none;text-decoration:none;}
+a{outline:none;text-decoration:none;width: fit-content;}
 a:hover{text-decoration:none;}
 html{zoom:1;}
 html *{outline:0;zoom:1;}
@@ -17,8 +17,30 @@ input[type="submit"], input[type="reset"], input[type="button"], button{-webkit-
 em,i{font-style:normal;}
 .clearfix:after,.clearfix:before{content:"";display:table}
 .clearfix:after{clear:both;overflow:hidden}
+.sa88Video {
+    width: 8.61rem;
+    height: auto;
+    position: relative;
+}
+.fish-big-img {
+    position:relative;
+    float:left;
+    width: 100vw;
+    height: calc((420 / 750) * 100vw);
+    overflow: hidden;
+    margin-bottom: 0.2rem;
+}
+/*.fish-big-img .uu-box {*/
+/*    position:relative;*/
+/*    float:right;*/
+/*    padding-top: 0.5rem;*/
+/*    width: auto;*/
+/*    height: auto;*/
+/*    margin-right:0.8rem;*/
+/*}*/
+/*.fish-big-img .uu:first-child{*/
 
-
-
+/*  margin-top: 0.5rem;*/
+/*}*/
 
 

@@ -18,42 +18,51 @@
 <body>
 <div id="main">
     <div class="content">
-        <div class="tip">
-            <a href="daili"><div class="uu"><span>前往代理页面</span></div></a>
-        </div>
-
-<!--        <div class="downbtn" id="download" onclick="downApp()">-->
-<!--            -->
-<!--        </div>-->
-        <div class="bd">
-            <ul class="speedlist">
-                <li>
-                    <span class="ms" id="sudu1">线路1</span>
-                    <span class="url">333333.com</span>
-                    <span class="time">12ms</span>
-                    <a class="btn-open">点击进入</a>
-                </li>
-                <li>
-                    <span class="ms" id="sudu1">线路2</span>
-                    <span class="url">222222.com</span>
-                    <span class="time">12ms</span>
-                    <a class="btn-open">点击进入</a>
-                </li>
-                <li>
-                    <span class="ms" id="sudu1">线路3</span>
-                    <span class="url">1111111.com</span>
-                    <span class="time">12ms</span>
-                    <a class="btn-open">点击进入</a>
-                </li>
+        <div class="fish-big-img">
+            <ul>
+                <li><img src="../pages/landingPage/images/banner1.png" style="width:100%"></li>
+                <li><img src="../pages/landingPage/images/banner2.png" style="width:100%"></li>
             </ul>
         </div>
-        <div class="hot">
+        <div class="video" style="position:relative;float: left;width:100vw;height: auto;margin: 0.3rem 0 0.5rem 0">
+<!--            <iframe-->
+<!--                    style="display: none"-->
+<!--                    scrolling="no"-->
+<!--                    src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000">-->
+
+<!--            </iframe>-->
+            <div class="border-v">
+                <video  controls="" class="sa88Video" style="">
+                    <source src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000" x5-video-player-type="h5" x5-video-player-fullscreen="true">
+                </video>
+            </div>
 
         </div>
-        <div class="often">
+        <div class="often bd">
+            <div class="often-box">
+                <p>🔥 BẮN CÁ MỖI NGÀY - ĐỔI T.H.Ư.Ở.N.G LIỀN TAY 🔥</p>
+                <p>🥳 Siêu t.h.ư.ở.n.g thắng lớn lên tới 8,888.K</p>
+                <p>🌟 Mỗi ngày 1 trận - No đủ cả năm - Lộc lá về nhà.</p>
+                <p>🌟 Làm giàu không khó, t.h.ư.ở.n.g to đã có S.A.8.8 lo.</p>
+                <p>👉 S.A.8.8 luôn thấu hiểu và mang đến cho toàn bộ khách hàng những trải nghiệm tốt và ưu đãi nhất có thể.</p>
+                <p>👇 Chi tiết dưới cmt 👇</p>
+                <div class="title-landing-style">
+                    <div class="theFlaseDiv"></div>
+                    SA.8.8 UY TÍN - MINH BẠCH - RÚT NẠP NHANH CHÓNG
+                </div>
+                <div class="aa-box">
+                    <div>
+                        <a href="http://sa88559.com/" class="border-r"><div>ĐĂNG KÝ</div></a>
+                        <a href="http://sa88559.com/" class="border-r"><div>ĐĂNG NHẬP</div></a>
+                        <a href="daili" class="border-r"><div>ĐẠI LÝ</div></a>
+                        <a href="http://www.sa88a.com/" class="border-r"><div>SA88</div></a>
+                    <div>
+                </div>
+            </div>
+
 
         </div>
-    </div>
+    </p>
 </div>
 <footer class="footer-box">
     <a>
@@ -72,6 +81,29 @@
 
     }
     speed('.time');
+    document.addEventListener("DOMContentLoaded", () => {
+
+        let bigImgBox = document.getElementsByClassName("fish-big-img")[0]
+        let imgCount = bigImgBox.children[0].children.length
+        let ulW = imgCount * window.document.body.clientWidth
+        bigImgBox.children[0].style = "width:"+ulW+"px;display: block;float: left;position: absolute"
+        let li = bigImgBox.children[0].children
+
+        for (const liKey in li) {
+            if(typeof (li[liKey]) === "object"){
+                li[liKey].style="float: left;width:100vw;height:calc((420 / 750) * 100vw)"
+            }
+        }
+        let ul = bigImgBox.children[0]
+        var lunboIndex = 0
+        setInterval(function(){
+            lunboIndex ++
+            if(lunboIndex === imgCount){lunboIndex=0}
+            let left = -1 * lunboIndex * window.document.body.clientWidth
+            ul.style="margin-left:"+left+"px"
+        },2000)
+    })
+
 </script>
 </body>
 </html>

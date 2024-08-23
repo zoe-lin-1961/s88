@@ -84,12 +84,15 @@
     let connect=[];
     async function loadGetAjexJsonData(urls){
       let getJsonDATA= [],i =0
-      while(i<urls.length){ var url = urls[i];getJsonDATA.push(await getAjexJsonData("get",url));i++ }
+      while(i<urls.length){
+        var url = urls[i];
+        getJsonDATA.push(await getAjexJsonData("get",url));
+        i++
+      }
       getSteps(getJsonDATA[0][0]);getFooterSec(getJsonDATA[0][1]);getSA88CopyRight(getJsonDATA[0][2]);getFooterImgs(getJsonDATA[0][4])
       getCategory(getJsonDATA[1][1],getJsonDATA[1][2]);dataPromo = getJsonDATA[1][2];getDomPromoItem(dataPromo[0],getJsonDATA[0][3])
       let all = dataPromo[0]
       connect=getJsonDATA[0][3]
-
       loadGetDomPromoItemDetail(all,connect)
     }
     //loadGetAjexJsonData(["./sa88.json","./data_ud_0802.json"])
