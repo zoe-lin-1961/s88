@@ -117,7 +117,7 @@
 
     function getCategory(_data,dataPromo){
       var category = $('.category')[0];
-      let outer = document.createElement("div");outer.setAttribute('class','cateBox'),_ul = document.createElement('ul')
+      let outer = document.createElement("div");outer.setAttribute('class','cateBox');let _ul = document.createElement('ul')
       _data.forEach((cate,idx)=>{
         var _cate = document.createElement('li');
         _cate.setAttribute('id',cate['pageid']);
