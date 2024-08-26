@@ -137,7 +137,10 @@ body{ background:#fff;font-family:Arial,Helvetica,sans-serif;}
 .content .often{
   text-align: justify;
   position:relative;
+  float:left;
   height: auto;
+  margin: auto!important;
+  width: 100vw;
   padding-bottom: calc((29 / 95)* 100vw);
 }
 .often-box {
