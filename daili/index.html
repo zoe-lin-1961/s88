@@ -243,27 +243,27 @@
         }
         return theDOM;
     }
-    document.onreadystatechange = function(e){
-        if(e.target.readyState === "interactive") {
-            let preload = mkDOM("div",[{"id":"preload"}])
-            document.getElementsByTagName("body")[0].append(preload)
-            if(!!document.getElementById("preload")){
-                let loadPre = document.getElementById("preload")
-                const xhr=new XMLHttpRequest();
-                xhr.open("GET", "../preLoad/index.html", true);
-                xhr.send();
-                xhr.onreadystatechange=function(){
-                    if(xhr.readyState==4 && xhr.status==200){
-                        // console.log(xhr.responseText,"xhr.responseText")
-                        loadPre.innerHTML = xhr.responseText
-                    }
-                };
-            }
-        }
-        if(e.target.readyState === "complete") {
-            let loadPre = document.getElementById("preload")
-            loadPre.innerHTML = ""
-            loadPre.remove()
-        }
-    }
+    // document.onreadystatechange = function(e){
+    //     if(e.target.readyState === "interactive") {
+    //         let preload = mkDOM("div",[{"id":"preload"}])
+    //         document.getElementsByTagName("body")[0].append(preload)
+    //         if(!!document.getElementById("preload")){
+    //             let loadPre = document.getElementById("preload")
+    //             const xhr=new XMLHttpRequest();
+    //             xhr.open("GET", "../preLoad/index.html", true);
+    //             xhr.send();
+    //             xhr.onreadystatechange=function(){
+    //                 if(xhr.readyState==4 && xhr.status==200){
+    //                     // console.log(xhr.responseText,"xhr.responseText")
+    //                     loadPre.innerHTML = xhr.responseText
+    //                 }
+    //             };
+    //         }
+    //     }
+    //     if(e.target.readyState === "complete") {
+    //         let loadPre = document.getElementById("preload")
+    //         loadPre.innerHTML = ""
+    //         loadPre.remove()
+    //     }
+    // }
 </script>
