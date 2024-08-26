@@ -29,6 +29,9 @@ em,i{font-style:normal;}
     height: calc((420 / 750) * 100vw);
     overflow: hidden;
     margin-bottom: 0.2rem;
+    /*background-image: url(../images/bannerChanges.gif);*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: contain;*/
 }
 /*.fish-big-img .uu-box {*/
 /*    position:relative;*/

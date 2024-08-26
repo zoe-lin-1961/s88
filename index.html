@@ -63,6 +63,16 @@
         }
         return theDOM;
     }
+
+    function toSwiper(ul,imgCount,speed){
+        var lunboIndex = 0
+        setInterval(function(){
+            lunboIndex ++
+            if(lunboIndex === imgCount){lunboIndex=0}
+            let left = -1 * lunboIndex * window.document.body.clientWidth
+            ul.style="margin-left:"+left+"px"
+        },speed)
+    }
     document.addEventListener("DOMContentLoaded", () => {
         let bannerPic =["/landingPage/images/banner1.png","/landingPage/images/banner2.png"]
         let links = [{"name":"ĐĂNG KÝ","url":"http://sa88559.com/"},{"name":"ĐĂNG NHẬP","url":"http://sa88559.com/"},{"name":"ĐẠI LÝ","url":"daili"},{"name":"ưu đãi","url":"yuhui"},{"name":"Sự kiện nóng nhất","url":"daili/news"}]
@@ -70,34 +80,34 @@
         bannerPic.forEach((imgURL)=>{
             let url = window.location.href+imgURL;
             let _li = mkDOM("li")
-
             let _img = mkDOM("img",[{"src":url},{"style":"width:100%"}])
-
             _img.onerror = function (err){
                 console.log(err,"_img失效了",window.location.href)
             }
-            _li.append(_img)
-            bigImgBox.children[0].append(_li)
+                _li.append(_img)
+                bigImgBox.children[0].append(_li)
         })
         let imgCount =bannerPic.length
         let ulW = imgCount * window.document.body.clientWidth
         bigImgBox.children[0].style = "width:"+ulW+"px;display: block;float: left;position: absolute"
-        if(bigImgBox.children[0].children.length>0){
+        if(bigImgBox.children[0].children.length == bannerPic.length){
             let li = bigImgBox.children[0].children
-
+            let loaded = []
             for (const liKey in li) {
                 if(typeof (li[liKey]) === "object"){
                     li[liKey].style="float: left;width:100vw;height:calc((420 / 750) * 100vw)"
+                    li[liKey].children[0].addEventListener("load",(e)=>{
+                        loaded.push(e.target)
+                        if(loaded.length === bannerPic.length){
+                            let ul = bigImgBox.children[0]
+                            toSwiper(ul,loaded.length,800)
+                        }
+                    })
+
                 }
+
             }
-            let ul = bigImgBox.children[0]
-            var lunboIndex = 0
-            setInterval(function(){
-                lunboIndex ++
-                if(lunboIndex === imgCount){lunboIndex=0}
-                let left = -1 * lunboIndex * window.document.body.clientWidth
-                ul.style="margin-left:"+left+"px"
-            },2000)
+
         }
 
         links.map((link)=>{
