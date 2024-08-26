@@ -295,6 +295,7 @@ body{ background:#fff;font-family:Arial,Helvetica,sans-serif;}
   color:#fff;
   padding:0.05rem;
   margin-top: 0.2rem;
+  margin-right: 0.2rem;
   background: linear-gradient(60deg,#fffef5,#ffee65,#fbcf2a,#cc9340);
   animation: aaTranse 3s infinite;
 }
