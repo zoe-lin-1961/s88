@@ -41,6 +41,7 @@ function replaceContectSet(contectSet,JsData){
             links.a=`<a href="${contectSetLinks[1]}" class='text-red'><span style="text-decoration: underline;">${contectSetLinks[1]}</span></a>`
         }
     })
+    // console.log(JsData,'JsData!!!')
     JsData.blocks.map((b)=>{
         let dataString = b["stringArr"]
         if(dataString && dataString.includes("<a hr") && dataString.includes("#00ccff")){
@@ -97,6 +98,7 @@ function setContent (Obj,jsonArr=[]) {
     return jsonArr
 }
 function mkJsData(_array,textColorsSet){
+    // console.log(_array,"_array")
     let mainTitle=[]
     let subTitle = ''
     let textArr = []
@@ -107,12 +109,14 @@ function mkJsData(_array,textColorsSet){
     let blockStartIndex = 0
     _array.forEach((item,idx)=>{
         if(item.includes("[#text]")){textArr.push(item)}
+
         if(!item.includes("[")){linkArr.push({a:item,idx:idx});blocks.push(item)}
         blockTypes.forEach((kinds)=>{
             if(item.includes(kinds)){
                 blocks.push(item)
             }
         })
+
     })
     if(!textArr[2].includes("https")){
         subTitle = removeTag(textArr[2],"text")
@@ -162,13 +166,30 @@ function mkJsData(_array,textColorsSet){
             }
             tableArr.push({"startIdx":init,"endIdx":tail,"arr":tables })
 
+
         }else{
             var total =[]
             tableIndex.forEach((f)=>{total.push(blocks[f])})
             tableArr.push({"startIdx":tableIndex[0],"endIdx":tableIndex[tableIndex.length-1],"arr":total })
+
         }
     }
 
+    // console.log(tableArr,"...tableJSON(tableArr)")
+
+    // tableArr.forEach((tbs,idx)=>{
+    //     if(!!!tbs["arr"][0].includes("[TABLE]")){
+    //         let hasTable = 0
+    //         while (!!tableArr[idx-n]["arr"][0].includes("[TABLE]")) {
+    //             let theArr = tableArr[idx-n]["arr"]
+    //             tableArr[idx-n]["arr"] = theArr.concat(tbs["arr"])
+    //             tbs["arr"].length = 0
+    //             console.log(tableArr[idx-n],"tableArr[idx-n]")
+    //             hasTable++
+    //         }
+    //     }
+    // })
+    //console.log(tableArr,"tableArr")
     let _blocks = [...spanJOSN(spanArray),...tableJSON(tableArr)].sort(sortArr)
     let facebookIdx =_blocks.findIndex((el) => { return el.stringArr.includes("facebook")})
     _blocks = _blocks.filter((f)=>f.startIdx > _blocks[facebookIdx].startIdx)
@@ -231,6 +252,10 @@ function tableJSON(arr){
 }
 function ColSpanAndRowSpan(td) {
     let tdDataArr=[]
+    var _td =[]
+    td.map((st)=>{_td.push(st.replace(/\n+/g,''))})
+    td.length=0
+    td=_td
     for (var myvalue=0; myvalue<td.length; myvalue++) {
         let _myvalue=td[myvalue]
         if(td[myvalue].indexOf("-ROWSPAN:") >-1 || td[myvalue].indexOf("-COLSPAN:") >-1 ) {
