@@ -25,18 +25,11 @@
             </ul>
         </div>
         <div class="video" style="position:relative;float: left;width:100vw;height: auto;margin: 0.3rem 0 0.5rem 0">
-<!--            <iframe-->
-<!--                    style="display: none"-->
-<!--                    scrolling="no"-->
-<!--                    src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000">-->
-
-<!--            </iframe>-->
             <div class="border-v">
                 <video  controls="" class="sa88Video" style="">
-                    <source src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000" x5-video-player-type="h5" x5-video-player-fullscreen="true">
+                    <source src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000" x5-video-player-type="h5" x5-video-player-fullscreen="true" type="video/mp4">
                 </video>
             </div>
-
         </div>
         <div class="often bd">
             <div class="often-box">
@@ -97,7 +90,6 @@
     document.addEventListener("DOMContentLoaded", () => {
         let bannerPic =["/landingPage/images/banner1.png","/landingPage/images/banner2.png"]
         let bigImgBox = document.getElementsByClassName("fish-big-img")[0]
-        //let imgCount = bigImgBox.children[0].children.length
         bannerPic.forEach((imgURL)=>{
             let url = window.location.href+imgURL;
             let _li = mkDOM("li")
