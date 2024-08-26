@@ -260,4 +260,14 @@
     document.documentElement.scrollTop = 0;
     window.location.hash=""
   }
+  document.onreadystatechange = function(e){
+    if(e.target.readyState === "interactive") {
+      let preload = mkDOM("div",[{"id":"preload"}])
+      $("body")[0].append(preload)
+      $("#preload").load("../preLoad/index.html")
+    }
+    if(e.target.readyState === "complete") {
+      document.getElementById("preload").remove();
+    }
+  }
 </script>

@@ -12,17 +12,13 @@
     <script type="text/javascript" src="landingPage/js/flexible.js"></script>
     <script type="text/javascript" src="landingPage/js/inobounce.js"></script>
     <script type="text/javascript" src="landingPage/js/noZoom.js"></script>
-    <style>
-    </style>
+    <script type="text/javascript" src="landingPage/js/mobile-detect.min.js"></script>
 </head>
 <body>
 <div id="main">
     <div class="content">
         <div class="fish-big-img">
-            <ul>
-<!--                <li><img src="../pages/landingPage/images/banner1.png" style="width:100%"></li>-->
-<!--                <li><img src="../pages/landingPage/images/banner2.png" style="width:100%"></li>-->
-            </ul>
+            <ul></ul>
         </div>
         <div class="video" style="position:relative;float: left;width:100vw;height: auto;margin: 0.3rem 0 0.5rem 0">
             <div class="border-v">
@@ -45,12 +41,7 @@
                 </div>
                 <div class="aa-box">
                     <div>
-                        <a href="http://sa88559.com/" class="border-r"><div>ĐĂNG KÝ</div></a>
-                        <a href="http://sa88559.com/" class="border-r"><div>ĐĂNG NHẬP</div></a>
-                        <a href="daili" class="border-r"><div>ĐẠI LÝ</div></a>
-                        <a href="yuhui" class="border-r"><div>ưu đãi</div></a>
-                        <a href="daili/news" class="border-r"><div>Sự kiện nóng nhất</div></a>
-                    <div>
+                    </div>
                 </div>
             </div>
 
@@ -58,23 +49,7 @@
         </div>
     </p>
 </div>
-<footer class="footer-box">
-    <a>
-<!--        <img  alt="" id="download" onclick="downApp()">-->
-    </a>
-</footer>
 <script>
-    // function speed(element) {
-    //     setTimeout(function () {
-    //         var tim = 1;
-    //         for (var i of document.querySelectorAll(element)) {
-    //             i.innerText = 3 + tim + Math.ceil(Math.random() * 2) + 'ms'
-    //             tim += 2
-    //         }
-    //     }, 500)
-    //
-    // }
-    // speed('.time');
     const mkDOM = (__DOM,__ATTRIBUTE)=>{
         let theDOM = document.createElement(__DOM);
         if(__ATTRIBUTE && !!__ATTRIBUTE) {
@@ -90,6 +65,7 @@
     }
     document.addEventListener("DOMContentLoaded", () => {
         let bannerPic =["/landingPage/images/banner1.png","/landingPage/images/banner2.png"]
+        let links = [{"name":"ĐĂNG KÝ","url":"http://sa88559.com/"},{"name":"ĐĂNG NHẬP","url":"http://sa88559.com/"},{"name":"ĐẠI LÝ","url":"daili"},{"name":"ưu đãi","url":"yuhui"},{"name":"Sự kiện nóng nhất","url":"daili/news"}]
         let bigImgBox = document.getElementsByClassName("fish-big-img")[0]
         bannerPic.forEach((imgURL)=>{
             let url = window.location.href+imgURL;
@@ -124,8 +100,42 @@
             },2000)
         }
 
+        links.map((link)=>{
+            const md = new MobileDetect(window.navigator.userAgent);const isNotPC =md.tablet()||md.phone()||md.mobile();
+            if(!!isNotPC && link.url==="daili"){link.url="daili/mobile"}
+        })
+
+        links.forEach((link)=>{
+          var _a = mkDOM("a",[{"href":link.url},{"class":"border-r"}])
+          var _name = mkDOM("div",[{"innerHTML":link.name}])
+            _a.append(_name)
+           document.getElementsByClassName("aa-box")[0].children[0].append(_a)
+        })
     })
 
+    document.onreadystatechange = function(e){
+        if(e.target.readyState === "interactive") {
+            let preload = mkDOM("div",[{"id":"preload"}])
+            document.getElementsByTagName("body")[0].append(preload)
+            if(!!document.getElementById("preload")){
+                let loadPre = document.getElementById("preload")
+                const xhr=new XMLHttpRequest();
+                xhr.open("GET", "../pages/preLoad/index.html", true);
+                xhr.send();
+                xhr.onreadystatechange=function(){
+                    if(xhr.readyState==4 && xhr.status==200){
+                        // console.log(xhr.responseText,"xhr.responseText")
+                        loadPre.innerHTML = xhr.responseText
+                    }
+                };
+            }
+        }
+        if(e.target.readyState === "complete") {
+            let loadPre = document.getElementById("preload")
+            loadPre.innerHTML = ""
+            loadPre.remove()
+        }
+    }
 </script>
 </body>
 </html>
