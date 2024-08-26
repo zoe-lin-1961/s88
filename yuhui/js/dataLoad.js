@@ -3,7 +3,7 @@ function getAjexJsonData(type="get",url="",) {
         $.ajax({
             type,url,dataType:"json",
             success:function(data) {resolve(data)},
-            error:function(XMLHttpRequest, textStatus, errorThrown) {reject({"XMLHttpRequest":XMLHttpRequest,"textStatus":textStatus,"errorThrown":errorThrown});window.location = window.location.origin+"/pages/error/"}
+            error:function(XMLHttpRequest, textStatus, errorThrown) {reject({"XMLHttpRequest":XMLHttpRequest,"textStatus":textStatus,"errorThrown":errorThrown});window.location = window.location.origin+"/pages/503error/"}
         });
     })
 }
