@@ -4,6 +4,8 @@ function getAjexJsonData(type="get",url="",) {
             type,url,dataType:"json",
             success:function(data) {resolve(data)},
             error:function(XMLHttpRequest, textStatus, errorThrown) {
+                document.getElementById("preload").remove();
+                window.location =  window.location.href.replace("yuhui","503error");
                reject({"XMLHttpRequest":XMLHttpRequest,"textStatus":textStatus,"errorThrown":errorThrown});
                 // window.location =  window.location.href.replace("yuhui","503error")
             }

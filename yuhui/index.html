@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SA88</title>
     <link rel="icon" href="img/ve2prod.ico" />
+<!--    <script src="../preLoad/js/index.js"></script>-->
+<!--    <script>preload()</script>-->
+    <link rel="prefetch" src="../preLoad/js/index.js" as="script">
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/mobile-detect.min.js"></script>
     <script type="text/javascript" src="sa88.json"></script>
@@ -64,6 +67,8 @@
     var mainContainer = $('.main-container')[0];
     var mainRedContainer = document.getElementById('main-containerReload');
 
+    // console.log(ispreload,"ispreload????")
+
     leftbtn.addEventListener('click',function (){
       const isCloseLeft = leftWindow.classList.value.includes('close-left-window');
       if(isCloseLeft){
@@ -96,7 +101,12 @@
       loadGetDomPromoItemDetail(all,connect)
     }
     //loadGetAjexJsonData(["./sa88.json","./data_ud_0802.json"])
-   loadGetAjexJsonData(["./sa88.json","https://api.hi678a.com/ve2prod-ecp/api/v1/promosforplayertoapply?currency=VND2&limit=100&locale=vi-VN&offset=0&platform=2"])
+
+    // if(ispreload) {
+    //   console.log("loadGetAjexJsonData.....")
+     // loadGetAjexJsonData(["./sa88.json","https://api.hi678a.com/ve2prod-ecp/api/v1/promosforplayertoapply?currency=VND2&limit=100&locale=vi-VN&offset=0&platform=2"])
+
+
     //getCategory 获取分类，dataPromo 是所有显示的卡片列表，会因为分类的选择切换显示
 
 
@@ -900,16 +910,17 @@
       toLoadJqMobile()
     },500)
   })()
-  document.onreadystatechange = function(e){
-    if(e.target.readyState === "interactive") {
-      let preload = mkDOM("div",[{"id":"preload"}])
-      $("body")[0].append(preload)
-      $("#preload").load("../preLoad/index.html")
-    }
-    if(e.target.readyState === "complete") {
-      document.getElementById("preload").remove();
-    }
-  }
+
+  // document.onreadystatechange = function(e){
+  //   // if(e.target.readyState === "interactive") {
+  //   //   let preload = mkDOM("div",[{"id":"preload"}])
+  //   //   $("body")[0].append(preload)
+  //   //   $("#preload").load("../preLoad/index.html")
+  //   // }
+  //   if(e.target.readyState === "complete") {
+  //     document.getElementById("preload").remove();
+  //   }
+  // }
 </script>
 
 
