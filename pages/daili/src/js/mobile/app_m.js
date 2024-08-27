@@ -40,6 +40,7 @@ $(document).ready(function () {
     return visitorId;
   }
   getFingerPrint();
+  $("#lodingMask").hide()
 })
 
 

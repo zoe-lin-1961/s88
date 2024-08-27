@@ -209,7 +209,6 @@ const clearCOOKIE = (name)=>{
 }
 
 function resetWidth(){
-    console.log("AAAA")
     if(document.getElementsByTagName('body')[0].clientWidth < 779.9999){
         let ct =document.getElementsByClassName('category-item')
         let toW = 0
