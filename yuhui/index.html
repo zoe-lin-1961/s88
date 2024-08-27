@@ -1021,6 +1021,7 @@
       let link = mkDOM("link",[{"rel":"stylesheet"},{"href":mobileCSS}])
       let jQuery_Mobile = mkDOM("script",[{"href":mobileJS}])
       console.warn("已进入移动端")
+      resetWidth()
       $("head").append(link,jQuery_Mobile)
       $(".pc-modal").hide()
     }else{
@@ -1037,7 +1038,8 @@
 
   toLoadJqMobile()
   const resetBodyHeight = ()=>{
-    let winH = window.innerHeight
+    // let winH = window.innerHeight
+    let winH = screen.availHeight
     $("body").height(winH)
   }
   //pc-modal
@@ -1046,7 +1048,8 @@
   (window.onresize = function() {
     if(resizeTimer){clearTimeout(resizeTimer)}
     resizeTimer = setTimeout(function () {
-      resetWidth();resetBodyHeight();
+      resetWidth();
+      resetBodyHeight();
       toLoadJqMobile()
     },500)
   })()

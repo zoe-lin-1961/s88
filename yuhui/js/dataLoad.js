@@ -4,7 +4,6 @@ function getAjexJsonData(type="get",url="",) {
             type,url,dataType:"json",
             success:function(data) {resolve(data)},
             error:function(XMLHttpRequest, textStatus, errorThrown) {
-                $("#lodingMask").hide();
                 window.location =  window.location.href.replace("yuhui","503error");
                reject({"XMLHttpRequest":XMLHttpRequest,"textStatus":textStatus,"errorThrown":errorThrown});
                 // window.location =  window.location.href.replace("yuhui","503error")
@@ -210,6 +209,7 @@ const clearCOOKIE = (name)=>{
 }
 
 function resetWidth(){
+    console.log("AAAA")
     if(document.getElementsByTagName('body')[0].clientWidth < 779.9999){
         let ct =document.getElementsByClassName('category-item')
         let toW = 0
