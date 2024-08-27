@@ -7,6 +7,7 @@
           content="width=device-width ,initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no">
     <title>SA88</title>
     <link rel="stylesheet icon" href="landingPage/images/ve2prod.ico" type="image/x-icon">
+    <link rel="preload" as="video" type="video/mp4" href="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000">
     <link rel="stylesheet" href="landingPage/css/reset.css">
     <link rel="stylesheet" href="landingPage/css/style.css">
     <script type="text/javascript" src="landingPage/js/flexible.js"></script>
@@ -22,9 +23,15 @@
         </div>
         <div class="video" style="position:relative;float: left;width:100vw;height: auto;margin: 0.3rem 0 0.5rem 0">
             <div class="border-v">
-                <video  controls="" class="sa88Video" style="">
-                    <source src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000" x5-video-player-type="h5" x5-video-player-fullscreen="true" type="video/mp4">
+                <video  controls="" class="sa88Video" style="" poster="landingPage/images/fishingVideo.png">
+                  <source src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000" x5-video-player-type="h5" x5-video-player-fullscreen="true" type="video/mp4">
                 </video>
+<!--                <div class="sa88Video" >-->
+<!--                <iframe-->
+<!--                style="height:100%;width:100%"-->
+<!--                src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724726276547-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724697527000"-->
+<!--                allow="autoplay; fullscreen;encrypted-media;"></iframe>-->
+<!--                </div>-->
             </div>
         </div>
         <div class="often bd">
@@ -63,6 +70,16 @@
         }
         return theDOM;
     }
+
+    function toSwiper(ul,imgCount,speed){
+        var lunboIndex = 0
+        setInterval(function(){
+            lunboIndex ++
+            if(lunboIndex === imgCount){lunboIndex=0}
+            let left = -1 * lunboIndex * window.document.body.clientWidth
+            ul.style="margin-left:"+left+"px"
+        },speed)
+    }
     document.addEventListener("DOMContentLoaded", () => {
         let bannerPic =["/landingPage/images/banner1.png","/landingPage/images/banner2.png"]
         let links = [{"name":"ĐĂNG KÝ","url":"http://sa88559.com/"},{"name":"ĐĂNG NHẬP","url":"http://sa88559.com/"},{"name":"ĐẠI LÝ","url":"daili"},{"name":"ưu đãi","url":"yuhui"},{"name":"Sự kiện nóng nhất","url":"daili/news"}]
@@ -70,34 +87,34 @@
         bannerPic.forEach((imgURL)=>{
             let url = window.location.href+imgURL;
             let _li = mkDOM("li")
-
             let _img = mkDOM("img",[{"src":url},{"style":"width:100%"}])
-
             _img.onerror = function (err){
                 console.log(err,"_img失效了",window.location.href)
             }
-            _li.append(_img)
-            bigImgBox.children[0].append(_li)
+                _li.append(_img)
+                bigImgBox.children[0].append(_li)
         })
         let imgCount =bannerPic.length
         let ulW = imgCount * window.document.body.clientWidth
         bigImgBox.children[0].style = "width:"+ulW+"px;display: block;float: left;position: absolute"
-        if(bigImgBox.children[0].children.length>0){
+        if(bigImgBox.children[0].children.length == bannerPic.length){
             let li = bigImgBox.children[0].children
-
+            let loaded = []
             for (const liKey in li) {
                 if(typeof (li[liKey]) === "object"){
                     li[liKey].style="float: left;width:100vw;height:calc((420 / 750) * 100vw)"
+                    li[liKey].children[0].addEventListener("load",(e)=>{
+                        loaded.push(e.target)
+                        if(loaded.length === bannerPic.length){
+                            let ul = bigImgBox.children[0]
+                            toSwiper(ul,loaded.length,800)
+                        }
+                    })
+
                 }
+
             }
-            let ul = bigImgBox.children[0]
-            var lunboIndex = 0
-            setInterval(function(){
-                lunboIndex ++
-                if(lunboIndex === imgCount){lunboIndex=0}
-                let left = -1 * lunboIndex * window.document.body.clientWidth
-                ul.style="margin-left:"+left+"px"
-            },2000)
+
         }
 
         links.map((link)=>{
