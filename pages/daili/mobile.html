@@ -246,9 +246,14 @@
 <script>
   const md = new MobileDetect(window.navigator.userAgent);
   const isNotPC =md.tablet()||md.phone()||md.mobile()
-  if(!!isNotPC){  console.warn("已进入移动端")}else {console.warn("已进入PC端");window.location = 'index.html'}
+  if(!!isNotPC){
+    console.warn("已进入移动端")
+    // $("#sa88-box").css("height",screen.availHeight)
+    // console.log($("#sa88-box").height(),"$(\"#sa88-box\")[0].height")
+  }else {console.warn("已进入PC端");window.location = 'index.html'}
   document.getElementsByClassName("sa88-box-pad")[0].addEventListener("scroll", (event) => {
     let scollTop = document.getElementsByClassName("sa88-box-pad")[0].scrollTop,domHeight = document.getElementsByClassName("sa88-box-pad")[0].clientHeight
+    $(".sa88-box-pad").css("height",screen.availHeight)
     if(scollTop>domHeight) {
       $("#myBtnMobile").css("display", "block")
     }else{
