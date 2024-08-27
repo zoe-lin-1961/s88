@@ -297,7 +297,8 @@
   }
   function getDomPromoItemDetail(_data,contectSet,dataCount) {
     let leftDom = document.getElementById('left-window'),mainDom =document.getElementById('main-container');
-    let title = _data["promotitle"]["vi-VN"];
+    let title = _data["promoname"];
+
     let GRID_item = _data['promobanner'].some(item => item.type == 'GRID')? _data['promobanner'].filter((item)=>item.type == 'GRID')[0]:undefined;
 
     //左边伸缩窗
@@ -347,28 +348,6 @@
       createJSON.push(returnJSON)
     }
   }
-  // function setTitle (dom,jsonArr=[],lastTag=null){
-  //   for(var i=0;i<dom.children.length;i++) {
-  //     if(dom.children[i].outerText!==dom.outerText && dom.children[i].children.length>0){
-  //       setTitle(dom.children[i],jsonArr)
-  //     }else if(dom.children[i].outerText==dom.outerText && dom.children[i].children.length==0){
-  //       jsonArr.push(dom.children[i].outerText)
-  //       let finalTagName
-  //       if(dom.children[i].tagName!=="A"){
-  //         finalTagName = $("#main-container").find(dom.children[i].tagName)
-  //       }
-  //
-  //       lastTag = dom.children[i].tagName
-  //       let finalTagNameIndex =finalTagName?.length-1
-  //       if(Number(finalTagNameIndex)){
-  //         if(Object.values(finalTagName)[finalTagNameIndex].outerText == dom.children[i].outerText){
-  //           return
-  //         }
-  //       }
-  //     }
-  //   }
-  //   return jsonArr
-  // }
 </script>
 <style lang="less">
 
