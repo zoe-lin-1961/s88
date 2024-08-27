@@ -15,6 +15,7 @@ function reWriteDataSet(father,contectSet){
     let ColorText = handelRgbCover(rgbCover,rgbRed,rgbLightBlue,JsData,nearByText)
 
     replaceContectSet(contectSet,JsData)
+
     return {JsData,ColorText}
 }
 function replaceContectSet(contectSet,JsData){
@@ -98,7 +99,6 @@ function setContent (Obj,jsonArr=[]) {
     return jsonArr
 }
 function mkJsData(_array,textColorsSet){
-    // console.log(_array,"_array")
     let mainTitle=[]
     let subTitle = ''
     let textArr = []
@@ -155,7 +155,21 @@ function mkJsData(_array,textColorsSet){
         var nospanIdx = notSpanIndex[v],nextIdx = notSpanIndex[v + 1]
         if(nextIdx - nospanIdx >1) {var marr=[];for(var i=nospanIdx+1;i<nextIdx; i++){marr.push(blocks[i])};spanArray.push({startIdx: nospanIdx+1,endIdx:nextIdx-1,arr:marr})}}
     var initArr=[],tableArr =[]
-    for(var t=0;t<tableIndex.length;t++){var tableIdx = tableIndex[t],nextIdx= tableIndex[t+1];if(t==0){initArr.push(tableIdx)};if(nextIdx - tableIdx >1 && t!==0) {initArr.push(nextIdx)}}
+    for(var t=0;t<tableIndex.length;t++){
+        var tableIdx = tableIndex[t],nextIdx= tableIndex[t+1];
+        if(t==0){initArr.push(tableIdx)};
+        if(nextIdx - tableIdx >1 && t!==0) {initArr.push(nextIdx)}
+        //判断是否为BR
+        if(tableIndex[t+1] == tableIndex[t]+1 && tableIndex[t+2] == tableIndex[t]+3){
+            const theOtherTagIndex = tableIndex[t+2] - 1
+            blocks.map((b,thebIdx)=>
+            { if(blocks[theOtherTagIndex] === "[BR]" && theOtherTagIndex==thebIdx){
+                delete blocks[thebIdx]
+            }})
+             // console.error(blocks[theOtherTagIndex],"看你不爽，消失吧",blocks,tableIndex[t],tableIndex)
+        }
+    }
+
     for(var a=0;a<initArr.length;a++){
         if(initArr.length>1){
             var init=initArr[a],tail
@@ -165,31 +179,28 @@ function mkJsData(_array,textColorsSet){
                 tables.push(blocks[u])
             }
             tableArr.push({"startIdx":init,"endIdx":tail,"arr":tables })
-
-
         }else{
             var total =[]
             tableIndex.forEach((f)=>{total.push(blocks[f])})
             tableArr.push({"startIdx":tableIndex[0],"endIdx":tableIndex[tableIndex.length-1],"arr":total })
-
         }
     }
 
-    // console.log(tableArr,"...tableJSON(tableArr)")
 
-    // tableArr.forEach((tbs,idx)=>{
-    //     if(!!!tbs["arr"][0].includes("[TABLE]")){
-    //         let hasTable = 0
-    //         while (!!tableArr[idx-n]["arr"][0].includes("[TABLE]")) {
-    //             let theArr = tableArr[idx-n]["arr"]
-    //             tableArr[idx-n]["arr"] = theArr.concat(tbs["arr"])
-    //             tbs["arr"].length = 0
-    //             console.log(tableArr[idx-n],"tableArr[idx-n]")
-    //             hasTable++
-    //         }
-    //     }
-    // })
-    //console.log(tableArr,"tableArr")
+    if(tableArr.length>1){
+        let theArrageTableArr = []
+        tableArr.forEach((tab)=>{
+            if(tab.arr[0].startsWith('[TABLE')){
+                theArrageTableArr.push(tab)
+            }else{
+               let theArrTab =  theArrageTableArr[theArrageTableArr.length-1]
+                theArrTab["endIdx"] = tab["endIdx"]
+                theArrTab["arr"] = [...theArrTab["arr"],...tab["arr"]]
+                //console.log(theArrTab,"tab.arr!!!",tab)
+            }
+        })
+        tableArr = theArrageTableArr
+    }
     let _blocks = [...spanJOSN(spanArray),...tableJSON(tableArr)].sort(sortArr)
     let facebookIdx =_blocks.findIndex((el) => { return el.stringArr.includes("facebook")})
     _blocks = _blocks.filter((f)=>f.startIdx > _blocks[facebookIdx].startIdx)
