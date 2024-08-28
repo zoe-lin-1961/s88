@@ -153,7 +153,7 @@
   a {
     text-decoration: none;
     margin: auto;
-    display: block !important;
+    /*display: block !important;*/
   }
   
   img {

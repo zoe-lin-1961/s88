@@ -16,10 +16,53 @@ $(document).ready(function () {
 
     // When the user clicks on the button, scroll to the top of the document
 
-    $("#lodingMask").hide()
+    mediaLoaded("ready")
 
 })
-
+function mediaLoaded(funcName){
+    let IMG= $("img"),VIDEO=$("video");
+    let total =[]
+    let loaded =[]
+    let hasUnLoad = []
+    for (const imgKey in IMG) {
+        if(typeof (IMG[imgKey]) == "object" && IMG[imgKey].nodeName=="IMG"){
+            total.push(IMG[imgKey])
+        }
+    }
+    for (const videoKey in VIDEO) {
+        if(typeof (VIDEO[videoKey]) == "object" && VIDEO[videoKey].nodeName=="VIDEO"){
+            total.push(VIDEO[videoKey])
+        }
+    }
+    for (const totalKey in total) {
+        if(total[totalKey].nodeName=="IMG") {
+            if(total[totalKey].complete) {
+                loaded.push(total[totalKey])
+            }else{
+                hasUnLoad.push(total[totalKey])
+            }
+        }
+        if(total[totalKey].nodeName=="VIDEO"){
+            if(total[totalKey].readyState === 4) {
+                loaded.push(total[totalKey])
+            }
+        }
+    }
+    console.log(total,"total",hasUnLoad,funcName)
+    if(hasUnLoad.length>0){
+        hasUnLoad.map((unloadImg,index) =>{
+            unloadImg.onload = function (){
+                loaded.push(unloadImg);
+                console.log(unloadImg)
+                hasUnLoad = hasUnLoad.filter((v)=>v.currentSrc!==unloadImg.currentSrc)
+                if(hasUnLoad.length == 0){
+                    console.log("加载完成")
+                    $("#lodingMask").hide()
+                }
+            }
+        })
+    }
+}
 document.addEventListener("DOMContentLoaded", ()=>{
     // 左侧抽屉菜单，画面中间的跳转
     function getHome(){
@@ -108,6 +151,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
             _div.append(_img)
             $(".swiper-wrapper")[0].append(_div)
         })
+        if($(".swiper-wrapper")[0].children.length > 0) {
+            mediaLoaded("loadSwiperImgs")
+        }
         if($(".swiper-wrapper>.swiper-slide").length > 0){
             playSwiper()
         }
@@ -146,6 +192,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 if (panel.style.display === "block") {panel.style.display = "none"; } else {panel.style.display = "block";}
             })
         }
+        mediaLoaded("loadArticals")
     }
     function mkArtical(styleType,articalItem){
         if(styleType==="section-benefit"){
@@ -229,6 +276,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             div.append(contaniner)
             $(".section-contact")[0].before(div)
         }
+        mediaLoaded("loadMainPageArticle")
     }
     const mkArticleContaniner = (_datas)=>{
         let _con = mkDOM("div",[{class:"container container-original"}]);
