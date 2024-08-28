@@ -1076,10 +1076,12 @@ strong {
     font-weight: bold;
 }
 
-#see-more,
-#see-less {
+.see-more,
+.see-less {
     color: #000;
     text-decoration: underline;
+    display: block;
+    margin-top: 2rem;
 }
 
 .section-sa88-real {

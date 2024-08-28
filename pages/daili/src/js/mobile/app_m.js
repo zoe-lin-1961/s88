@@ -40,7 +40,9 @@ $(document).ready(function () {
     return visitorId;
   }
   getFingerPrint();
-  $("#lodingMask").hide()
+
+    mediaLoaded("ready")
+
 })
 
 
@@ -67,18 +69,24 @@ function getHome(){
         success:function(data) {handalLoadDataOnPage(data)}, error:function(XMLHttpRequest, textStatus, errorThrown) { console.log('XMLHttpRequest, textStatus, errorThrown',XMLHttpRequest, textStatus, errorThrown)}
     });
 }
+const withHashUrl = {"menu-cshh":true,"menu-benefit":true,"menu-ask":true,"menu-rewards":true}
 function handalLoadDataOnPage(_jsonData) {
     console.log("handalLoadDataOnPage",_jsonData)
     let bannerImgs = _jsonData[1];
     let boxMenuItems = _jsonData[0]['menu'][1]['phone'];
     if($(".swiper-slide").length < 1) {loadSwiperImgs(bannerImgs['banner'])}
     if($("#box-menu ul li").length < 2){loadBoxMenuItems(boxMenuItems.items,_jsonData[2])}
-    if($(".item-info").length <1){loadMainPageItemInfo(_jsonData[4]['itemInfo'],_jsonData[2])}
+    var idDom = []
+    for (let withHashUrlKey in withHashUrl) {
+        let id_dom = document.getElementById(withHashUrlKey)
+        if(!!id_dom) {idDom.push(id_dom)}
+    }
+    if($(".item-info").length <1 || idDom.length>0){loadMainPageItemInfo(_jsonData[4]['itemInfo'],_jsonData[2],[],idDom.length>0)}
     if($(".section-world-cup .container-original").length <1){loadMainPageArticle(_jsonData[5]['dailiArticle'])}
     if($(".intro-sa88").length <1){ loadIntro(_jsonData[6]['introSA88'])}
     if($(".ctact ul li").length <1){ loadContact(_jsonData[7]['connection'])}
 }
-const withHashUrl = {"menu-cshh":true,"menu-benefit":true,"menu-ask":true,"menu-rewards":true}
+
 function loadSwiperImgs(bannerImgs){
     for(let i=0;i<bannerImgs.length;i++){
         var swiperSlide = mkDOM("div",[{class:"swiper-slide"}]),imgNo=i+1,swiperImg =mkDOM("img",[{class:"img-banner"},{src:'./src/images/'+bannerImgs[i]},{alt:'Banner '+imgNo}]);
@@ -87,7 +95,11 @@ function loadSwiperImgs(bannerImgs){
     }
     if($(".swiper-slide").length > 0 ){
         swiper = new Swiper(".swiper-container", {loop: true,pagination: {el: ".swiper-pagination"}, navigation: {nextEl: ".swiper-button-next",prevEl: ".swiper-button-prev"}, autoplay: {delay: 5000}});
+        if($(".swiper-container")[0].children.length > 0) {
+             mediaLoaded("loadSwiperImgs")
+        }
     }
+
 }
 function loadBoxMenuItems(boxMenuItems,honeMenuArticle) {
     for(var i=0;i<boxMenuItems.length;i++) {
@@ -101,6 +113,7 @@ function loadBoxMenuItems(boxMenuItems,honeMenuArticle) {
             openExampleModal(e.currentTarget,honeMenuArticle);
         }
     });
+     mediaLoaded("loadBoxMenuItems")
 }
 const makeBoxMenuItems = (_obj)=>{
     let _li=mkDOM("li",[{id:_obj.href},{class:"box-item-info"}]),_div=mkDOM("div",[{class:"img-icon"}])
@@ -113,7 +126,7 @@ const makeBoxMenuUrlItems = (_liObj,_obj)=>{
     let _a=mkDOM("a",[{href:_obj.href}]);_liObj.removeAttribute("id");_liObj.setAttribute("class","box-item-info box-item-info-url");_a.append(_liObj);_a.style.width= "100%";
     return _a;
 }
-function loadMainPageItemInfo(itemInfo,honeMenuArticle,itemInfoArr=[]) {
+function loadMainPageItemInfo(itemInfo,honeMenuArticle,itemInfoArr=[],isReLoad) {
     let articles = honeMenuArticle["phoneMenuArticle"]
     if($(".list-info").length == 0) {
         let listInfo = mkDOM("div",[{"class":"list-info"}])
@@ -121,12 +134,16 @@ function loadMainPageItemInfo(itemInfo,honeMenuArticle,itemInfoArr=[]) {
     }
     for (let i=0;i<itemInfo.length;i++) {
         var _item;
-        if(itemInfo[i].href.includes("#") && !itemInfo[i].href.includes("http")){_item = makeItemInfo(itemInfo[i]);itemInfoArr.push({_item,articles})}else { _item = makeItemInfoNotId(itemInfo[i])}
+        if(itemInfo[i].href.includes("#") && !itemInfo[i].href.includes("http")){
+            _item = makeItemInfo(itemInfo[i]);itemInfoArr.push({_item,articles})
+        } else {
+            _item = makeItemInfoNotId(itemInfo[i])
+        }
         if(i==itemInfo.length-1 && i%2==0){
             _item.style="display:inline-block;width:100vw;height:100px"
             _item.children[0].style="width:100vw;border-bottom: 1px solid #154282;border-right: 1px solid #154282;"
         }
-        $(".list-info").append(_item)
+      if(!isReLoad){$(".list-info").append(_item)}
     }
     $(".item-info").click((e)=>{
         if(e.currentTarget.hasAttribute("id") && !withHashUrl[e.currentTarget.id]){openExampleModal(e.currentTarget,honeMenuArticle)}
@@ -201,6 +218,7 @@ const makePageIdContainer = (_menuItems,_divArr=[])=>{
         var panel = e.currentTarget.nextElementSibling;
         if (panel.style.display === "block") {panel.style.display = "none"; } else {panel.style.display = "block";}
     })
+    mediaLoaded("makePageIdContainer")
 }
 const mkArticleContaniner = (_datas)=>{
     let _con = mkDOM("div",[{class:"container container-original"}]);
@@ -329,4 +347,47 @@ loadFotterPic ()
 function loadFotterPic () {
     let picUrl = "./src/images/sa88fotter.webp"
     $("#sa88-footer-img")[0].setAttribute("src",picUrl)
+}
+
+function mediaLoaded(funcName){
+    let IMG= $("img"),VIDEO=$("video");
+    let total =[]
+    let loaded =[]
+    let hasUnLoad = []
+    for (const imgKey in IMG) {
+        if(typeof (IMG[imgKey]) == "object" && IMG[imgKey].nodeName=="IMG"){
+            total.push(IMG[imgKey])
+        }
+    }
+    for (const videoKey in VIDEO) {
+        if(typeof (VIDEO[videoKey]) == "object" && VIDEO[videoKey].nodeName=="VIDEO"){
+            total.push(VIDEO[videoKey])
+        }
+    }
+    for (const totalKey in total) {
+        if(total[totalKey].nodeName=="IMG") {
+            if(total[totalKey].complete) {
+                loaded.push(total[totalKey])
+            }else{
+                hasUnLoad.push(total[totalKey])
+            }
+        }
+        if(total[totalKey].nodeName=="VIDEO"){
+            if(total[totalKey].readyState === 4) {
+                loaded.push(total[totalKey])
+            }
+        }
+    }
+
+    if(hasUnLoad.length>0){
+        hasUnLoad.map((unloadImg,index) =>{
+            unloadImg.onload = function (){
+                loaded.push(unloadImg);
+                hasUnLoad = hasUnLoad.filter((v)=>v.currentSrc!==unloadImg.currentSrc)
+                if(hasUnLoad.length == 0){
+                    $("#lodingMask").hide()
+                }
+            }
+        })
+    }
 }
