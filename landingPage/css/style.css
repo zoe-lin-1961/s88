@@ -309,11 +309,25 @@ body{ background:#fff;font-family:Arial,Helvetica,sans-serif;}
   float: left;
   margin-left:calc(50% - 4.305rem);
   width: 8.61rem;
+  min-height: calc(8.61rem * 9/16);
   padding: 6px;
-  padding-bottom: 0;
+  /*padding-bottom: 0;*/
   background: linear-gradient(60deg,#fffef5,#ffee65,#fbcf2a,#cc9340);
   animation: aaTranse 3s infinite;
 }
+.video-js .vjs-control-bar {
+  position: relative!important;
+  margin-top: calc((8.61rem* 9 / 16) - 3em)!important;
+}
+.video-js .vjs-big-play-button {
+  position: relative!important;
+  margin-top: 25%!important;
+}
+.vjs-poster {
+  width: 8.61rem!important;
+  height: calc(8.61rem* 9 / 16)!important;
+}
+
 
 @keyframes aaTranse{
   0% {

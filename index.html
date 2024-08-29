@@ -10,6 +10,7 @@
     <link rel="preload" as="video" type="video/mp4" href="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000">
     <link rel="stylesheet" href="landingPage/css/reset.css">
     <link rel="stylesheet" href="landingPage/css/style.css">
+    <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
     <script type="text/javascript" src="landingPage/js/flexible.js"></script>
     <script type="text/javascript" src="landingPage/js/inobounce.js"></script>
     <script type="text/javascript" src="landingPage/js/noZoom.js"></script>
@@ -23,7 +24,8 @@
         </div>
         <div class="video" style="position:relative;float: left;width:100vw;height: auto;margin: 0.3rem 0 0.5rem 0">
             <div class="border-v">
-                <video  controls="" class="sa88Video" style="" poster="landingPage/images/fishingVideo.png">
+                <video  controls=""   id="my-video"
+                        class="video-js sa88Video"  style="width: 8.61rem;height: auto"   data-setup="{}" poster="landingPage/images/fishingVideo.png">
                   <source src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000" x5-video-player-type="h5" x5-video-player-fullscreen="true" type="video/mp4">
                 </video>
 <!--                <div class="sa88Video" >-->
@@ -56,6 +58,7 @@
         </div>
     </p>
 </div>
+<script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
 <script>
     const mkDOM = (__DOM,__ATTRIBUTE)=>{
         let theDOM = document.createElement(__DOM);
