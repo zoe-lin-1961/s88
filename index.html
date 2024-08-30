@@ -24,6 +24,7 @@
             <ul></ul>
         </div>
         <div id="test"></div>
+        <div id="testLoad"></div>
         <div class="video"  style="position:relative;float: left;width:100vw;height: auto;margin: 0.3rem 0 0.5rem 0">
             <div class="border-v">
                 <video  controls loop muted  controlsList nodownload  id="my-video" preload="auto" crossorigin="anonymous"
@@ -144,6 +145,7 @@
         // });
         var angent=navigator.userAgent
         document.getElementById("test").innerHTML = angent
+        document.getElementById("testLoad").innerHTML="isvideojs"
         let options = {};
         videojs('my-video', options, function onPlayerReady() {
             videojs.log('播放器准备好了!',"videojs.log('播放器准备好了!');");
@@ -251,6 +253,7 @@
                     let CH = ready.target.children
                     for (const chKey in CH) {
                         if(typeof (CH[chKey] == "object") && CH[chKey].nodeName==="VIDEO"){
+                            document.getElementById("testLoad").innerHTML="isvideojs"
                             let theViddeo = document.getElementById(CH[chKey].id)
                             theViddeo.play()
                         }
