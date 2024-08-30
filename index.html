@@ -143,7 +143,7 @@
         //     // console.log(player,"player")
         // });
         var angent=navigator.userAgent
-        document.getElementById("test").innerHTML = navigator.userAgent
+        document.getElementById("test").innerHTML = angent
         let options = {};
         videojs('my-video', options, function onPlayerReady() {
             videojs.log('播放器准备好了!',"videojs.log('播放器准备好了!');");
@@ -151,101 +151,101 @@
             //     this.on('ended', function() {
             //         videojs.log('播放结束!');
             //     });
-                this.on('beforepluginsetup',function(beforepluginsetup){
-                    console.log('beforepluginsetup',beforepluginsetup)   // beforepluginsetup
-                })
-                this.on('abort',function(abort){
-                    console.log('abort',abort)   // abort
-                })
-                this.on('canplay',function(canplay){
-                    console.log('canplay',canplay)   // canplay
-                })
-                this.on('canplaythrough',function(canplaythrough){
-                    console.log('canplaythrough',canplaythrough)   // canplaythrough
-                })
-                this.on('componentresize',function(componentresize){
-                    console.log('componentresize',componentresize)   // componentresize
-                })
-                this.on('controlsdisabled',function(controlsdisabled){
-                    console.log('controlsdisabled',controlsdisabled)   // controlsdisabled
-                })
-                this.on('controlsenabled',function(controlsenabled){
-                    console.log('controlsenabled',controlsenabled)   // controlsenabled
-                })
-                this.on('dispose',function(dispose){
-                    console.log('dispose',dispose)   // dispose
-                })
-                this.on('durationchange',function(durationchange){
-                    console.log('durationchange',durationchange)   // durationchange
-                })
-                this.on('emptied',function(emptied){
-                    console.log('emptied',emptied)   // emptied
-                })
-                this.on('ended',function(ended){
-                    console.log('eended',ended)   // ended
-                })
-                this.on('enterFullWindow',function(enterFullWindow){
-                    console.log('enterFullWindow',enterFullWindow)   // enterFullWindow
-                })
-                this.on('enterpictureinpicture',function(enterpictureinpicture){
-                    console.log('enterpictureinpicture',enterpictureinpicture)   // enterpictureinpicture
-                })
-                this.on('error',function(error){
-                    console.log('error',error)   // error
-                })
-                this.on('exitFullWindow',function(exitFullWindow){
-                    console.log('exitFullWindow',exitFullWindow)   // exitFullWindow
-                })
-                this.on('firstplay',function(firstplay){
-                    console.log('firstplay',firstplay)   // firstplay
-                })
-                this.on('fullscreenchange',function(fullscreenchange){
-                    console.log('fullscreenchange',fullscreenchange)   // fullscreenchange
-                })
-                this.on('languagechange',function(languagechange){
-                    console.log('languagechange',languagechange)   // languagechange
-                })
-                this.on('leavepictureinpicture',function(leavepictureinpicture){
-                    console.log('leavepictureinpicture',leavepictureinpicture)   // leavepictureinpicture
-                })
-                this.on('loadeddata',function(loadeddata){
-                    console.log('loadeddata',loadeddata)   // loadeddata
-                })
-                this.on('loadedmetadata',function(loadedmetadata){
-                    console.log('loadedmetadata',loadedmetadata)   // loadedmetadata
-                })
-                this.on('loadstart',function(loadstart){
-                    console.log('loadstart',loadstart)   // loadstart
-                })
-                this.on('pause',function(pause){
-                    console.log('pause',pause)   // loadstart
-                })
-                this.on('play',function(play){
-                    console.log('play',play)   // play
-
-                })
-                this.on('playbackrateschange',function(playbackrateschange){
-                    console.log('playbackrateschange',playbackrateschange)   // play
-                })
-                this.on('playerresize',function(playerresize){
-                    console.log('playerresize',playerresize)   // play
-                })
-                this.on('playing',function(playing){
-                    console.log('playing',playing)   // play
-                })
-                this.on('pluginsetup',function(pluginsetup){
-                    console.log('pluginsetup',pluginsetup)   // pluginsetup
-                })
-                this.on('posterchange',function(posterchange){
-                    console.log('posterchange',posterchange)   // posterchange
-                })
-                this.on('progress',function(progress){
-                    console.log('progress',progress)   // progress
-                    //progress.preventDefault(true)
-                })
-                this.on('ratechange',function(ratechange){
-                    console.log('ratechange',ratechange)   // ratechange
-                })
+            //     this.on('beforepluginsetup',function(beforepluginsetup){
+            //         console.log('beforepluginsetup',beforepluginsetup)   // beforepluginsetup
+            //     })
+            //     this.on('abort',function(abort){
+            //         console.log('abort',abort)   // abort
+            //     })
+            //     this.on('canplay',function(canplay){
+            //         console.log('canplay',canplay)   // canplay
+            //     })
+            //     this.on('canplaythrough',function(canplaythrough){
+            //         console.log('canplaythrough',canplaythrough)   // canplaythrough
+            //     })
+            //     this.on('componentresize',function(componentresize){
+            //         console.log('componentresize',componentresize)   // componentresize
+            //     })
+            //     this.on('controlsdisabled',function(controlsdisabled){
+            //         console.log('controlsdisabled',controlsdisabled)   // controlsdisabled
+            //     })
+            //     this.on('controlsenabled',function(controlsenabled){
+            //         console.log('controlsenabled',controlsenabled)   // controlsenabled
+            //     })
+            //     this.on('dispose',function(dispose){
+            //         console.log('dispose',dispose)   // dispose
+            //     })
+            //     this.on('durationchange',function(durationchange){
+            //         console.log('durationchange',durationchange)   // durationchange
+            //     })
+            //     this.on('emptied',function(emptied){
+            //         console.log('emptied',emptied)   // emptied
+            //     })
+            //     this.on('ended',function(ended){
+            //         console.log('eended',ended)   // ended
+            //     })
+            //     this.on('enterFullWindow',function(enterFullWindow){
+            //         console.log('enterFullWindow',enterFullWindow)   // enterFullWindow
+            //     })
+            //     this.on('enterpictureinpicture',function(enterpictureinpicture){
+            //         console.log('enterpictureinpicture',enterpictureinpicture)   // enterpictureinpicture
+            //     })
+            //     this.on('error',function(error){
+            //         console.log('error',error)   // error
+            //     })
+            //     this.on('exitFullWindow',function(exitFullWindow){
+            //         console.log('exitFullWindow',exitFullWindow)   // exitFullWindow
+            //     })
+            //     this.on('firstplay',function(firstplay){
+            //         console.log('firstplay',firstplay)   // firstplay
+            //     })
+            //     this.on('fullscreenchange',function(fullscreenchange){
+            //         console.log('fullscreenchange',fullscreenchange)   // fullscreenchange
+            //     })
+            //     this.on('languagechange',function(languagechange){
+            //         console.log('languagechange',languagechange)   // languagechange
+            //     })
+            //     this.on('leavepictureinpicture',function(leavepictureinpicture){
+            //         console.log('leavepictureinpicture',leavepictureinpicture)   // leavepictureinpicture
+            //     })
+            //     this.on('loadeddata',function(loadeddata){
+            //         console.log('loadeddata',loadeddata)   // loadeddata
+            //     })
+            //     this.on('loadedmetadata',function(loadedmetadata){
+            //         console.log('loadedmetadata',loadedmetadata)   // loadedmetadata
+            //     })
+            //     this.on('loadstart',function(loadstart){
+            //         console.log('loadstart',loadstart)   // loadstart
+            //     })
+            //     this.on('pause',function(pause){
+            //         console.log('pause',pause)   // loadstart
+            //     })
+            //     this.on('play',function(play){
+            //         console.log('play',play)   // play
+            //
+            //     })
+            //     this.on('playbackrateschange',function(playbackrateschange){
+            //         console.log('playbackrateschange',playbackrateschange)   // play
+            //     })
+            //     this.on('playerresize',function(playerresize){
+            //         console.log('playerresize',playerresize)   // play
+            //     })
+            //     this.on('playing',function(playing){
+            //         console.log('playing',playing)   // play
+            //     })
+            //     this.on('pluginsetup',function(pluginsetup){
+            //         console.log('pluginsetup',pluginsetup)   // pluginsetup
+            //     })
+            //     this.on('posterchange',function(posterchange){
+            //         console.log('posterchange',posterchange)   // posterchange
+            //     })
+            //     this.on('progress',function(progress){
+            //         console.log('progress',progress)   // progress
+            //         //progress.preventDefault(true)
+            //     })
+            //     this.on('ratechange',function(ratechange){
+            //         console.log('ratechange',ratechange)   // ratechange
+            //     })
                 this.on('ready',function(ready){
                     console.log('ready',ready)   // ready
                     let CH = ready.target.children
@@ -256,54 +256,54 @@
                         }
                     }
                 })
-                this.on('resize',function(resize){
-                    console.log('resize',resize)   // resize
-                })
-                this.on('seeked',function(seeked){
-                    console.log('seeked',seeked)   // seeked
-                })
-                this.on('seeking',function(seeking){
-                    console.log('seeking',seeking)   // seeking
-                })
-                this.on('sourceset',function(sourceset){
-                    console.log('sourceset',sourceset)   // sourceset
-                })
-                this.on('stalled',function(stalled){
-                    console.log('stalled',stalled)   // stalled
-                })
-                this.on('suspend',function(suspend){
-                    console.log('suspend',suspend)   // suspend//nodeName"VIDEO"
-                })
-                this.on('tap',function(tap){
-                    console.log('tap',tap)   // tap
-                })
-                this.on('textdata',function(textdata){
-                    console.log('textdata',textdata)   // tap
-                })
-                this.on('texttrackchange',function(texttrackchange){
-                    console.log('texttrackchange',texttrackchange)   // tap
-                })
-                this.on('timeupdate',function(timeupdate){
-                    console.log('timeupdate',timeupdate)   // timeupdate
-                })
-                this.on('useractive',function(useractive){
-                    console.log('useractive',useractive)   // useractive
-                })
-                this.on('userinactive',function(userinactive){
-                    console.log('userinactive',userinactive)   // userinactive
-                })
-                this.on('usingcustomcontrols',function(usingcustomcontrols){
-                    console.log('usingcustomcontrols',usingcustomcontrols)   // usingcustomcontrols
-                })
-                this.on('usingnativecontrols',function(usingnativecontrols){
-                    console.log('usingnativecontrols',usingnativecontrols)   // usingnativecontrols
-                })
-                this.on('volumechange',function(volumechange){
-                    console.log('volumechange',volumechange)   // volumechange
-                })
-                this.on('waiting',function(waiting){
-                    console.log('waiting',waiting)   // waiting
-                })
+                // this.on('resize',function(resize){
+                //     console.log('resize',resize)   // resize
+                // })
+                // this.on('seeked',function(seeked){
+                //     console.log('seeked',seeked)   // seeked
+                // })
+                // this.on('seeking',function(seeking){
+                //     console.log('seeking',seeking)   // seeking
+                // })
+                // this.on('sourceset',function(sourceset){
+                //     console.log('sourceset',sourceset)   // sourceset
+                // })
+                // this.on('stalled',function(stalled){
+                //     console.log('stalled',stalled)   // stalled
+                // })
+                // this.on('suspend',function(suspend){
+                //     console.log('suspend',suspend)   // suspend//nodeName"VIDEO"
+                // })
+                // this.on('tap',function(tap){
+                //     console.log('tap',tap)   // tap
+                // })
+                // this.on('textdata',function(textdata){
+                //     console.log('textdata',textdata)   // tap
+                // })
+                // this.on('texttrackchange',function(texttrackchange){
+                //     console.log('texttrackchange',texttrackchange)   // tap
+                // })
+                // this.on('timeupdate',function(timeupdate){
+                //     console.log('timeupdate',timeupdate)   // timeupdate
+                // })
+                // this.on('useractive',function(useractive){
+                //     console.log('useractive',useractive)   // useractive
+                // })
+                // this.on('userinactive',function(userinactive){
+                //     console.log('userinactive',userinactive)   // userinactive
+                // })
+                // this.on('usingcustomcontrols',function(usingcustomcontrols){
+                //     console.log('usingcustomcontrols',usingcustomcontrols)   // usingcustomcontrols
+                // })
+                // this.on('usingnativecontrols',function(usingnativecontrols){
+                //     console.log('usingnativecontrols',usingnativecontrols)   // usingnativecontrols
+                // })
+                // this.on('volumechange',function(volumechange){
+                //     console.log('volumechange',volumechange)   // volumechange
+                // })
+                // this.on('waiting',function(waiting){
+                //     console.log('waiting',waiting)   // waiting
+                // })
 
         })
 
