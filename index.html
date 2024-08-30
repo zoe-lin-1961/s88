@@ -23,6 +23,7 @@
         <div class="fish-big-img">
             <ul></ul>
         </div>
+        <div id="test"></div>
         <div class="video"  style="position:relative;float: left;width:100vw;height: auto;margin: 0.3rem 0 0.5rem 0">
             <div class="border-v">
                 <video  controls loop muted  controlsList nodownload  id="my-video" preload="auto" crossorigin="anonymous"
@@ -141,7 +142,8 @@
         //     // const player = videojs('my-video')
         //     // console.log(player,"player")
         // });
-
+        var angent=navigator.userAgent
+        document.getElementById("test").innerHTML = navigator.userAgent
         let options = {};
         videojs('my-video', options, function onPlayerReady() {
             videojs.log('播放器准备好了!',"videojs.log('播放器准备好了!');");
