@@ -177,10 +177,12 @@
         //     // player.play();
         // });
         function VideoIsLoaded (nodeId) {
+            console.log(document.querySelector(nodeId),"document.querySelector(nodeId+'_html5_api')")
             if(Number(document.querySelector(nodeId).readyState) == 4) {return true}else{ return  false}
         }
         function cellPlayVideo(nodeId) {
             console.log(document.querySelector(nodeId),"123123!!!!")
+            document.getElementById("testLoad").innerHTML="isNotPC"+document.querySelector(nodeId)
             let thevideo =document.querySelector(nodeId)
             thevideo.play();
         }
