@@ -1285,6 +1285,11 @@ input[type=submit] {
 .sa88Video {
     width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;
 }
+.news>.section-news>p {
+    width: 90%;
+    margin: auto;
+    padding: 10px 0;
+}
 
 ::-webkit-scrollbar {
     width:6px;
