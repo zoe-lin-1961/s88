@@ -350,49 +350,32 @@ function loadFotterPic () {
 }
 
 function mediaLoaded(funcName){
-    let IMG= $("img"),VIDEO=$("video");
-    let total =[...IMG,...VIDEO]
+    let IMG= $("img");
+    let total =[...IMG]
     let loaded =[]
     let realTotal = []
-    total.forEach((item)=>{
-        realTotal = total.filter((iy)=>iy.currentSrc !== item.src)
+    total.map((item)=>{
+        if(total.filter((iy)=>iy.src == item.src).length == 0){
+            realTotal.push(item)
+        }
     })
-    total.length=0
-    total=realTotal
-
     for (const totalKey in total) {
-       if(total[totalKey].nodeName=="VIDEO") {
-            loaded.push(total[totalKey])
-        }
-        if(total[totalKey].nodeName=="IMG" && !!total[totalKey].complete){
-            loaded.push(total[totalKey])
-        }
-    }
-    if(loaded.length === total.length) {
-        let videos=loaded.filter((item)=>item.nodeName=="VIDEO")
-        if(videos.length>0){
-            videos.map((vva,idx)=>{
-               // console.log(vva.readyState,"vva.readyState")
-                if(vva.readyState!==4){
-                  setInterval(()=>{
-                        if(vva.readyState==4){
-                            videos[idx].readyState = 4
-                            if(videos.filter((vi)=>vi.readyState==4).length === videos.length){
-                                setTimeout(()=>{$("#lodingMask").hide()},500)
-                            }
-                        }
-                    },10)
+        if(total[totalKey].nodeName=="IMG"){
+            if(total[totalKey].complete) {
+                loaded.push(total[totalKey])
+            }
+            total[totalKey].onload = function (){
+                if(total[totalKey].complete) {
+                    loaded.push(total[totalKey])
                 }
-                if(vva.readyState==4){
-                    setInterval(()=>{
-                       if(videos.filter((vi)=>vi.readyState==4).length === videos.length){
-                         setTimeout(()=>{$("#lodingMask").hide()},500)
-                       }
-                    },10)
+                if(loaded.length == total.length){
+                    setTimeout(()=>{$("#lodingMask").hide()},500)
                 }
-            })
-        }else{
-            setTimeout(()=>{$("#lodingMask").hide()},500)
+            }
+            if(loaded.length == total.length){
+                setTimeout(()=>{$("#lodingMask").hide()},500)
+                console.log("在loaded外")
+            }
         }
     }
 }
