@@ -361,10 +361,6 @@ function mediaLoaded(funcName){
     total=realTotal
 
     for (const totalKey in total) {
-        // console.log(total[totalKey].readyState,total[totalKey].nodeName=="VIDEO")
-        // if(total[totalKey].nodeName=="VIDEO" && total[totalKey].readyState == 4){
-        //     loaded.push(total[totalKey])
-        // }
        if(total[totalKey].nodeName=="VIDEO") {
             loaded.push(total[totalKey])
         }
@@ -374,6 +370,34 @@ function mediaLoaded(funcName){
     }
     console.log(realTotal,total,"realTotal,total",loaded,"loaded")
     if(loaded.length === total.length) {
-       setTimeout(()=>{$("#lodingMask").hide()},500)
+        let videos=loaded.filter((item)=>item.nodeName=="VIDEO")
+        if(videos.length>0){
+            videos.map((vva,idx)=>{
+               // console.log(vva.readyState,"vva.readyState")
+                if(vva.readyState!==4){
+                  setInterval(()=>{
+                        if(vva.readyState==4){
+                            videos[idx].readyState = 4
+                            if(videos.filter((vi)=>vi.readyState==4).length === videos.length){
+                                setTimeout(()=>{$("#lodingMask").hide()},500)
+                            }
+                        }
+                    },10)
+                }
+                if(vva.readyState==4){
+                    setInterval(()=>{
+                       if(videos.filter((vi)=>vi.readyState==4).length === videos.length){
+                         setTimeout(()=>{$("#lodingMask").hide()},500)
+                       }
+                    },10)
+                }
+            })
+        }else{
+            setTimeout(()=>{$("#lodingMask").hide()},500)
+        }
+
+
+
+
     }
 }
