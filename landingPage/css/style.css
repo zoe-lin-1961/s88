@@ -142,6 +142,7 @@ body{ background:#fff;font-family:Arial,Helvetica,sans-serif;}
   margin: auto!important;
   width: 100vw;
   padding-bottom: calc((29 / 95)* 100vw);
+  padding-top: 0;
 }
 .often-box {
   width: 8.61rem;font-size: 0.33rem;font-family: FZLTTHK;color: #fff;margin: auto;
@@ -311,7 +312,7 @@ body{ background:#fff;font-family:Arial,Helvetica,sans-serif;}
   width: 8.61rem;
   min-height: calc(8.61rem * 9/16);
   padding: 6px;
-  /*padding-bottom: 0;*/
+  padding-bottom: 0;
   background: linear-gradient(60deg,#fffef5,#ffee65,#fbcf2a,#cc9340);
   animation: aaTranse 3s infinite;
 }
