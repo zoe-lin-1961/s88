@@ -368,7 +368,6 @@ function mediaLoaded(funcName){
             loaded.push(total[totalKey])
         }
     }
-    console.log(realTotal,total,"realTotal,total",loaded,"loaded")
     if(loaded.length === total.length) {
         let videos=loaded.filter((item)=>item.nodeName=="VIDEO")
         if(videos.length>0){
@@ -395,9 +394,5 @@ function mediaLoaded(funcName){
         }else{
             setTimeout(()=>{$("#lodingMask").hide()},500)
         }
-
-
-
-
     }
 }

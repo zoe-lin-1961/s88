@@ -60,7 +60,7 @@
 
     function getDomPromoItemDetail(_data,contectSet) {
         let leftDom = document.getElementById('left-window'),mainDom =document.getElementById('main-container');
-        let title = _data["promoname"];
+        let title = _data["promotitle"]["vi-VN"] ||  _data["promoname"];
         let GRID_item = _data['promobanner'].some(item => item.type == 'GRID')? _data['promobanner'].filter((item)=>item.type == 'GRID')[0]:undefined;
 
         //左边伸缩窗

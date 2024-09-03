@@ -67,7 +67,7 @@ function loadreWriteDataFromWeb(JsData,textColorsSet,id) {
                             if(idx===0){replaceString = STRING.split(c)}
                             if(idx>0){
                                 let preReplaceStringIndex = replaceString.length
-                                replaceString.forEach((repa)=>{ replaceString.push(repa.split(c)[0],repa.split(c)[1])})
+                                replaceString.forEach((repa)=>{ if(repa.length>0){replaceString.push(repa.split(c)[0],repa.split(c)[1])}})
                                 replaceString.splice(0,preReplaceStringIndex)
                             }
                         })
@@ -88,9 +88,13 @@ function loadreWriteDataFromWeb(JsData,textColorsSet,id) {
                     }
                 })
             }
+
             if(!!hasRgbLightBlue){
                 let titleContents=["👉","KHUYẾN MÃI IV:","KHUYẾN MÃI III:","KHUYẾN MÃI II:","KHUYẾN MÃI I:"]
                 let isTitle = titleContents.filter((c)=>STRING.indexOf(c) > -1).length
+                // console.log(blueTextArr,"blueTextArr",titleContents,"titleContents")
+                blueTextArr = blueTextArr.filter((c)=>c.length>0 && c!=="※")
+                blueTextArr = blueTextArr.filter((c)=>c!=="Phương thức nhận thưởng")
                 blueTextArr.forEach((c)=>{
                      if(STRING.indexOf(c) > -1  && STRING.indexOf(c+"</a>") < 0 ){
                          let carr =blueTextArr.filter((b)=>{if(STRING.indexOf(b)>-1){ return b }})
@@ -104,11 +108,16 @@ function loadreWriteDataFromWeb(JsData,textColorsSet,id) {
                                  string = mkDOM('span',[{"class":"inline-full block-title"}])
                              }
                              let replaceString =[]
+
                              carr.forEach((c,idx)=>{
                                  if(idx===0){replaceString = STRING.split(c)}
                                  if(idx>0){
                                      let preReplaceStringIndex = replaceString.length
-                                     replaceString.forEach((repa)=>{ replaceString.push(repa.split(c)[0],repa.split(c)[1])})
+                                     replaceString.forEach((repa,idx)=>{
+                                         if(repa.length>0){
+                                             replaceString.push(repa.split(c)[0],repa.split(c)[1])
+                                         }
+                                     })
                                      replaceString.splice(0,preReplaceStringIndex)
                                  }
                              })
