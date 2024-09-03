@@ -365,7 +365,12 @@ function handelRgbCover(cover,blue,red,data,nearByText){
             var theb = b;
             var uu,thebb,removeIDX;
             arr.forEach((c)=>{
-                if(b.includes(c)){removeIDX=index;thebb = theb.split(arr[0])[0];uu = theb.split(arr[0])[1];if(uu.includes(c)){uu = uu.replace(c,"")}}
+                if(b.includes(c)){
+                    removeIDX=index;
+                    thebb = theb.split(arr[0])[0];
+                    uu = theb.split(arr[0])[1] || '';
+                    if(uu && uu.includes(c)){uu = uu.replace(c,"")}
+                }
             })
             if(thebb!==void(0) && uu!==void(0) && removeIDX!==void(0) ){
                 uu=uu.trim();thebb=thebb.trim()
