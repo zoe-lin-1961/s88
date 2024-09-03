@@ -349,45 +349,31 @@ function loadFotterPic () {
     $("#sa88-footer-img")[0].setAttribute("src",picUrl)
 }
 
-function mediaLoaded(funcName){
+async function mediaLoaded(funcName){
     let IMG= $("img"),VIDEO=$("video");
-    let total =[]
+    let total =[...IMG,...VIDEO]
     let loaded =[]
-    let hasUnLoad = []
-    for (const imgKey in IMG) {
-        if(typeof (IMG[imgKey]) == "object" && IMG[imgKey].nodeName=="IMG"){
-            total.push(IMG[imgKey])
-        }
-    }
-    for (const videoKey in VIDEO) {
-        if(typeof (VIDEO[videoKey]) == "object" && VIDEO[videoKey].nodeName=="VIDEO"){
-            total.push(VIDEO[videoKey])
-        }
-    }
+    let realTotal = []
+    total.forEach((item)=>{
+        realTotal = total.filter((iy)=>iy.currentSrc !== item.src)
+    })
+    total.length=0
+    total=realTotal
     for (const totalKey in total) {
-        if(total[totalKey].nodeName=="IMG") {
-            if(total[totalKey].complete) {
-                loaded.push(total[totalKey])
-            }else{
-                hasUnLoad.push(total[totalKey])
-            }
+        if(total[totalKey].nodeName=="VIDEO" && total[totalKey].readyState == 4){
+            loaded.push(total[totalKey])
         }
-        if(total[totalKey].nodeName=="VIDEO"){
-            if(total[totalKey].readyState === 4) {
-                loaded.push(total[totalKey])
-            }
+        if(total[totalKey].nodeName=="IMG" && !!total[totalKey].complete){
+            loaded.push(total[totalKey])
         }
     }
-
-    if(hasUnLoad.length>0){
-        hasUnLoad.map((unloadImg,index) =>{
-            unloadImg.onload = function (){
-                loaded.push(unloadImg);
-                hasUnLoad = hasUnLoad.filter((v)=>v.currentSrc!==unloadImg.currentSrc)
-                if(hasUnLoad.length == 0){
-                    $("#lodingMask").hide()
-                }
-            }
-        })
+    if(loaded.length == total.length) {
+        closeMask(loaded,funcName,loaded.length == total.length)
+    }
+}
+function closeMask(loaded,funcName,tohidden) {
+    console.log(loaded,funcName,tohidden)
+    if(!!tohidden){
+        $("#lodingMask").hide()
     }
 }
