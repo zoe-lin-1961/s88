@@ -349,7 +349,7 @@ function loadFotterPic () {
     $("#sa88-footer-img")[0].setAttribute("src",picUrl)
 }
 
-async function mediaLoaded(funcName){
+function mediaLoaded(funcName){
     let IMG= $("img"),VIDEO=$("video");
     let total =[...IMG,...VIDEO]
     let loaded =[]
@@ -359,21 +359,21 @@ async function mediaLoaded(funcName){
     })
     total.length=0
     total=realTotal
+
     for (const totalKey in total) {
-        if(total[totalKey].nodeName=="VIDEO" && total[totalKey].readyState == 4){
+        // console.log(total[totalKey].readyState,total[totalKey].nodeName=="VIDEO")
+        // if(total[totalKey].nodeName=="VIDEO" && total[totalKey].readyState == 4){
+        //     loaded.push(total[totalKey])
+        // }
+       if(total[totalKey].nodeName=="VIDEO") {
             loaded.push(total[totalKey])
         }
         if(total[totalKey].nodeName=="IMG" && !!total[totalKey].complete){
             loaded.push(total[totalKey])
         }
     }
-    if(loaded.length == total.length) {
-        closeMask(loaded,funcName,loaded.length == total.length)
-    }
-}
-function closeMask(loaded,funcName,tohidden) {
-    console.log(loaded,funcName,tohidden)
-    if(!!tohidden){
-        $("#lodingMask").hide()
+    console.log(realTotal,total,"realTotal,total",loaded,"loaded")
+    if(loaded.length === total.length) {
+       setTimeout(()=>{$("#lodingMask").hide()},500)
     }
 }
