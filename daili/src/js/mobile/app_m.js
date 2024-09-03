@@ -351,48 +351,69 @@ function loadFotterPic () {
 
 function mediaLoaded(funcName){
     let IMG= $("img"),VIDEO=$("video");
-    let total =[...IMG,...VIDEO]
+    // let total =[...IMG,...VIDEO]
+    let total =[...IMG]
     let loaded =[]
     let realTotal = []
-    total.forEach((item)=>{
-        realTotal = total.filter((iy)=>iy.currentSrc !== item.src)
+
+    console.log(total,"total")
+    total.map((item)=>{
+        if(total.filter((iy)=>iy.src == item.src).length == 0){
+            realTotal.push(item)
+        }
     })
-    total.length=0
-    total=realTotal
 
     for (const totalKey in total) {
-       if(total[totalKey].nodeName=="VIDEO") {
-            loaded.push(total[totalKey])
-        }
-        if(total[totalKey].nodeName=="IMG" && !!total[totalKey].complete){
-            loaded.push(total[totalKey])
+       // if(total[totalKey].nodeName=="VIDEO") {
+       //      loaded.push(total[totalKey])
+       //  }
+
+        if(total[totalKey].nodeName=="IMG"){
+            // console.log(total[totalKey].complete,"total[totalKey]",total[totalKey])
+            if(total[totalKey].complete) {
+                loaded.push(total[totalKey])
+            }
+            total[totalKey].onload = function (){
+                // console.log(total[totalKey],"total[totalKey]!!!",total[totalKey].complete)
+                if(total[totalKey].complete) {
+                    loaded.push(total[totalKey])
+                }
+                if(loaded.length == total.length){
+                    setTimeout(()=>{$("#lodingMask").hide()},500)
+                }
+                // console.log(loaded,"loaded",loaded.length,total.length)
+            }
+            // loaded.push(total[totalKey])
         }
     }
-    if(loaded.length === total.length) {
-        let videos=loaded.filter((item)=>item.nodeName=="VIDEO")
-        if(videos.length>0){
-            videos.map((vva,idx)=>{
-               // console.log(vva.readyState,"vva.readyState")
-                if(vva.readyState!==4){
-                  setInterval(()=>{
-                        if(vva.readyState==4){
-                            videos[idx].readyState = 4
-                            if(videos.filter((vi)=>vi.readyState==4).length === videos.length){
-                                setTimeout(()=>{$("#lodingMask").hide()},500)
-                            }
-                        }
-                    },10)
-                }
-                if(vva.readyState==4){
-                    setInterval(()=>{
-                       if(videos.filter((vi)=>vi.readyState==4).length === videos.length){
-                         setTimeout(()=>{$("#lodingMask").hide()},500)
-                       }
-                    },10)
-                }
-            })
-        }else{
-            setTimeout(()=>{$("#lodingMask").hide()},500)
-        }
-    }
+    // console.log(loaded ,realTotal,"loaded.length === realTotal.length")
+    // if(loaded.length === total.length) {
+    //     // let videos=loaded.filter((item)=>item.nodeName=="VIDEO")
+    //     // if(videos.length>0){
+    //     //     videos.map((vva,idx)=>{
+    //     //        // console.log(vva.readyState,"vva.readyState")
+    //     //         if(vva.readyState!==4){
+    //     //             console.log(vva,"vva!!!")
+    //     //           // setInterval(()=>{
+    //     //           //       if(vva.readyState==4){
+    //     //           //           videos[idx].readyState = 4
+    //     //           //           if(videos.filter((vi)=>vi.readyState==4).length === videos.length){
+    //     //           //               setTimeout(()=>{$("#lodingMask").hide()},500)
+    //     //           //           }
+    //     //           //       }
+    //     //           //   },10)
+    //     //         }
+    //     //         if(vva.readyState==4){
+    //     //             setInterval(()=>{
+    //     //                if(videos.filter((vi)=>vi.readyState==4).length === videos.length){
+    //     //                  setTimeout(()=>{$("#lodingMask").hide()},500)
+    //     //                }
+    //     //             },10)
+    //     //         }
+    //     //     })
+    //     // }else{
+    //     //     setTimeout(()=>{$("#lodingMask").hide()},500)
+    //     // }
+    //     setTimeout(()=>{$("#lodingMask").hide()},500)
+    // }
 }
