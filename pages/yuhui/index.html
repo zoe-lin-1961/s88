@@ -132,7 +132,7 @@
           allcount++
         }
       }
-      console.log(createJSON)
+      console.log(createJSON,"createJSON")
     }
 
 
@@ -172,10 +172,11 @@
         let promoItem = document.createElement('div');
         promoItem.classList.add('promo-item');
         promoItem.onclick=function (){
+            // console.log(_data.length,"_data.length")
           promoItemDetail(_data[i],contectSet,_data.length);
         }
         let _img = document.createElement('img');
-        let GRID_item = _data[i]['promobanner'].some(item => item.type == 'GRID')? _data[i]['promobanner'].filter((item)=>item.type == 'GRID')[0]:undefined;
+        let GRID_item = _data[i]['promobanner'].some(item => item.type == 'GRID')? _data[i]['promobanner'].filter((item)=>item.type == 'GRID')[0]:void(0);
         let GRID_url = GRID_item ? GRID_item['imageurl']:'';
         let preSrc = 'https://img.alltocon.com'//线上图的域名
         let pageLocation = window.location.href.replace("/index.html","")
@@ -296,8 +297,9 @@
     }
   }
   function getDomPromoItemDetail(_data,contectSet,dataCount) {
+    // console.log(_data,contectSet,dataCount,"_data,contectSet,dataCount")
     let leftDom = document.getElementById('left-window'),mainDom =document.getElementById('main-container');
-    let title = _data["promoname"];
+    let title =_data["promotitle"]["vi-VN"] ||  _data["promoname"];
 
     let GRID_item = _data['promobanner'].some(item => item.type == 'GRID')? _data['promobanner'].filter((item)=>item.type == 'GRID')[0]:undefined;
 
@@ -336,6 +338,7 @@
   }
   function reWriteDataFromWeb (father,contectSet,id,_data){
     let reWrite = reWriteDataSet(father,contectSet)
+    // console.log(reWrite.JsData,reWrite.ColorText,id,"reWrite.JsData,reWrite.ColorText,id")
    let returnJSON = loadreWriteDataFromWeb(reWrite.JsData,reWrite.ColorText,id)
     updateJSON(returnJSON)
   }

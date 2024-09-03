@@ -317,6 +317,7 @@ function textColors (Obj,colorArr=[]){
                 nearByText = preText.substring(preText.length-5,preText.length)
                 if(preText.includes("Mã Khuyến Mãi")){nearByText="Mã Khuyến Mãi"}
                 if(theText.includes("Lưu ý")){nearByText="Lưu ý"}
+                if(theText.includes("※") && theText.includes("Phương thức nhận thưởng")){nearByText="Phương thức nhận thưởng"}
                 if(theText.includes("Nhật ký nhiệm vụ tiếp theoclick vào Mỗi kỳ")){nearByText="Nhật ký nhiệm vụ tiếp theoclick vào Mỗi kỳ"}
                 if(theText.includes("Nhận Thưởng Ngay")){nearByText="Nhận Thưởng Ngay"}
                 if(theText.includes("Thư ngỏ:")){nearByText="Thư ngỏ:"}

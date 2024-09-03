@@ -21,46 +21,49 @@ $(document).ready(function () {
 })
 function mediaLoaded(funcName){
     let IMG= $("img"),VIDEO=$("video");
-    let total =[]
+    let total =[...IMG,...VIDEO]
     let loaded =[]
-    let hasUnLoad = []
-    for (const imgKey in IMG) {
-        if(typeof (IMG[imgKey]) == "object" && IMG[imgKey].nodeName=="IMG"){
-            total.push(IMG[imgKey])
-        }
-    }
-    for (const videoKey in VIDEO) {
-        if(typeof (VIDEO[videoKey]) == "object" && VIDEO[videoKey].nodeName=="VIDEO"){
-            total.push(VIDEO[videoKey])
-        }
-    }
+    let realTotal = []
+    total.forEach((item)=>{
+        realTotal = total.filter((iy)=>iy.currentSrc !== item.src)
+    })
+    total.length=0
+    total=realTotal
+
     for (const totalKey in total) {
-        if(total[totalKey].nodeName=="IMG") {
-            if(total[totalKey].complete) {
-                loaded.push(total[totalKey])
-            }else{
-                hasUnLoad.push(total[totalKey])
-            }
+        if(total[totalKey].nodeName=="VIDEO") {
+            loaded.push(total[totalKey])
         }
-        if(total[totalKey].nodeName=="VIDEO"){
-            if(total[totalKey].readyState === 4) {
-                loaded.push(total[totalKey])
-            }
+        if(total[totalKey].nodeName=="IMG" && !!total[totalKey].complete){
+            loaded.push(total[totalKey])
         }
     }
-    console.log(total,"total",hasUnLoad,funcName)
-    if(hasUnLoad.length>0){
-        hasUnLoad.map((unloadImg,index) =>{
-            unloadImg.onload = function (){
-                loaded.push(unloadImg);
-                console.log(unloadImg)
-                hasUnLoad = hasUnLoad.filter((v)=>v.currentSrc!==unloadImg.currentSrc)
-                if(hasUnLoad.length == 0){
-                    console.log("加载完成")
-                    $("#lodingMask").hide()
+    if(loaded.length === total.length) {
+        let videos=loaded.filter((item)=>item.nodeName=="VIDEO")
+        if(videos.length>0){
+            videos.map((vva,idx)=>{
+                // console.log(vva.readyState,"vva.readyState")
+                if(vva.readyState!==4){
+                    setInterval(()=>{
+                        if(vva.readyState==4){
+                            videos[idx].readyState = 4
+                            if(videos.filter((vi)=>vi.readyState==4).length === videos.length){
+                                setTimeout(()=>{$("#lodingMask").hide()},500)
+                            }
+                        }
+                    },10)
                 }
-            }
-        })
+                if(vva.readyState==4){
+                    setInterval(()=>{
+                        if(videos.filter((vi)=>vi.readyState==4).length === videos.length){
+                            setTimeout(()=>{$("#lodingMask").hide()},500)
+                        }
+                    },10)
+                }
+            })
+        }else{
+            setTimeout(()=>{$("#lodingMask").hide()},500)
+        }
     }
 }
 document.addEventListener("DOMContentLoaded", ()=>{

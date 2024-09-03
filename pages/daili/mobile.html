@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="src/css/mobile/reset.css" />
     <link rel="stylesheet" href="src/css/mobile/icon.css" />
     <link rel="stylesheet" href="src/css/mobile/style.css" />
+    <link rel="preload" as="video" type="video/mp4" href="src/video/DailySA88.mp4">
     <!-- Jquery -->
     <script src="src/js/mobile-detect.min.js"></script>
     <script src="src/js/mobile/jquery.min.js"></script>
@@ -391,7 +392,7 @@
 <script>
   const md = new MobileDetect(window.navigator.userAgent);
   const isNotPC =md.tablet()||md.phone()||md.mobile()
-  if(!!isNotPC){console.warn("已进入移动端")}else {window.location = 'index.html'}
+  if(!!isNotPC){console.warn("已进入移动端");mediaLoaded("space")}else {window.location = 'index.html'}
   document.getElementsByClassName("sa88-box-pad")[0].addEventListener("scroll", (event) => {
     let scollTop = document.getElementsByClassName("sa88-box-pad")[0].scrollTop,domHeight = document.getElementsByClassName("sa88-box-pad")[0].clientHeight
     $(".sa88-box-pad").css("height",screen.availHeight)
