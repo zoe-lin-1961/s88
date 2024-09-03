@@ -383,6 +383,10 @@ function mediaLoaded(funcName){
                 }
                 // console.log(loaded,"loaded",loaded.length,total.length)
             }
+            if(loaded.length == total.length){
+                setTimeout(()=>{$("#lodingMask").hide()},500)
+                console.log("在loaded外")
+            }
             // loaded.push(total[totalKey])
         }
     }
