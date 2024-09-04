@@ -24,21 +24,15 @@
         <div class="video" style="position:relative;float: left;width:100vw;height: auto;margin: 0.3rem 0 0.5rem 0">
             <div class="border-v notIphone">
                 <video  controls="" muted autoplay loop class="sa88Video" style="" poster="landingPage/images/fishingVideo.png">
-                  <source src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000" x5-video-player-type="h5" x5-video-player-fullscreen="true" type="video/mp4">
+                  <source src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000" x5-video-player-type="h5" x5-video-player-fullscreen="false" type="video/mp4">
                 </video>
-<!--                <div class="sa88Video" >-->
-<!--                <iframe-->
-<!--                style="height:100%;width:100%"-->
-<!--                src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724726276547-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724697527000"-->
-<!--                allow="autoplay; fullscreen;encrypted-media;"></iframe>-->
-<!--                </div>-->
             </div>
             <div class="border-v isIphone">
-<!--                <video  controls="" muted loop class="sa88Video" style="" poster="landingPage/images/animation.gif">-->
-<!--                    <source src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000"   type="video/mp4">-->
-<!--                </video>-->
-<!--                <div style="position:absolute;z-index: 222;width:calc(8.61rem - 12px);aspect-ratio:2048 / 1165;background:url(landingPage/images/animation.gif);background-size: contain"></div>-->
-                <iframe style="width:calc(8.61rem - 6px);aspect-ratio:2048 / 1165;" src="landingPage/video/SA88fishingVideo.mp4"   title="SA88 fishingVideo" frameborder="0"  referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<!--                <iframe id="iphone-iframe"  style="position:relative;width:100%;aspect-ratio: 2475/1392;padding:0;border:0"  src="landingPage/video/SA88fishingVideo.mp4" title="SA88fishingVideo" frameborder="0"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" fullscreenEnabled="0">-->
+<!--                </iframe>-->
+                <video  controls="" muted autoplay loop class="sa88Video" id="iphone-sa88" style="" poster="landingPage/images/fishingVideo.png">
+                    <source src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000" x5-video-player-type="h5"  x5-video-player-fullscreen="false" webkit-playsinline type="video/mp4" >
+                </video>
             </div>
         </div>
         <div class="often bd">
@@ -136,34 +130,38 @@
     const md = new MobileDetect(window.navigator.userAgent);
     if(md.phone() && md.phone()=='iPhone') {
         console.log("是iPhone!!!!")
-        document.getElementsByClassName("notIphone")[0].setAttribute("style","display:none")
+        let notIphone =document.getElementsByClassName("notIphone")[0]
+        document.getElementsByClassName("video")[0].removeChild(notIphone)
+        // document.getElementsByClassName("notIphone")[0].setAttribute("style","display:none")
+        getVideo()
+        // alert()
     }else{
-        document.getElementsByClassName("isIphone")[0].setAttribute("style","display:none")
+        let isIphone =document.getElementsByClassName("isIphone")[0]
+        document.getElementsByClassName("video")[0].removeChild(isIphone)
+        // document.getElementsByClassName("isIphone")[0].setAttribute("style","display:none")
     }
 
-    // document.onreadystatechange = function(e){
-    //     if(e.target.readyState === "interactive") {
-    //         let preload = mkDOM("div",[{"id":"preload"}])
-    //         document.getElementsByTagName("body")[0].append(preload)
-    //         if(!!document.getElementById("preload")){
-    //             let loadPre = document.getElementById("preload")
-    //             const xhr=new XMLHttpRequest();
-    //             xhr.open("GET", "../pages/preLoad/index.html", true);
-    //             xhr.send();
-    //             xhr.onreadystatechange=function(){
-    //                 if(xhr.readyState==4 && xhr.status==200){
-    //                     // console.log(xhr.responseText,"xhr.responseText")
-    //                     loadPre.innerHTML = xhr.responseText
-    //                 }
-    //             };
-    //         }
-    //     }
-    //     if(e.target.readyState === "complete") {
-    //         let loadPre = document.getElementById("preload")
-    //         loadPre.innerHTML = ""
-    //         loadPre.remove()
-    //     }
-    // }
+    function getVideo(){
+        // const iframe = document.querySelector('#iphone-iframe').firstElementChild || window.frames['iphone-iframe']
+        // const body = iframe.contentWindow.document.body
+        // const video = iframe.contentWindow.document
+        // console.log(iframe.contentWindow.document.getElementsByName("media"),"123123")
+        // // setInterval(()=>{console.log("123123",iframe.contentWindow.getElementsByTagName('video') )},100)
+        let sa88Video = document.getElementById("iphone-sa88")
+
+        sa88Video.addEventListener("play",function(e){
+            // sa88Video.requestFullscreen = false;
+            // sa88Video.fullscreenEnabled(false)
+            sa88Video.fullscreenEnabled = false
+             console.log(sa88Video.fullscreenEnabled,"sa88Video.fullscreenEnabled")
+            e.target.addEventListener("resize",function (){
+                // console.log("123")
+                // sa88Video.fullscreenEnabled(false)
+            })
+        })
+
+        console.log(document.getElementById("iphone-sa88"))
+    }
 </script>
 </body>
 </html>
