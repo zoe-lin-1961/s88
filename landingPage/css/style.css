@@ -358,3 +358,7 @@ body{ background:#fff;font-family:Arial,Helvetica,sans-serif;}
 }
 
 
+video#mobile::-webkit-media-controls-timeline, video#mobile::-webkit-media-controls-volume-slider, video#mobile::-webkit-media-controls-current-time-display, video#mobile::-webkit-media-controls-play-button, video#mobile::-webkit-media-controls-current-time-display{
+  display: none!important;
+  -webkit-appearance: none !important;
+}
