@@ -403,8 +403,14 @@
     }
   });
   function topFunctionMobile (){
-    document.getElementsByClassName("sa88-box-pad")[0].scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+
+    const md = new MobileDetect(window.navigator.userAgent);
+    if(md.phone() && md.phone()=='iPhone'){
+      document.getElementsByClassName("sa88-box-pad")[0].scrollTo({top:0,behavior:"smooth"})
+    }else{
+      document.getElementsByClassName("sa88-box-pad")[0].scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
     window.location.hash=""
   }
   // document.onreadystatechange = function(e){
