@@ -39,11 +39,13 @@
 </html>
 <script>
     var createJSON=[]
-    function updateJSON(returnJSON){
-        var hasdata = createJSON.filter((c)=>c.id==returnJSON.id).length
-        if(!hasdata) {
-            createJSON.push(returnJSON)
-        }
+    async function updateJSON(returnJSON){
+        console.log(returnJSON,"returnJSON")
+        await  createJSON.push(returnJSON)
+        // var hasdata = createJSON.filter((c)=>c.id==returnJSON.id).length
+        // if(!hasdata) {
+        //   await  createJSON.push(returnJSON)
+        // }
     }
     let dataPromo =[];
     async function loadGetAjexJsonData(urls){
@@ -53,12 +55,12 @@
         let all = dataPromo[0]
         let id = getQueryVariable("id")
         let Grids=all.filter((a)=>a.promoid === id)[0]
-        getDomPromoItemDetail(Grids,getJsonDATA[0][3])
+         getDomPromoItemDetail(Grids,getJsonDATA[0][3],id)
     }
 
     loadGetAjexJsonData(["./sa88.json","https://api.hi678a.com/ve2prod-ecp/api/v1/promosforplayertoapply?currency=VND2&limit=100&locale=vi-VN&offset=0&platform=2"])
 
-    function getDomPromoItemDetail(_data,contectSet) {
+    function getDomPromoItemDetail(_data,contectSet,_id) {
         let leftDom = document.getElementById('left-window'),mainDom =document.getElementById('main-container');
         let title = _data["promotitle"]["vi-VN"] ||  _data["promoname"];
         let GRID_item = _data['promobanner'].some(item => item.type == 'GRID')? _data['promobanner'].filter((item)=>item.type == 'GRID')[0]:undefined;
@@ -85,8 +87,10 @@
         //右边的显示
         if(GRID_item['description']) {
             mainDom.innerHTML = GRID_item['description'];
-            let itemId = _data.promoid
+            //let itemId = _data.promoid
+            let itemId = _id
             reWriteDataFromWeb(mainDom,contectSet,itemId,_data)
+            console.log(createJSON,"createJSON")
             $("#main-containerReload")[0].innerHTML= createJSON.filter((item)=>item.id === itemId)[0].innerHTML
             resetTableColor($("#main-containerReload")[0])
         }
@@ -94,7 +98,12 @@
     function reWriteDataFromWeb (father,contectSet,id,_data){
         let reWrite = reWriteDataSet(father,contectSet)
         let returnJSON = loadreWriteDataFromWeb(reWrite.JsData,reWrite.ColorText,id)
-        updateJSON(returnJSON)
+
+        for (const returnJSONKey in returnJSON) {
+            // console.log(returnJSON[returnJSONKey]+"id!!!!")
+            updateJSON(returnJSON)
+        }
+
     }
 
     const resetBodyHeight = ()=>{

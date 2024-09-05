@@ -30,10 +30,10 @@
             <div class="border-v isIphone">
 <!--                <iframe id="iphone-iframe"  style="position:relative;width:100%;aspect-ratio: 2475/1392;padding:0;border:0"  src="landingPage/video/SA88fishingVideo.mp4" title="SA88fishingVideo" frameborder="0"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" fullscreenEnabled="0">-->
 <!--                </iframe>-->
-                <div style="position:absolute;width: 8.61rem;height: calc((8.61rem* 9 / 16) - 6px);background-color: red;background-image: url(landingPage/images/animation.gif);background-size: contain" ></div>
-<!--                <video  controls  controlslist="nofullscreen" muted autoplay loop preload="auto" class="sa88Video" id="mobile" poster="landingPage/images/fishingVideo.png" x5-video-player-type="h5"  x5-video-player-fullscreen="false" webkit-playsinline="true"  playsinline="true" disablePictureInPicture="true" type="video/mp4">-->
-<!--                    <source src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000"  >-->
-<!--                </video>-->
+                <div class="iphoneAnimate" ></div>
+                <video  controls  controlslist="nofullscreen" nofullscreen muted autoplay loop preload="auto" class="sa88Video" id="mobile" poster="landingPage/images/fishingVideo.png" x5-video-player-type="h5"  x5-video-player-fullscreen="false" webkit-playsinline="true"  playsinline="true" disablePictureInPicture="true" type="video/mp4">
+                    <source src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000"  >
+                </video>
             </div>
         </div>
         <div class="often bd">
@@ -126,6 +126,21 @@
           var _name = mkDOM("div",[{"innerHTML":link.name}])
             _a.append(_name)
            document.getElementsByClassName("aa-box")[0].children[0].append(_a)
+        })
+       let iphoneAnimate = document.getElementsByClassName("iphoneAnimate")[0]
+        iphoneAnimate.addEventListener("click",function (){
+            let video = document.getElementById("mobile")
+            if(video.readyState == 4) {
+               iphoneAnimate.setAttribute("style","display:none")
+               video.setAttribute("style","display:block")
+                alert("play影片，刚刚是动图")
+            }
+            console.log(document.getElementsByTagName("video"))
+            // video.addEventListener('canplaythrough',function(){
+            //     iphoneAnimate.setAttribute("style","display:none")
+            //     video.setAttribute("style","display:block")
+            // })
+           // console.log(video.canplaythrough)
         })
     })
     const md = new MobileDetect(window.navigator.userAgent);
