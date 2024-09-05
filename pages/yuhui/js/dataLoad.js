@@ -217,15 +217,15 @@ const clearCOOKIE = (name)=>{
     document.cookie = name+"=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
-function resetWidth(){
+async function resetWidth(){
     if(document.getElementsByTagName('body')[0].clientWidth < 779.9999){
         let ct =document.getElementsByClassName('category-item')
         let toW = 0
         for(let el in ct){var w =ct[el].offsetWidth || 0;toW += w}
         toW = toW+15
-        $(".cateBox").find("ul").width(toW)
+       await  $(".cateBox").find("ul").width(toW)
     }else{
-        $(".cateBox").find("ul").width("")
+       await  $(".cateBox").find("ul").width("")
     }
 
 }

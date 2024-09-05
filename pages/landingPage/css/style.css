@@ -357,3 +357,19 @@ body{ background:#fff;font-family:Arial,Helvetica,sans-serif;}
   }
 }
 
+.iphoneAnimate {
+  position:absolute;
+  width: 8.61rem;
+  height: calc((8.61rem* 9 / 16) - 6px);
+  background-color: #087cd4;
+  background-image: url(../images/animation.gif);
+  background-size: contain
+}
+#mobile {
+  display: none;
+}
+
+video#mobile::-webkit-media-controls-timeline, video#mobile::-webkit-media-controls-volume-slider, video#mobile::-webkit-media-controls-current-time-display, video#mobile::-webkit-media-controls-play-button, video#mobile::-webkit-media-controls-current-time-display{
+  display: none!important;
+  -webkit-appearance: none !important;
+}
