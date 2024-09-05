@@ -86,7 +86,7 @@
         _h1.innerText=title;
         leftDom.append(_img,_h1);
         //右边的显示
-        if(GRID_item['description']) {
+        // if(GRID_item['description']) {
             mainDom.innerHTML = GRID_item['description'];
             //let itemId = _data.promoid
             let itemId = _id
@@ -95,7 +95,7 @@
             //$("#main-containerReload")[0].innerHTML= createJSON.filter((item)=>item.id === itemId)[0].innerHTML
             $("#main-containerReload")[0].innerHTML=createJSONHTML
             resetTableColor($("#main-containerReload")[0])
-        }
+        // }
     }
     let createJSONHTML = ""
     function reWriteDataFromWeb (father,contectSet,id,_data){
