@@ -91,19 +91,22 @@
             //let itemId = _data.promoid
             let itemId = _id
             reWriteDataFromWeb(mainDom,contectSet,itemId,_data)
-            console.log(createJSON,"createJSON")
-            $("#main-containerReload")[0].innerHTML= createJSON.filter((item)=>item.id === itemId)[0].innerHTML
+            console.log(createJSONHTML,"createJSONHTML")
+            //$("#main-containerReload")[0].innerHTML= createJSON.filter((item)=>item.id === itemId)[0].innerHTML
+            $("#main-containerReload")[0].innerHTML=createJSONHTML
             resetTableColor($("#main-containerReload")[0])
         }
     }
+    let createJSONHTML = ""
     function reWriteDataFromWeb (father,contectSet,id,_data){
         let reWrite = reWriteDataSet(father,contectSet)
         let returnJSON = loadreWriteDataFromWeb(reWrite.JsData,reWrite.ColorText,id)
-
-        for (const returnJSONKey in returnJSON) {
-            // console.log(returnJSON[returnJSONKey]+"id!!!!")
-            updateJSON(returnJSON)
-        }
+        createJSONHTML= returnJSON["innerHTML"]
+        // for (const returnJSONKey in returnJSON) {
+        //     // console.log(returnJSON[returnJSONKey]+"id!!!!")
+        //
+        //     // updateJSON(returnJSON)
+        // }
 
     }
 
