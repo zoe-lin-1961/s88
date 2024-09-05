@@ -102,6 +102,7 @@
         let reWrite = reWriteDataSet(father,contectSet)
         let returnJSON = loadreWriteDataFromWeb(reWrite.JsData,reWrite.ColorText,id)
         createJSONHTML= returnJSON["innerHTML"]
+        alert(createJSONHTML)
         // for (const returnJSONKey in returnJSON) {
         //     // console.log(returnJSON[returnJSONKey]+"id!!!!")
         //
