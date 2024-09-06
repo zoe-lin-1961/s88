@@ -396,7 +396,7 @@
   document.getElementsByClassName("sa88-box-pad")[0].addEventListener("scroll", (event) => {
     let scollTop = document.getElementsByClassName("sa88-box-pad")[0].scrollTop,domHeight = document.getElementsByClassName("sa88-box-pad")[0].clientHeight
     $(".sa88-box-pad").css("height",screen.availHeight)
-    if(scollTop>domHeight) {
+    if(scollTop>domHeight - 55) {
       $("#myBtnMobile").css("display", "block")
     }else{
       $("#myBtnMobile").css("display","none")

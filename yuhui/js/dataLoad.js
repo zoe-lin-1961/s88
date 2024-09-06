@@ -227,7 +227,6 @@ async function resetWidth(){
     }else{
        await  $(".cateBox").find("ul").width("")
     }
-
 }
 
 function getQueryVariable(variable)
