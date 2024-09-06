@@ -11,6 +11,7 @@
     <script type="text/javascript" src="sa88.json"></script>
     <script src="js/dataLoad.js"></script>
     <script src="js/createdRedStyle.js"></script>
+    <script src="js/tobase64.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/less@4" ></script>
     <link rel="stylesheet/less" type="text/css" href="styles.less" />
   </head>
@@ -132,7 +133,7 @@
           allcount++
         }
       }
-      console.log(createJSON,"createJSON")
+      console.log(createJSON)
     }
 
 
@@ -164,15 +165,19 @@
       category.append(outer);
       $('.category-item')[0].classList.add('active');
     }
+
     function getDomPromoItem(_data,contectSet){
       var hasNotAllowPics = false
       $("#lodingMask").hide()
       for(let i=0; i<_data.length ;i++) {
         let title =_data[i]['promotitle'][lan];
         let promoItem = document.createElement('div');
+
+        let _id =  _data[i]["promoid"];
+
         promoItem.classList.add('promo-item');
         promoItem.onclick=function (){
-            // console.log(_data.length,"_data.length")
+          console.log(_data.length,"_data.length")
           promoItemDetail(_data[i],contectSet,_data.length);
         }
         let _img = document.createElement('img');
@@ -235,7 +240,7 @@
           }
         }
         if(isNotPC){
-          const atag = mkDOM("a",[{"href":"mobileDialog.html?id="+_data[i]["promoid"]},{"class":"ui-shadow"},{"data-transition":"pop"}])
+          const atag = mkDOM("a",[{"href":"mobileDialog.html?id="+_id},{"class":"ui-shadow"},{"data-transition":"pop"}])
           atag.append(promoItem)
           promo.append(atag)
         }else{
@@ -331,6 +336,10 @@
       if(dataCount && dataCount==createJSON.length){
         $("#main-containerReload")[0].innerHTML= createJSON.filter((item)=>item.id === itemId)[0].innerHTML
         resetTableColor($("#main-containerReload")[0])
+
+        let singoCreateJSON = createJSON.filter((item)=>item.id === itemId)[0].innerHTML
+        // let base64Encode = encodeFuc(JSON.stringify(singoCreateJSON))
+        // localStorage.setItem('__singoCreateJSON',base64Encode)
       }else{
         reWriteDataFromWeb(mainDom,contectSet,itemId,_data)
       }

@@ -26,7 +26,7 @@
                     <div class="modal-body ">
                        <div class="left-window "><div id="left-window"></div><div class="left-btn"></div></div>
                         <div class="main-container ">
-                                <div id="main-container" class="hide-main-container"></div>
+                                <div id="main-container"  style="position: absolute;opacity: 0;z-index: -1"></div>
                                 <div id="main-containerReloadCreated" class="hide-main-container"></div>
                                 <div id="main-containerReload"></div>
                         </div>
@@ -40,13 +40,12 @@
 <script>
     var createJSON=[]
     async function updateJSON(returnJSON){
-        console.log(returnJSON,"returnJSON")
-        await  createJSON.push(returnJSON)
-        // var hasdata = createJSON.filter((c)=>c.id==returnJSON.id).length
-        // if(!hasdata) {
-        //   await  createJSON.push(returnJSON)
-        // }
+        var hasdata = createJSON.filter((c)=>c.id==returnJSON.id).length
+        if(!hasdata) {
+          await  createJSON.push(returnJSON)
+        }
     }
+
     let dataPromo =[];
     async function loadGetAjexJsonData(urls){
         let getJsonDATA= [],i =0
@@ -56,6 +55,7 @@
         let id = getQueryVariable("id")
         let Grids=all.filter((a)=>a.promoid === id)[0]
          getDomPromoItemDetail(Grids,getJsonDATA[0][3],id)
+
     }
 
     loadGetAjexJsonData(["./sa88.json","https://api.hi678a.com/ve2prod-ecp/api/v1/promosforplayertoapply?currency=VND2&limit=100&locale=vi-VN&offset=0&platform=2"])
@@ -85,22 +85,22 @@
         _h1.innerText=title;
         leftDom.append(_img,_h1);
         //右边的显示
+
+
         if(GRID_item['description']) {
             mainDom.innerHTML = GRID_item['description'];
             //let itemId = _data.promoid
             let itemId = _id
             reWriteDataFromWeb(mainDom,contectSet,itemId,_data)
-            console.log(createJSON,"createJSON")
             $("#main-containerReload")[0].innerHTML= createJSON.filter((item)=>item.id === itemId)[0].innerHTML
             resetTableColor($("#main-containerReload")[0])
+            // alert(localStorage.getItem("__singoCreateJSON"))
         }
     }
     function reWriteDataFromWeb (father,contectSet,id,_data){
         let reWrite = reWriteDataSet(father,contectSet)
         let returnJSON = loadreWriteDataFromWeb(reWrite.JsData,reWrite.ColorText,id)
-
         for (const returnJSONKey in returnJSON) {
-            // console.log(returnJSON[returnJSONKey]+"id!!!!")
             updateJSON(returnJSON)
         }
 
