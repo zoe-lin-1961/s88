@@ -1,4 +1,12 @@
-body{ background:#fff;font-family:Arial,Helvetica,sans-serif;overflow-y: hidden}
+@font-face {
+  font-family: PingFangSC;
+  src: url('../font/PingFang-SC-Bold.ttf');
+}
+@font-face {
+  font-family: Helvetica;
+  src: url('../font/Helvetica.ttf');
+}
+body{ background:#fff;font-family:Helvetica;overflow-y: hidden}
 #main {
   /*overflow-y: auto;*/
   -webkit-overflow-scrolling: touch; 
@@ -145,7 +153,7 @@ body{ background:#fff;font-family:Arial,Helvetica,sans-serif;overflow-y: hidden}
   padding-top: 0;
 }
 .often-box {
-  width: 8.61rem;font-size: 0.33rem;font-family: FZLTTHK;color: #fff;margin: auto;
+  width: 8.61rem;font-size: 0.33rem;color: #fff;margin: auto;
 }
 .content .often p{
   padding-bottom: 0.2rem;

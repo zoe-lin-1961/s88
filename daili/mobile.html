@@ -392,7 +392,23 @@
 <script>
   const md = new MobileDetect(window.navigator.userAgent);
   const isNotPC =md.tablet()||md.phone()||md.mobile()
-  if(!!isNotPC){console.warn("已进入移动端");mediaLoaded("space")}else {window.location = 'index.html'}
+  if(!!isNotPC){console.warn("已进入移动端");mediaLoaded("space");}else {window.location = 'index.html';}
+  if(md.phone() && md.phone()=='iPhone') {
+    console.log("是iPhone!!!!")
+
+    let mainDOM = document.getElementsByTagName("body")
+    let safeAreaHeightValue = window.screen.height - window.innerHeight
+    mainDOM.style.height = window.screen.availHeight - safeAreaHeightValue + "px"
+    let sa88boxpad = document.getElementsByClassName("sa88-box-pad")[0]
+    sa88boxpad.style.height = window.screen.availHeight - safeAreaHeightValue + "px"
+    alert("body Height"+sa88boxpad.style.height+"||||window.innerHeight"+window.innerHeight+"||||safeAreaHeightValue"+safeAreaHeightValue)
+
+
+    let myBtnMobile = document.getElementById("myBtnMobile")
+    myBtnMobile.style.display = "block"
+    console.log(myBtnMobile.style,"myBtnMobile.style")
+
+  }
   document.getElementsByClassName("sa88-box-pad")[0].addEventListener("scroll", (event) => {
     let scollTop = document.getElementsByClassName("sa88-box-pad")[0].scrollTop,domHeight = document.getElementsByClassName("sa88-box-pad")[0].clientHeight
     $(".sa88-box-pad").css("height",screen.availHeight)
@@ -402,6 +418,7 @@
       $("#myBtnMobile").css("display","none")
     }
   });
+
   function topFunctionMobile (){
 
     const md = new MobileDetect(window.navigator.userAgent);
