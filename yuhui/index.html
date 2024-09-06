@@ -338,11 +338,8 @@
         resetTableColor($("#main-containerReload")[0])
 
         let singoCreateJSON = createJSON.filter((item)=>item.id === itemId)[0].innerHTML
-        let base64Encode = encodeFuc(JSON.stringify(singoCreateJSON))
-        localStorage.setItem('__singoCreateJSON',base64Encode)
-        // console.log(base64Encode,"SINGO__createJSON")
-        // setCOOKIE('__singoCreateJSON',base64Encode)
-        // console.log(document.cookie,"document.cookie!!!!!")
+        // let base64Encode = encodeFuc(JSON.stringify(singoCreateJSON))
+        // localStorage.setItem('__singoCreateJSON',base64Encode)
       }else{
         reWriteDataFromWeb(mainDom,contectSet,itemId,_data)
       }

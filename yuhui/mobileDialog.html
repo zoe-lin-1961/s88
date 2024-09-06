@@ -26,7 +26,7 @@
                     <div class="modal-body ">
                        <div class="left-window "><div id="left-window"></div><div class="left-btn"></div></div>
                         <div class="main-container ">
-                                <div id="main-container" class="hide-main-container"></div>
+                                <div id="main-container"  style="position: absolute;opacity: 0;z-index: -1"></div>
                                 <div id="main-containerReloadCreated" class="hide-main-container"></div>
                                 <div id="main-containerReload"></div>
                         </div>
@@ -94,22 +94,8 @@
             reWriteDataFromWeb(mainDom,contectSet,itemId,_data)
             $("#main-containerReload")[0].innerHTML= createJSON.filter((item)=>item.id === itemId)[0].innerHTML
             resetTableColor($("#main-containerReload")[0])
-            alert(localStorage.getItem("__singoCreateJSON"))
-            // console.log(localStorage.getItem("__singoCreateJSON"),"讨厌是必然的")
+            // alert(localStorage.getItem("__singoCreateJSON"))
         }
-        // let dataCount = 1
-        // if(GRID_item['description']) {
-        //     // 这里重写
-        //     mainDom.innerHTML = GRID_item['description'];
-        //     let itemId = _data.promoid
-        //
-        //     if(dataCount && dataCount==createJSON.length){
-        //         $("#main-containerReload")[0].innerHTML= createJSON.filter((item)=>item.id === itemId)[0].innerHTML
-        //         resetTableColor($("#main-containerReload")[0])
-        //     }else{
-        //         reWriteDataFromWeb(mainDom,contectSet,itemId,_data)
-        //     }
-        // }
     }
     function reWriteDataFromWeb (father,contectSet,id,_data){
         let reWrite = reWriteDataSet(father,contectSet)
