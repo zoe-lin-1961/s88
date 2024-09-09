@@ -400,7 +400,8 @@
     let mainDOM = document.getElementById("sa88-box")
     mainDOM.style.height = window.screen.availHeight - safeAreaHeightValue + "px"
     screen.availHeight = window.screen.availHeight - safeAreaHeightValue
-    let myBtnMobileBottom = (screen.availHeight) * 0.5 - 90
+    let toolHeight = screen.availHeight - window.innerHeight
+    let myBtnMobileBottom = (screen.availHeight - toolHeight) * 0.5
     $("#myBtnMobile").css("bottom", myBtnMobileBottom)
   }
   document.getElementsByClassName("sa88-box-pad")[0].addEventListener("scroll", (event) => {
