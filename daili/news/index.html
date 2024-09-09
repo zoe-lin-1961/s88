@@ -8,6 +8,7 @@
     <link rel="icon" href="../../daili/src/images/ve2prod.ico" />
     <link rel="preload" as="video" type="video/mp4" href="https://youtu.be/HkI22QHQMls?si=7Z8ptEWkRpP2ZKYD">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script type="text/javascript" src="../../landingPage/js/mobile-detect.min.js"></script>
     <link rel="stylesheet" href="../../daili/src/css/mobile/style.css">
     <title>SA88 Sự kiện nóng nhất</title>
 </head>
@@ -15,7 +16,7 @@
 <!--<html>-->
 <!--<head></head>-->
 <!--<body style="background-color: transparent;background-image: linear-gradient(15deg, white 100%, #dfe9f3 0%);">-->
-<div class="modal-body bg" style="padding-top: 1.5rem;padding-bottom: 1.5rem;margin-top: 8px;background-image:none">
+<div class="modal-body">
     <div class="news">
         <div class="section-news">
             <p class="title-news text-center ">Ấm l&ograve;ng những m&oacute;n qu&agrave; thiết thực trước thềm năm học mới</p>
@@ -103,16 +104,18 @@
        background-color: #e7f0fd;
     }
     body{
-        margin-top: 0!important;
+        margin: 0 !important;
+        height: 100vh!important;
+        background-image: linear-gradient(15deg, #dfe9f3 0%, white 100%);
     }
     .modal-body {
-        height: 100%;
-        border: 0;
+        position: fixed;top:0;width: 100vw;height: 100vh;overflow-y: scroll;
         border-radius: 0;
     }
     .news {
         width: 88vw;
         margin: auto !important;
+        padding-bottom: 3rem;
     }
     .section-news {
         margin-bottom: 2.6rem;
@@ -176,6 +179,16 @@
     }
 </style>
 <script>
+
+    const md = new MobileDetect(window.navigator.userAgent);
+    if(md.phone() && md.phone()=='iPhone') {
+        let mainDOM = document.getElementsByClassName("modal-body")[0]
+        let safeAreaHeightValue = window.screen.height - window.innerHeight
+        mainDOM.style.height = window.screen.availHeight - safeAreaHeightValue + "px"
+    }
+    // let mainDOM = document.getElementsByClassName("content")[0]
+    // let safeAreaHeightValue = window.screen.height - window.innerHeight
+    // mainDOM.style.height = window.screen.availHeight - safeAreaHeightValue + "px"
     document.onreadystatechange = function(e){
         console.log(e.target.readyState,"\"页面加载完毕！！\"")
         // if(doucument.readyState == 'complete'){
