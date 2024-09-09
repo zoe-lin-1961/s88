@@ -216,19 +216,6 @@ const setCOOKIE = (name,value)=>{
 const clearCOOKIE = (name)=>{
     document.cookie = name+"=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
-
-async function resetWidth(){
-    if(document.getElementsByTagName('body')[0].clientWidth < 779.9999){
-        let ct =document.getElementsByClassName('category-item')
-        let toW = 0
-        for(let el in ct){var w =ct[el].offsetWidth || 0;toW += w}
-        toW = toW+15
-       await  $(".cateBox").find("ul").width(toW)
-    }else{
-       await  $(".cateBox").find("ul").width("")
-    }
-}
-
 function getQueryVariable(variable)
 {
     var query = window.location.search.substring(1);

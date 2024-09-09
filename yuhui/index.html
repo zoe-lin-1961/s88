@@ -1058,7 +1058,6 @@
     }
   }
 
-  toLoadJqMobile()
   const resetBodyHeight = ()=>{
     // let winH = window.innerHeight
     let winH = screen.availHeight
@@ -1075,13 +1074,26 @@
       $(".main-containt").height(mododyH+"px")
     }
   }
+
+  const resetWidth = ()=>{
+    console.log(document.getElementsByTagName('body')[0].clientWidth,"document.getElementsByTagName('body')[0].clientWidth!!!")
+    if(document.getElementsByTagName('body')[0].clientWidth < 779.9999){
+      let ct =document.getElementsByClassName('category-item')
+      let toW = 0
+      for(let el in ct){var w =ct[el].offsetWidth || 0;toW += w}
+      toW = toW+15
+      $(".cateBox").find("ul").width(toW)
+    }else{
+      $(".cateBox").find("ul").width(0)
+    }
+  }
   //pc-modal
   resetBodyHeight()
   var resizeTimer = null;
   (window.onresize = function() {
     if(resizeTimer){clearTimeout(resizeTimer)}
     resizeTimer = setTimeout(function () {
-      resetWidth();
+      // resetWidth();
       resetBodyHeight();
       toLoadJqMobile();
       resetContentHeight();
@@ -1089,7 +1101,7 @@
   })()
 
   document.addEventListener("DOMContentLoaded",function (){
-    resetWidth();
+    // resetWidth();
     resetBodyHeight();
     toLoadJqMobile();
     resetContentHeight();
