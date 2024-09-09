@@ -2,8 +2,8 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-size: 62.5%}
 *{ margin:0; padding:0}
 a{outline:none;text-decoration:none;width: fit-content;}
 a:hover{text-decoration:none;}
-html{zoom:1;}
-html *{outline:0;zoom:1;}
+/*html{zoom:1;}*/
+/*html *{outline:0;zoom:1;}*/
 html button::-moz-focus-inner{border-color:transparent!important;}
 body{overflow-x: hidden;}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
@@ -28,7 +28,6 @@ em,i{font-style:normal;}
     width: 100vw;
     height: calc((420 / 750) * 100vw);
     overflow: hidden;
-    margin-bottom: 0.2rem;
     background-image: url(../images/banner1.png);
     background-repeat: no-repeat;
     background-size: contain;

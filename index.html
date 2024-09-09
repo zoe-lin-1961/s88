@@ -128,20 +128,23 @@
            document.getElementsByClassName("aa-box")[0].children[0].append(_a)
         })
        let iphoneAnimate = document.getElementsByClassName("iphoneAnimate")[0]
-        iphoneAnimate.addEventListener("click",function (){
-            let video = document.getElementById("mobile")
-            if(video.readyState == 4) {
-               iphoneAnimate.setAttribute("style","display:none")
-               video.setAttribute("style","display:block")
-                alert("play影片，刚刚是动图")
-            }
-            console.log(document.getElementsByTagName("video"))
-            // video.addEventListener('canplaythrough',function(){
-            //     iphoneAnimate.setAttribute("style","display:none")
-            //     video.setAttribute("style","display:block")
-            // })
-           // console.log(video.canplaythrough)
-        })
+        if(iphoneAnimate) {
+            iphoneAnimate.addEventListener("click",function (){
+                let video = document.getElementById("mobile")
+                if(video.readyState == 4) {
+                    iphoneAnimate.setAttribute("style","display:none")
+                    video.setAttribute("style","display:block")
+                    alert("play影片，刚刚是动图")
+                }
+                console.log(document.getElementsByTagName("video"))
+                // video.addEventListener('canplaythrough',function(){
+                //     iphoneAnimate.setAttribute("style","display:none")
+                //     video.setAttribute("style","display:block")
+                // })
+                // console.log(video.canplaythrough)
+            })
+        }
+
     })
     const md = new MobileDetect(window.navigator.userAgent);
     if(md.phone() && md.phone()=='iPhone') {
@@ -159,6 +162,7 @@
         let isIphone =document.getElementsByClassName("isIphone")[0]
         document.getElementsByClassName("video")[0].removeChild(isIphone)
         // document.getElementsByClassName("isIphone")[0].setAttribute("style","display:none")
+        console.log(window.innerHeight,"!!!")
     }
 
     function getVideo(){
