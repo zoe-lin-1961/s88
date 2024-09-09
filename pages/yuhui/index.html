@@ -1046,13 +1046,6 @@
       resetWidth()
       $("head").append(link,jQuery_Mobile)
       $(".pc-modal").hide()
-      if(md.phone() == "iPhone") {
-        console.log("是iPhone！！！")
-        // let mainDOM = document.getElementsByClassName("content")[0]
-        // let safeAreaHeightValue = window.screen.height - window.innerHeight
-        // mainDOM.style.height = window.screen.availHeight - safeAreaHeightValue + "px"
-        //.main-content
-      }
     }else{
       console.warn("已进入PC端")
       let headChildren = $("head")[0].children
@@ -1065,7 +1058,6 @@
     }
   }
 
-  toLoadJqMobile()
   const resetBodyHeight = ()=>{
     // let winH = window.innerHeight
     let winH = screen.availHeight
@@ -1082,13 +1074,26 @@
       $(".main-containt").height(mododyH+"px")
     }
   }
+
+  const resetWidth = ()=>{
+    console.log(document.getElementsByTagName('body')[0].clientWidth,"document.getElementsByTagName('body')[0].clientWidth!!!")
+    if(document.getElementsByTagName('body')[0].clientWidth < 779.9999){
+      let ct =document.getElementsByClassName('category-item')
+      let toW = 0
+      for(let el in ct){var w =ct[el].offsetWidth || 0;toW += w}
+      toW = toW+15
+      $(".cateBox").find("ul").width(toW)
+    }else{
+      $(".cateBox").find("ul").width(0)
+    }
+  }
   //pc-modal
   resetBodyHeight()
   var resizeTimer = null;
   (window.onresize = function() {
     if(resizeTimer){clearTimeout(resizeTimer)}
     resizeTimer = setTimeout(function () {
-      resetWidth();
+      // resetWidth();
       resetBodyHeight();
       toLoadJqMobile();
       resetContentHeight();
@@ -1096,6 +1101,9 @@
   })()
 
   document.addEventListener("DOMContentLoaded",function (){
+    // resetWidth();
+    resetBodyHeight();
+    toLoadJqMobile();
     resetContentHeight();
   })
   // document.onreadystatechange = function(e){
