@@ -170,9 +170,9 @@
     }
     function normalSetHeight(){
         let mainDOM = document.getElementsByClassName("content")[0]
-        let toolHeight = window.innerHeight - window.clientHeight
-        alert("window.screen.height:"+window.screen.height+"window.innerHeight:"+window.innerHeight+"screen.availHeight * 2) :"+screen.availHeight * 2)
-        mainDOM.style.height = screen.availHeight * 2 + "px"
+        let toolHeight = screen.availHeight * 2 - window.innerHeight
+       // alert("window.screen.height:"+window.screen.height+"window.innerHeight:"+window.innerHeight+"screen.availHeight * 2) :"+screen.availHeight * 2)
+        mainDOM.style.height = (screen.availHeight * 2) - toolHeight + "px"
     }
 
     function getVideo(){
