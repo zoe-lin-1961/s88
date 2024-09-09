@@ -39,18 +39,36 @@
       </div>
     </header>
     <div class="category"></div>
-    <div class="main-content">
-      <div><div class="promo-grid" id="promo"></div></div>
+    <div class="main-containt">
+          <div class="main-content" >
+            <div><div class="promo-grid" id="promo"></div></div>
+          </div>
+          <div class="step-info">
+            <div class="step-info-contain"></div>
+          </div>
+          <div class="footer-second">
+          </div>
+          <footer class="footer">
+            <div class="img-box"></div>
+          </footer>
+          <div class="copy-right"></div>
+
+
+
+
     </div>
-    <div class="step-info">
-      <div class="step-info-contain"></div>
-    </div>
-    <div class="footer-second">
-    </div>
-    <footer class="footer">
-      <div class="img-box"></div>
-    </footer>
-    <div class="copy-right"></div>
+<!--    <div class="main-content" style="display: none">-->
+<!--      <div><div class="promo-grid" id="promo"></div></div>-->
+<!--    </div>-->
+<!--    <div class="step-info" style="display: none">-->
+<!--      <div class="step-info-contain"></div>-->
+<!--    </div>-->
+<!--    <div class="footer-second" style="display: none">-->
+<!--    </div>-->
+<!--    <footer class="footer" style="display: none">-->
+<!--      <div class="img-box"></div>-->
+<!--    </footer>-->
+<!--    <div class="copy-right" style="display: none"></div>-->
 
     <div class="shadow-box hide-shadow-box pc-modal">
       <div class="modal hide-modal pc-modal">
@@ -462,6 +480,7 @@
   body {
     font-family: Arial, sans-serif, PingFangSC Helvetica;
     margin: 0;padding: 0;color: #fff;background-color: #000;width: 100%;
+    overflow-x: hidden;
   }
   .header {text-align: center;padding-top: 56px;padding-bottom: 48px;}
   #lodingMask {
@@ -476,6 +495,10 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+  }
+  .main-containt {
+  bottom: 0;width: 100vw!important;overflow:hidden;flex: 1;
+    padding-top:0
   }
   .app-load{
     position: fixed;
@@ -841,8 +864,15 @@
     .title>img {
       height: 12px;
     }
-    .main-content{padding-top:50px;margin-top: calc(120px + 3rem)}
+    .main-content{padding-top:3rem
+
+      /*margin-top: calc(120px + 3rem)*/
+    }
     .main-content>div{width: auto}
+    .main-containt {
+      position:fixed;
+      overflow-y: scroll;
+    }
     .category {position: fixed; top:118px;display: block;height: 3rem;width: 100vw;left:0;overflow: hidden;z-index: 100;background-color: #333}
     .cateBox {display: block;width: 100vw;height: 3rem;margin-bottom: 0;overflow: hidden;position: absolute;overflow-x: scroll;}
     .cateBox .category-item {
@@ -1041,6 +1071,17 @@
     let winH = screen.availHeight
     $("body").height(winH)
   }
+
+  const resetContentHeight = ()=>{
+    const headerH = $(".header")[0].offsetHeight
+    const categoryH =  $(".category")[0].offsetHeight
+    const toolHeight = screen.availHeight - window.innerHeight
+    const theTopBoxH = headerH+ categoryH
+    const mododyH =$("body")[0].offsetHeight - theTopBoxH - toolHeight
+    if($(".header")[0].offsetWidth < 780.999){
+      $(".main-containt").height(mododyH+"px")
+    }
+  }
   //pc-modal
   resetBodyHeight()
   var resizeTimer = null;
@@ -1049,10 +1090,14 @@
     resizeTimer = setTimeout(function () {
       resetWidth();
       resetBodyHeight();
-      toLoadJqMobile()
+      toLoadJqMobile();
+      resetContentHeight();
     },500)
   })()
 
+  document.addEventListener("DOMContentLoaded",function (){
+    resetContentHeight();
+  })
   // document.onreadystatechange = function(e){
   //   // if(e.target.readyState === "interactive") {
   //   //   let preload = mkDOM("div",[{"id":"preload"}])
