@@ -1046,13 +1046,6 @@
       resetWidth()
       $("head").append(link,jQuery_Mobile)
       $(".pc-modal").hide()
-      if(md.phone() == "iPhone") {
-        console.log("是iPhone！！！")
-        // let mainDOM = document.getElementsByClassName("content")[0]
-        // let safeAreaHeightValue = window.screen.height - window.innerHeight
-        // mainDOM.style.height = window.screen.availHeight - safeAreaHeightValue + "px"
-        //.main-content
-      }
     }else{
       console.warn("已进入PC端")
       let headChildren = $("head")[0].children
@@ -1096,6 +1089,9 @@
   })()
 
   document.addEventListener("DOMContentLoaded",function (){
+    resetWidth();
+    resetBodyHeight();
+    toLoadJqMobile();
     resetContentHeight();
   })
   // document.onreadystatechange = function(e){
