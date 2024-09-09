@@ -21,7 +21,7 @@
         <div class="fish-big-img">
             <ul></ul>
         </div>
-        <div class="video" style="position:relative;float: left;width:100vw;height: auto;margin: 0.3rem 0 0.5rem 0">
+        <div class="video" style="position:relative;float: left;width:100vw;height: auto;margin: 0.3rem 0 ">
             <div class="border-v notIphone">
                 <video controls  controlslist="nofullscreen" muted autoplay loop preload="auto" class="sa88Video"  poster="landingPage/images/fishingVideo.png" x5-video-player-type="h5" x5-video-player-fullscreen="false" webkit-playsinline="true"  playsinline="true"  disablePictureInPicture="true" type="video/mp4">
                   <source src="https://d1ifbi2yr6p9bt.cloudfront.net/6651126/1724385599221-ff145b897cbc778bb1c7c3a002a7b3cc.mp4?v=1724356838000" >
@@ -162,7 +162,15 @@
         let isIphone =document.getElementsByClassName("isIphone")[0]
         document.getElementsByClassName("video")[0].removeChild(isIphone)
         // document.getElementsByClassName("isIphone")[0].setAttribute("style","display:none")
-        console.log(window.innerHeight,"!!!")
+        // alert(screen.availHeight)
+        normalSetHeight()
+        window.addEventListener('resize',function(){
+            normalSetHeight()
+        })
+    }
+    function normalSetHeight(){
+        let mainDOM = document.getElementsByClassName("content")[0]
+        mainDOM.style.height = screen.availHeight * 2 + "px"
     }
 
     function getVideo(){
@@ -177,6 +185,7 @@
         //
         // console.log(document.getElementById("iphone-sa88"))
     }
+
 </script>
 </body>
 </html>
