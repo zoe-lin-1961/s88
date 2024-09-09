@@ -396,37 +396,15 @@
   if(md.phone() && md.phone()=='iPhone') {
     console.log("是iPhone!!!!")
 
-    let mainDOM = document.getElementsByTagName("body").item(0)
-    let safeAreaHeightValue = window.screen.height - window.innerHeight +"px"
+    let safeAreaHeightValue = window.screen.height - window.innerHeight
+    let mainDOM = document.getElementById("sa88-box")
     mainDOM.style.height = window.screen.availHeight - safeAreaHeightValue + "px"
-    let t = window.screen.availHeight - safeAreaHeightValue
-    alert(mainDOM.style.height+"||||"+t)
-
-    /// //////body的height设置
-
-
-    // console.log(window.screen.availHeight,mainDOM,safeAreaHeightValue)
-    // console.log(mainDOM,"mainDOM")
-    let sa88boxpad = document.getElementsByClassName("sa88-box-pad")[0]
-    sa88boxpad.style.height = window.screen.availHeight - safeAreaHeightValue - 55 + "px"
-   // alert("body Height"+sa88boxpad.style.height+"||||window.innerHeight"+window.innerHeight+"||||safeAreaHeightValue"+safeAreaHeightValue)
-
-
-    document.getElementsByClassName("sa88-box-pad")[0].addEventListener("scroll", (event) => {
-      console.log(event,"event")
-      let scollTop = document.getElementsByClassName("sa88-box-pad")[0].scrollTop,domHeight = document.getElementsByClassName("sa88-box-pad")[0].clientHeight
-      $(".sa88-box-pad").css("height",screen.availHeight)
-      if(scollTop>domHeight - 55) {
-        $("#myBtnMobile").css("display", "block")
-      }else{
-        $("#myBtnMobile").css("display","none")
-      }
-    });
-
+    screen.availHeight = window.screen.availHeight - safeAreaHeightValue
+    let myBtnMobileBottom = (screen.availHeight) * 0.5 - 90
+    $("#myBtnMobile").css("bottom", myBtnMobileBottom)
   }
   document.getElementsByClassName("sa88-box-pad")[0].addEventListener("scroll", (event) => {
     let scollTop = document.getElementsByClassName("sa88-box-pad")[0].scrollTop,domHeight = document.getElementsByClassName("sa88-box-pad")[0].clientHeight
-    $(".sa88-box-pad").css("height",screen.availHeight)
     if(scollTop>domHeight - 55) {
       $("#myBtnMobile").css("display", "block")
     }else{
@@ -445,6 +423,7 @@
     }
     window.location.hash=""
   }
+
   // document.onreadystatechange = function(e){
   //   if(e.target.readyState === "interactive") {
   //     let preload = mkDOM("div",[{"id":"preload"}])

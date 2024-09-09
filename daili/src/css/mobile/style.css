@@ -8,12 +8,14 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-size: 62.5%;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 body {
     /*overflow-y: scroll;*/
     display: block;
+    height: 100vh!important;
+    /*overflow-y: hidden;*/
 }
 
 #discount {
@@ -39,31 +41,38 @@ body {
     top: 0;
     left: 0;
     z-index: 999;
-    /* background-color: #1a130d; */
     height: 55px;
     width: 100%;
-
     background-image: linear-gradient(#0f305b, #154283 50%, #0f305a);
-
 }
 #sa88-box {
     position: absolute;
     float: left;
     width: 100vw;
+    height: 100vh!important;
     overflow: hidden;
-    margin-top:0;
-    min-height: calc(100vh - 55px);
+    /*margin-top:0;*/
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex:1
+    /*min-height: calc(100vh - 55px);*/
 }
 .sa88-box-pad {
-    position: fixed;
-    float: left;
-    width: 100vw;
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*position: relative;*/
+    /*width: 100vw;*/
+    /*height: calc(100% - 55px)!important;*/
     overflow-y: scroll;
     overflow-x:hidden ;
-    top: 55px;
+    position:fixed;bottom:0;height:calc(100% - 55px);width: 100vw
 }
 .section-menu {
-    display: none;
+    /*display: none;*/
+    display: block;
+    z-index: -1;
 }
 
 .banner-item img {
@@ -242,7 +251,7 @@ body {
     align-items: center;
     padding: .5rem 1rem;
     /* border-radius: 0 0 8px 8px; */
-
+    padding-bottom: 0!important;
     position: relative;
 }
 
@@ -594,7 +603,7 @@ ion-icon {
     display: block;
     width: 90%;
     margin: auto;
-    padding-bottom: 150px;
+    /*padding-bottom: 150px;*/
 }
 
 .section-intro p {
@@ -676,7 +685,7 @@ ion-icon {
     border-radius: 100px;
     background-color: #154283;
     opacity: 0.7;
-    bottom: calc(50vh);
+    bottom: calc(50vh - 20px);
 }
 #myBtnMobile:hover {
     background-color: #8bc4d7;
