@@ -317,12 +317,28 @@ function loadIntro(str) {
 
 }
 function loadContact(contacts) {
-    let kindsIcons ={"e-mail":"./src/images/icon-mail.png","telegram":"./src/images/icon-tele.png","youtube":"./src/images/icon-yt.png","fb":"./src/images/icon-fb.png","tiktok":"./src/images/icon-tiktok.png"}
+    let kindsIcons ={"e-mail":"./src/images/icon-mail.png","telegram":"./src/images/icon-tele.gif","youtube":"./src/images/icon-yt.gif","fb":"./src/images/icon-fb.gif","tiktok":"./src/images/icon-tiktok.gif"}
+    let titleIcons = {"gift":"src/images/gift.gif","footballan":"src/images/footballan.gif","dance":"src/images/dance.gif","jpwoman":"src/images/jpwoman.gif"}
     contacts.forEach((_items)=> {
         let _li = mkDOM("li"),_a,_title,_divTitle,_divA,_linksArr=[],_liLinks,_div = mkDOM("div", [{class:"img-icon-contact"}]), _img = mkDOM("img",[{src:kindsIcons[_items.kinds]}])
         if(!_items.links){
             _a=mkDOM("a",[{href:_items.href},{innerHTML:_items.href}])
             _title=mkDOM("a",[{innerHTML:_items.title},{style:"margin:0 5px 0 0;width: auto"}])
+            if(_items.title.includes("||")){
+                _title=mkDOM("a",[{class:"titleIconsA"}])
+                let withTitleIcon = _items.title.split("||")
+                withTitleIcon.forEach((item)=>{
+                    if(item.length > 0){
+                        var iconItem = null
+                        if(!!titleIcons[item]) {
+                            iconItem = mkDOM("img",[{src:titleIcons[item]},{class:"titleIcons"}])
+                        }else{
+                            iconItem = mkDOM("span",[{innerHTML:item},{class:"titleIconsSpan"}])
+                        }
+                        _title.append(iconItem)
+                    }
+                })
+            }
             _div.append(_img);
             _li.append(_div,_title,_a);
             $(".ctact ul").append(_li)
