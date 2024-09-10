@@ -305,10 +305,10 @@ body{ background:#fff;font-family:Helvetica;overflow-y: hidden}
   height: 1.3rem !important;
   border-radius: 5rem;
   color: #fff;
-  font-weight: 700;
+  font-weight: 800!important;
   text-align: center;
   white-space: nowrap;
-  font-size: 0.26rem;
+  font-size: 0.32rem;
   animation:  fontTranse 1.2s infinite;
 }
 .theFlaseDiv {
@@ -376,14 +376,14 @@ body{ background:#fff;font-family:Helvetica;overflow-y: hidden}
 
 @keyframes fontTranse{
   0% {
-    font-size: 0.26rem;
+    font-size: 0.32rem;
   }
 
   50%  {
-    font-size: 0.32rem;
+    font-size: 0.42rem;
   }
   100%  {
-    font-size: 0.26rem;
+    font-size: 0.32rem;
   }
 }
 
