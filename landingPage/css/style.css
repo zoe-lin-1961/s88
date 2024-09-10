@@ -155,8 +155,30 @@ body{ background:#fff;font-family:Helvetica;overflow-y: hidden}
 .often-box {
   width: 8.61rem;font-size: 0.33rem;color: #fff;margin: auto;
 }
+.often-box>p {
+  line-height: 1.5;
+
+}
+.often-box>p>.fire-like {
+  display: inline-block;
+  width: 0.3rem !important;
+  height: 0.7rem !important;
+  margin-top: -0.5rem!important;
+}
+.often-box>p>.star-like {
+  width: 0.3rem !important;
+  margin-top: -0.1rem!important;
+  height: 0.3rem !important;
+}
+.often-box>p>.star-like,.often-box>p>.fire-like,.often-box>p>span {
+  margin-right: 0.2rem;
+}
+.often-box>p>.right-site {
+  margin-left: 0.2rem;
+}
 .content .often p{
   padding-bottom: 0.2rem;
+  padding-top: 0.2rem;
   font-weight: 700;
 }
 .content .often p:last-child {
