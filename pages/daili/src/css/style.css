@@ -925,9 +925,21 @@ label {
     justify-content: center;
 }
 
-.img-icon-contact {
+.img-icon-contact, .titleIcons {
     height: 28px!important;
     width: 28px!important;
+}
+.titleIcons {
+    margin: 0 5px;
+}
+.titleIconsSpan {
+    margin-left: 0!important;
+}
+.titleIconsA {
+    display: inline-flex!important;
+    color: unset!important;
+    height: 28px!important;
+    line-height: 28px!important;
 }
 
 input[type=submit] {
@@ -1568,3 +1580,4 @@ input[type=submit] {
         margin: auto!important;
     }
 }
+

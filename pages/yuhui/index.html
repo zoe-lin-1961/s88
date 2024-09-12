@@ -131,7 +131,7 @@
       connect=getJsonDATA[0][3]
       loadGetDomPromoItemDetail(all,connect)
     }
-    //loadGetAjexJsonData(["./sa88.json","./data_ud_0802.json"])
+    // loadGetAjexJsonData(["./sa88.json","./data_ud_0802.json"])
 
     // if(ispreload) {
     //   console.log("loadGetAjexJsonData.....")
@@ -365,7 +365,7 @@
   }
   function reWriteDataFromWeb (father,contectSet,id,_data){
     let reWrite = reWriteDataSet(father,contectSet)
-    // console.log(reWrite.JsData,reWrite.ColorText,id,"reWrite.JsData,reWrite.ColorText,id")
+    console.log(reWrite.JsData,reWrite.ColorText,id,"reWrite.JsData,reWrite.ColorText,id")
    let returnJSON = loadreWriteDataFromWeb(reWrite.JsData,reWrite.ColorText,id)
     updateJSON(returnJSON)
   }
@@ -497,7 +497,11 @@
     height: 100%;
   }
   .main-containt {
-  bottom: 0;width: 100vw!important;overflow:hidden;flex: 1;
+  bottom: 0;width: 100vw!important;
+    /*overflow:hidden;*/
+    overflow-x: hidden;
+    /*height: auto!important;*/
+    flex: 1;
     padding-top:0
   }
   .app-load{
@@ -872,6 +876,7 @@
     .main-containt {
       position:fixed;
       overflow-y: scroll;
+      /*height: unset!important;*/
     }
     .category {position: fixed; top:118px;display: block;height: 3rem;width: 100vw;left:0;overflow: hidden;z-index: 100;background-color: #333}
     .cateBox {display: block;width: 100vw;height: 3rem;margin-bottom: 0;overflow: hidden;position: absolute;overflow-x: scroll;}
@@ -1071,6 +1076,8 @@
     const mododyH =$("body")[0].offsetHeight - theTopBoxH - toolHeight
     if($(".header")[0].offsetWidth < 780.999){
       $(".main-containt").height(mododyH+"px")
+    }else{
+      $(".main-containt").height("auto")
     }
   }
 

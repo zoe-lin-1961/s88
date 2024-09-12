@@ -7,8 +7,8 @@ function reWriteDataSet(father,contectSet){
     let rgbCover = textColorsSet.map((r)=>{if(r["_key"]==="isCoverBlock"){if(r["theTitle"]){ return r["theTitle"]} }} )
 
 
-    rgbLightBlue = rgbLightBlue.filter((v)=>v!==void(0))
-    rgbRed= rgbRed.filter((v)=>v!==void(0))
+    rgbLightBlue = rgbLightBlue.filter((v)=>v!==void(0) &&  v!=="https://t.me/SA88COM")
+    rgbRed= rgbRed.filter((v)=>v!==void(0) &&  v!=="https://t.me/SA88COM")
     rgbCover= rgbCover.filter((v)=>v!==void(0))
     let nearByText = textColorsSet.map((r)=>{if(r["nearByText"]!==''){ return r["nearByText"]}})
     nearByText =nearByText.filter((v)=>v!==void(0))
@@ -42,14 +42,14 @@ function replaceContectSet(contectSet,JsData){
             links.a=`<a href="${contectSetLinks[1]}" class='text-red'><span style="text-decoration: underline;">${contectSetLinks[1]}</span></a>`
         }
     })
-    // console.log(JsData,'JsData!!!')
     JsData.blocks.map((b)=>{
         let dataString = b["stringArr"]
         if(dataString && dataString.includes("<a hr") && dataString.includes("#00ccff")){
             b["stringArr"] = `${dataString.split('với"')[0].trim()} với <span class="link-span">"</span><a href="${contectSet.connect.yuhui}"  style="color: #00ccff;">Quy tắc và Điều khoản ưu đãi</a><span class="link-span">"</span> .${dataString.split('".')[1].trim()}`
         }
         if(dataString && dataString.includes("<a hr") && dataString.includes("#0000ff")){
-            b["stringArr"] = `${dataString.split("<a")[0].trim()}<a href="${contectSet.connect.SA88COM}"  style="color: #0000ff;padding:0 5px">@SA88COM</a>${dataString.split("</a>")[1].trim()}`
+            let afterLinkText = dataString.split("</a>")[1].trim()
+            b["stringArr"] = `${dataString.split("<a")[0].trim()}<a href="${contectSet.connect.SA88COM}"  style="color: #0000ff;padding:0 5px">@SA88COM</a>`+afterLinkText
         }
     })
 }
@@ -63,6 +63,7 @@ function setContent (Obj,jsonArr=[]) {
     for (var j=0;j<children.length;j++) {
 
         var theText = children[j].outerText ;
+
         if(children[j].nodeType===1) { theText = "["+children[j].nodeName+"]"+theText}
         if(children[j].nodeType===3) {
             theText = "["+children[j].nodeName+"]"+children[j].wholeText
@@ -90,6 +91,7 @@ function setContent (Obj,jsonArr=[]) {
             if(children[j].parentNode.nodeName=="P"  && j==0){
                 theText = "[BR]"+theText
             }
+
         }
         jsonArr.push(theText)
         if(children[j].childNodes.length>0){
@@ -153,7 +155,9 @@ function mkJsData(_array,textColorsSet){
     var spanArray =[]
     for(var v=0;v<notSpanIndex.length-1;v++){
         var nospanIdx = notSpanIndex[v],nextIdx = notSpanIndex[v + 1]
-        if(nextIdx - nospanIdx >1) {var marr=[];for(var i=nospanIdx+1;i<nextIdx; i++){marr.push(blocks[i])};spanArray.push({startIdx: nospanIdx+1,endIdx:nextIdx-1,arr:marr})}}
+        if(nextIdx - nospanIdx >1) {var marr=[];for(var i=nospanIdx+1;i<nextIdx; i++){marr.push(blocks[i])};spanArray.push({startIdx: nospanIdx+1,endIdx:nextIdx-1,arr:marr})}
+    }
+    // console.log("天葬",spanArray)
     var initArr=[],tableArr =[]
     for(var t=0;t<tableIndex.length;t++){
         var tableIdx = tableIndex[t],nextIdx= tableIndex[t+1];
@@ -207,10 +211,12 @@ function mkJsData(_array,textColorsSet){
     return {"mainTitle":mainTitle,"subTitle":subTitle,"Sa88Links":Sa88LInks,"blocks":_blocks,"links":linkArr}
 }
 const sortArr = (a1,a2) => a1.startIdx> a2.startIdx ? 1 : -1;
-function spanJOSN(arr){
+function spanJOSN(Arr){
     let _spanArr=[]
-    arr.forEach((_domArr)=>{
+
+    Arr.forEach((_domArr)=>{
         var _strAll =''
+
         _domArr.arr.forEach((_dom,idx)=>{
             if(!!_domArr.arr[idx+1] && !!_domArr.arr[idx] && _domArr.arr[idx+1].startsWith("[#text]")){
                 let next = removeTag(_domArr.arr[idx+1],"text")
