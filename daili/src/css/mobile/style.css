@@ -564,6 +564,9 @@ ion-icon {
     min-height: 1.8rem;
     padding-left: 30px;
 }
+.titleIconsSpan {
+    color: rgb(0, 0, 0)!important;
+}
 .titleIconsA {
     display: inline-flex!important;
     line-height: 20px!important;
