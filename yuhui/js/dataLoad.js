@@ -51,6 +51,7 @@ function loadreWriteDataFromWeb(JsData,textColorsSet,id) {
             }
             string = mkDOM('span',[{"class":"inline-full"+detailTextClass+hanaStyleClass+numberListClass},{"innerHTML":STRING}])
             let HasNearByText = colorNearBy.filter((c)=>STRING.includes(c)).length
+
             if(!!hasRgbRed) {
                 let titleContents=["👉","KHUYẾN MÃI IV:","KHUYẾN MÃI III:","KHUYẾN MÃI II:","KHUYẾN MÃI I:"]
                 let isTitle = titleContents.filter((c)=>STRING.indexOf(c) > -1).length
@@ -75,6 +76,10 @@ function loadreWriteDataFromWeb(JsData,textColorsSet,id) {
                         replaceString.forEach((replaceStr,idx)=>{
                             var stringA = mkDOM('span',[{"innerHTML":replaceStr}])
                             if(idx<replaceString.length){
+                                let isDiscountCode = STRING.includes("Mã Khuyến Mãi:")||STRING.includes("Mã khuyến mãi:")
+                                if(STRING.includes("※") && isDiscountCode) {
+                                    colorClass="text-light-blue"
+                                }
                                 var cdom = mkDOM("span",[{"innerHTML":carr[idx]},{"class":colorClass}])
                             }
                             string.append(stringA,cdom)
@@ -92,7 +97,6 @@ function loadreWriteDataFromWeb(JsData,textColorsSet,id) {
             if(!!hasRgbLightBlue){
                 let titleContents=["👉","KHUYẾN MÃI IV:","KHUYẾN MÃI III:","KHUYẾN MÃI II:","KHUYẾN MÃI I:"]
                 let isTitle = titleContents.filter((c)=>STRING.indexOf(c) > -1).length
-                // console.log(blueTextArr,"blueTextArr",titleContents,"titleContents")
                 blueTextArr = blueTextArr.filter((c)=>c.length>0 && c!=="※")
                 blueTextArr = blueTextArr.filter((c)=>c!=="Phương thức nhận thưởng")
                 blueTextArr.forEach((c)=>{

@@ -131,7 +131,7 @@
       connect=getJsonDATA[0][3]
       loadGetDomPromoItemDetail(all,connect)
     }
-    //loadGetAjexJsonData(["./sa88.json","./data_ud_0802.json"])
+    // loadGetAjexJsonData(["./sa88.json","./data_ud_0802.json"])
 
     // if(ispreload) {
     //   console.log("loadGetAjexJsonData.....")
@@ -365,7 +365,7 @@
   }
   function reWriteDataFromWeb (father,contectSet,id,_data){
     let reWrite = reWriteDataSet(father,contectSet)
-    // console.log(reWrite.JsData,reWrite.ColorText,id,"reWrite.JsData,reWrite.ColorText,id")
+    console.log(reWrite.JsData,reWrite.ColorText,id,"reWrite.JsData,reWrite.ColorText,id")
    let returnJSON = loadreWriteDataFromWeb(reWrite.JsData,reWrite.ColorText,id)
     updateJSON(returnJSON)
   }
