@@ -32,6 +32,9 @@ function loadreWriteDataFromWeb(JsData,textColorsSet,id) {
     let BLOCKS = JsData.blocks
     let colorNearBy = textColorsSet.colorNearBy
 
+    console.warn("block",BLOCKS)
+    console.warn("textColorsSet.rgbRed",textColorsSet.rgbRed)
+    console.warn("textColorsSet.rgbLightBlue",textColorsSet.rgbLightBlue)
     BLOCKS.forEach((block,sr)=>{
         let blockArea = mkDOM("div",[{"class":"block-area"}])
         if(!block.table){
@@ -50,6 +53,7 @@ function loadreWriteDataFromWeb(JsData,textColorsSet,id) {
                 STRING = initMark+' '+STRING.split(initMark)[1].trim()
             }
             string = mkDOM('span',[{"class":"inline-full"+detailTextClass+hanaStyleClass+numberListClass},{"innerHTML":STRING}])
+            // console.log("string",string,!!hasRgbRed,!!hasRgbLightBlue)
             let HasNearByText = colorNearBy.filter((c)=>STRING.includes(c)).length
 
             if(!!hasRgbRed) {
@@ -86,10 +90,20 @@ function loadreWriteDataFromWeb(JsData,textColorsSet,id) {
                         })
                     }
                     if(r===STRING) {
+
                         string = mkDOM("span",[{"class":"inline-full text-red"+detailTextClass+hanaStyleClass+numberListClass},{"innerHTML":r}])
                         if(!!isTitle) {
                             string = mkDOM("span",[{"class":"text-red block-title"},{"innerHTML":r}])
                         }
+                    }
+                    if(!HasNearByText){
+                        string =string
+                       // console.log("自治区",string)
+                    }else{
+                        if(BLOCKS.length ===3){
+                          // console.error("汉化",string,colorNearBy,colorNearBy.filter((c)=>STRING.includes(c)))
+                        }
+
                     }
                 })
             }
@@ -141,10 +155,15 @@ function loadreWriteDataFromWeb(JsData,textColorsSet,id) {
                             string = mkDOM("span",[{"class":"text-red block-title"},{"innerHTML":c}])
                         }
                     }
+                    if(!HasNearByText){
+                        string =string
+                       // console.log("自治区",string)
+                    }
 
                 })
             }
             blockArea.append(string)
+            // console.log("????",blockArea)
         }else{
             var tbody = mkDOM("tbody"),table = mkDOM('table',[{"style":"width:100%"}])
             let head =block.table[0].head,body=block.table[0].body
@@ -172,6 +191,7 @@ function loadreWriteDataFromWeb(JsData,textColorsSet,id) {
             blockArea.append(table)
 
         }
+
         $("#main-containerReloadCreated").append(blockArea)
         let _reload = document.getElementById("main-containerReloadCreated")
         resetTableColor(_reload)
@@ -275,6 +295,17 @@ function resetTableColor(dom){
     }
 }
 
+const reMainTimes = (end,start)=>{
+    let remain = end - start
+    let remainDays = parseInt(remain / (3600000 * 24))
+    let remainHours = parseInt((remain - (remainDays * 3600000 * 24)) / 3600000)
+    let remainMin = parseInt((remain - (remainDays * 24 + remainHours) * 3600000) / 60000)
+    remainDays = twoDigit(remainDays);remainHours = twoDigit(remainHours);remainMin = twoDigit(remainMin);
+    return  remainDays+' Ngày '+remainHours+' Giờ '+remainMin+' Phút '
+}
+const twoDigit = (_number)=>{
+    if(Number(_number)<10){ return "0"+Number(_number)}else{return Number(_number)}
+}
 // 关闭视窗就清掉"UsePreLoadPromo" cookie
 window.onbeforeunload = function (e) {
     clearCOOKIE("UsePreLoadPromo")

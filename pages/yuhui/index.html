@@ -81,7 +81,9 @@
           </div>
           <div class="main-container pc-modal">
             <div id="main-container" class="hide-main-container"></div>
+<!--            <div id="main-container"></div>-->
             <div id="main-containerReloadCreated" class="hide-main-container"></div>
+<!--              <div id="main-containerReloadCreated" ></div>-->
             <div id="main-containerReload"></div>
           </div>
         </div>
@@ -185,6 +187,7 @@
     }
 
     function getDomPromoItem(_data,contectSet){
+
       var hasNotAllowPics = false
       $("#lodingMask").hide()
       for(let i=0; i<_data.length ;i++) {
@@ -193,10 +196,20 @@
 
         let _id =  _data[i]["promoid"];
 
+        let EndTime = _data[i]["enddate"] || null;
+        let remainTimesStr = ''
+
+        if(EndTime) {
+            let today = new Date().getTime()
+             remainTimesStr = reMainTimes(EndTime,today)
+
+        }
+
+
         promoItem.classList.add('promo-item');
         promoItem.onclick=function (){
           console.log(_data.length,"_data.length")
-          promoItemDetail(_data[i],contectSet,_data.length);
+          promoItemDetail(_data[i],contectSet,_data.length,remainTimesStr);
         }
         let _img = document.createElement('img');
         let GRID_item = _data[i]['promobanner'].some(item => item.type == 'GRID')? _data[i]['promobanner'].filter((item)=>item.type == 'GRID')[0]:void(0);
@@ -310,17 +323,18 @@
       modal.classList.add('hide-modal');
     }
   })
-  function promoItemDetail(_card,contectSet,dataCount) {
+  function promoItemDetail(_card,contectSet,dataCount,remainTimesStr) {
     if (_card) {
       mask.classList.remove('hide-shadow-box');
       modal.classList.remove('hide-modal');
       $('#left-window').empty();
       $('#mainDom').empty();
-     getDomPromoItemDetail(_card,contectSet,dataCount);
+     getDomPromoItemDetail(_card,contectSet,dataCount,remainTimesStr);
     }
   }
-  function getDomPromoItemDetail(_data,contectSet,dataCount) {
+  function getDomPromoItemDetail(_data,contectSet,dataCount,remainTimesStr) {
     // console.log(_data,contectSet,dataCount,"_data,contectSet,dataCount")
+      console.log(!!remainTimesStr,"remainTimesStr")
     let leftDom = document.getElementById('left-window'),mainDom =document.getElementById('main-container');
     let title =_data["promotitle"]["vi-VN"] ||  _data["promoname"];
 
@@ -354,6 +368,11 @@
       if(dataCount && dataCount==createJSON.length){
         $("#main-containerReload")[0].innerHTML= createJSON.filter((item)=>item.id === itemId)[0].innerHTML
         resetTableColor($("#main-containerReload")[0])
+          if(!!remainTimesStr) {
+              let remainTimeDOM = mkDOM("div",[{class:"remainTime text-red"},{innerHTML:remainTimesStr}])
+              $("#main-containerReload")[0].firstElementChild.before(remainTimeDOM)
+
+          }
 
         let singoCreateJSON = createJSON.filter((item)=>item.id === itemId)[0].innerHTML
         // let base64Encode = encodeFuc(JSON.stringify(singoCreateJSON))
@@ -365,7 +384,7 @@
   }
   function reWriteDataFromWeb (father,contectSet,id,_data){
     let reWrite = reWriteDataSet(father,contectSet)
-    console.log(reWrite.JsData,reWrite.ColorText,id,"reWrite.JsData,reWrite.ColorText,id")
+    // console.log(reWrite.JsData,reWrite.ColorText,id,"reWrite.JsData,reWrite.ColorText,id")
    let returnJSON = loadreWriteDataFromWeb(reWrite.JsData,reWrite.ColorText,id)
     updateJSON(returnJSON)
   }
@@ -453,6 +472,17 @@
   h6 {margin-top: 9.6px;margin-bottom: 9.6px;}
   .full-main-container { width: 100%;margin-left: 50px;}
   }
+  }
+
+  .remainTime{position:relative;display: flex;align-items: center;justify-content: right;float: left;right:5px;width: 100%;text-align: right;color: #ff0000 !important;}
+  .remainTime:before{
+      content: '';
+      width: 25px;
+      height: 25px;
+      margin-right: 5px;
+      display: inline-block;
+      background: url(img/icon-alert.svg);
+      background-size: 100%;
   }
 
   .hide-shadow-box {

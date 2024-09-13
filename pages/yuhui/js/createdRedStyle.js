@@ -128,13 +128,20 @@ function mkJsData(_array,textColorsSet){
     if(linkArr.length > 0){
         while(ln<3){
             let tIdx = linkArr[ln].idx,_obj={}
-            let mtitle=removeTag(_array[tIdx - 2],"text")
+            let mtitle=""
+            mtitle=removeTag(_array[tIdx - 2],"text")
+
             if(!mtitle.includes("👉")){
                 mtitle=removeTag(_array[tIdx - 3],"text")
             }
             const mlink =linkArr[ln].a.replace(/style=\"color: #00ccff;\"/,"class='text-red'")
             const mtext =_array[tIdx+1]
             _obj.title = mtitle,_obj.link = mlink,_obj.text=removeTag(mtext,"text")||removeTag(mtext,"span")
+            if(!_obj.title.includes("👉")) {let _t = _obj.title; _obj.title = "👉"+_t}
+            if(_obj.title.includes("[SPAN]")){
+                let _t  = _obj.title.replace("[SPAN]","")
+                _obj.title = _t
+            }
             Sa88LInks.push(_obj)
             ln++
         }
@@ -157,7 +164,6 @@ function mkJsData(_array,textColorsSet){
         var nospanIdx = notSpanIndex[v],nextIdx = notSpanIndex[v + 1]
         if(nextIdx - nospanIdx >1) {var marr=[];for(var i=nospanIdx+1;i<nextIdx; i++){marr.push(blocks[i])};spanArray.push({startIdx: nospanIdx+1,endIdx:nextIdx-1,arr:marr})}
     }
-    // console.log("天葬",spanArray)
     var initArr=[],tableArr =[]
     for(var t=0;t<tableIndex.length;t++){
         var tableIdx = tableIndex[t],nextIdx= tableIndex[t+1];
@@ -327,6 +333,7 @@ function textColors (Obj,colorArr=[]){
                 if(theText.includes("Nhật ký nhiệm vụ tiếp theoclick vào Mỗi kỳ")){nearByText="Nhật ký nhiệm vụ tiếp theoclick vào Mỗi kỳ"}
                 if(theText.includes("Nhận Thưởng Ngay")){nearByText="Nhận Thưởng Ngay"}
                 if(theText.includes("Thư ngỏ:")){nearByText="Thư ngỏ:"}
+                if(preText.includes("Link trang chủ:") || preText.includes("Kênh sự kiện:") || preText.includes("Facebook:") ){nearByText=""}
                 nearByText = nearByText.trim()
                 nearByText = nearByText.replace(/\n/,"")
             }
@@ -356,6 +363,9 @@ function textColors (Obj,colorArr=[]){
             textColors(children[j],colorArr)
         }
     }
+    // if(colorArr.length ===3) {
+    //    console.log(colorArr,"colorArr!!!")
+    // }
     return colorArr
 
 
