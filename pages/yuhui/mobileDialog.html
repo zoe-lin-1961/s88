@@ -61,6 +61,7 @@
     loadGetAjexJsonData(["./sa88.json","https://api.hi678a.com/ve2prod-ecp/api/v1/promosforplayertoapply?currency=VND2&limit=100&locale=vi-VN&offset=0&platform=2"])
 
     function getDomPromoItemDetail(_data,contectSet,_id) {
+        console.log(_data,"_data!!!")
         let leftDom = document.getElementById('left-window'),mainDom =document.getElementById('main-container');
         let title = _data["promotitle"]["vi-VN"] ||  _data["promoname"];
         let GRID_item = _data['promobanner'].some(item => item.type == 'GRID')? _data['promobanner'].filter((item)=>item.type == 'GRID')[0]:undefined;
@@ -87,6 +88,16 @@
         //右边的显示
 
 
+        let EndTime = _data["enddate"] || null;
+        let remainTimesStr = ''
+        if(EndTime) {
+            let today = new Date().getTime()
+            remainTimesStr = reMainTimes(EndTime,today)
+
+        }
+        // //
+        // console.log(remainTimesStr,"remainTimesStr")
+
         if(GRID_item['description']) {
             mainDom.innerHTML = GRID_item['description'];
             //let itemId = _data.promoid
@@ -94,6 +105,11 @@
             reWriteDataFromWeb(mainDom,contectSet,itemId,_data)
             $("#main-containerReload")[0].innerHTML= createJSON.filter((item)=>item.id === itemId)[0].innerHTML
             resetTableColor($("#main-containerReload")[0])
+            if(!!remainTimesStr) {
+                let remainTimeDOM = mkDOM("div",[{class:"remainTime text-red"},{innerHTML:remainTimesStr}])
+                $("#main-containerReload")[0].firstElementChild.before(remainTimeDOM)
+
+            }
             // alert(localStorage.getItem("__singoCreateJSON"))
         }
     }
@@ -110,6 +126,8 @@
         let winH = window.innerHeight
         $(".modal-body").height(winH - 50)
     }
+
+
     //pc-modal
     resetBodyHeight()
 
@@ -262,5 +280,15 @@
         line-height: 1.2;
         font-size: 1em;
         font-weight: bold;
+    }
+    .remainTime{position:relative;display: flex;align-items: center;justify-content: center;float: left;right:5px;width:100%;text-align:center;color: #ff0000 !important;margin-bottom: 20px;border: 1px solid #ff0000;padding: 5px 0;border-radius: 100px}
+    .remainTime:before{
+        content: '';
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+        display: inline-block;
+        background: url(img/icon-alert.svg);
+        background-size: 100%;
     }
 </style>

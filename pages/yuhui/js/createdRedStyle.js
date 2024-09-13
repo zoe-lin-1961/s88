@@ -111,7 +111,6 @@ function mkJsData(_array,textColorsSet){
     let blockStartIndex = 0
     _array.forEach((item,idx)=>{
         if(item.includes("[#text]")){textArr.push(item)}
-
         if(!item.includes("[")){linkArr.push({a:item,idx:idx});blocks.push(item)}
         blockTypes.forEach((kinds)=>{
             if(item.includes(kinds)){
@@ -206,7 +205,6 @@ function mkJsData(_array,textColorsSet){
                let theArrTab =  theArrageTableArr[theArrageTableArr.length-1]
                 theArrTab["endIdx"] = tab["endIdx"]
                 theArrTab["arr"] = [...theArrTab["arr"],...tab["arr"]]
-                //console.log(theArrTab,"tab.arr!!!",tab)
             }
         })
         tableArr = theArrageTableArr
@@ -326,13 +324,14 @@ function textColors (Obj,colorArr=[]){
                 let preText = Obj.parentNode.parentNode.innerText.split(theText)[0]
                 if(preText.length === 0){preText =Obj.parentNode.parentNode.innerText.split(theText)[1]}
                 nearByText = preText.substring(preText.length-5,preText.length)
-                if(preText.includes("Mã Khuyến Mãi")){nearByText="Mã Khuyến Mãi"}
+
                 if(theText.includes("Lưu ý")){nearByText="Lưu ý"}
                 if(theText.includes("※") && theText.includes("Phương thức nhận thưởng")){nearByText="Phương thức nhận thưởng"}
                 if(theText.includes("Nhật ký nhiệm vụ tiếp theoclick vào Mỗi kỳ")){nearByText="Nhật ký nhiệm vụ tiếp theoclick vào Mỗi kỳ"}
                 if(theText.includes("Nhận Thưởng Ngay")){nearByText="Nhận Thưởng Ngay"}
                 if(theText.includes("Thư ngỏ:")){nearByText="Thư ngỏ:"}
                 if(preText.includes("Link trang chủ:") || preText.includes("Kênh sự kiện:") || preText.includes("Facebook:") ){nearByText=""}
+                if(preText.includes("Mã Khuyến Mãi")){nearByText="Mã Khuyến Mãi"}
                 nearByText = nearByText.trim()
                 nearByText = nearByText.replace(/\n/,"")
             }

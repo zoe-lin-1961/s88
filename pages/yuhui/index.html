@@ -204,11 +204,8 @@
              remainTimesStr = reMainTimes(EndTime,today)
 
         }
-
-
         promoItem.classList.add('promo-item');
         promoItem.onclick=function (){
-          console.log(_data.length,"_data.length")
           promoItemDetail(_data[i],contectSet,_data.length,remainTimesStr);
         }
         let _img = document.createElement('img');
@@ -333,8 +330,6 @@
     }
   }
   function getDomPromoItemDetail(_data,contectSet,dataCount,remainTimesStr) {
-    // console.log(_data,contectSet,dataCount,"_data,contectSet,dataCount")
-      console.log(!!remainTimesStr,"remainTimesStr")
     let leftDom = document.getElementById('left-window'),mainDom =document.getElementById('main-container');
     let title =_data["promotitle"]["vi-VN"] ||  _data["promoname"];
 
@@ -384,6 +379,7 @@
   }
   function reWriteDataFromWeb (father,contectSet,id,_data){
     let reWrite = reWriteDataSet(father,contectSet)
+
     // console.log(reWrite.JsData,reWrite.ColorText,id,"reWrite.JsData,reWrite.ColorText,id")
    let returnJSON = loadreWriteDataFromWeb(reWrite.JsData,reWrite.ColorText,id)
     updateJSON(returnJSON)
@@ -474,7 +470,7 @@
   }
   }
 
-  .remainTime{position:relative;display: flex;align-items: center;justify-content: right;float: left;right:5px;width: 100%;text-align: right;color: #ff0000 !important;}
+  .remainTime{position:relative;display: flex;align-items: center;justify-content: right;float: left;right:5px;width: 100%;text-align: right;color: #ff0000 !important;margin-bottom: 20px;}
   .remainTime:before{
       content: '';
       width: 25px;

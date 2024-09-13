@@ -28,7 +28,7 @@ em,i{font-style:normal;}
     width: 100vw;
     height: calc((420 / 750) * 100vw);
     overflow: hidden;
-    background-image: url(../images/banner1.png);
+    background-image: url(../images/banner1.webp);
     background-repeat: no-repeat;
     background-size: contain;
 }
