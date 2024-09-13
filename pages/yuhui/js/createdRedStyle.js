@@ -325,7 +325,6 @@ function textColors (Obj,colorArr=[]){
             if(colors[_stylesColor] =="isRED" || colors[_stylesColor] =="isLightBlue" ){
                 let preText = Obj.parentNode.parentNode.innerText.split(theText)[0]
                 if(preText.length === 0){preText =Obj.parentNode.parentNode.innerText.split(theText)[1]}
-
                 nearByText = preText.substring(preText.length-5,preText.length)
                 if(preText.includes("Mã Khuyến Mãi")){nearByText="Mã Khuyến Mãi"}
                 if(theText.includes("Lưu ý")){nearByText="Lưu ý"}
@@ -363,9 +362,7 @@ function textColors (Obj,colorArr=[]){
             textColors(children[j],colorArr)
         }
     }
-    // if(colorArr.length ===3) {
-    //    console.log(colorArr,"colorArr!!!")
-    // }
+
     return colorArr
 
 
